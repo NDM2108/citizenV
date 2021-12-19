@@ -2,7 +2,7 @@ import Login from "./routes/Login";
 import { Routes, Route } from "react-router-dom";
 import Home from "./routes/Home";
 import DashboardContent from "../src/components/dashboard/Dashboard"
-
+import {BrowserRouter as Routes, Route, Switch} from 'react-router-dom'
 
 function App() {
     return (
