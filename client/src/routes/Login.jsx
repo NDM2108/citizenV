@@ -25,13 +25,8 @@ export default function Login() {
       password: data.get('password')
     });
     fetch('http://localhost:5000/login')
-      .then((response) => {
-        console.log(response);
-        response.json().then((data) => {
-          console.log(data);
-        });
-      });
-
+    .then(response => response.text())
+    .then(data => console.log(data));
   };
 
   return (
