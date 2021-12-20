@@ -1,7 +1,7 @@
 //Import
 const express = require('express')
 const mongoose = require('mongoose')
-const authRouter = require('./routes/auth')
+const loginRouter = require('./routes/login')
 
 //Connect to database
 const connectDB = async () => {
@@ -23,7 +23,7 @@ connectDB()
 
 const app = express()
 
-app.use('/api/auth', authRouter)
+app.use('/login', loginRouter)
 
 const PORT = 5000
 
