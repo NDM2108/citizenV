@@ -20,13 +20,17 @@ export default function Login() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    // eslint-disable-next-line no-console
-    // var username: data.get('username')
-    // var password: data.get('password')
     console.log({
       username: data.get('username'),
       password: data.get('password')
     });
+    fetch('http://localhost:5000/login')
+      .then((response) => {
+        console.log(response);
+        response.json().then((data) => {
+          console.log(data);
+        });
+      });
 
   };
 
@@ -78,8 +82,8 @@ export default function Login() {
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
-              // to="/congdan/:id"
-              // onClick="/congdan/:id"
+            // to="/congdan/:id"
+            // onClick="/congdan/:id"
 
             >
               Login

@@ -1,4 +1,5 @@
 //Import
+var cors = require('cors')
 const express = require('express')
 const mongoose = require('mongoose')
 const loginRouter = require('./routes/login')
@@ -24,7 +25,7 @@ connectDB()
 const app = express()
 
 app.use('/login', loginRouter)
-
+app.use(cors());
 const PORT = 5000
 
 app.listen(PORT, () => console.log('Server started on port ${PORT}'))

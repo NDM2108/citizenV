@@ -50,7 +50,7 @@ const Home = () => {
                         <div className="mt-6 sm:mt-10 flex justify-center space-x-6 text-sm">
                             <Link
                                 className="bg-gray-900 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-gray-50 text-white font-semibold h-12 px-6 rounded-lg flex items-center justify-center w-full max-w-xl"
-                                to="/dangnhap"
+                                to="/login"
                             >
                                 Bắt đầu
                             </Link>
