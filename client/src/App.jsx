@@ -14,16 +14,16 @@ class App extends Component {
         this.state = { apiResponse: "" };
     }
 
-    callAPI() {
-        fetch("http://localhost:5000/login")
-            .then(res => res.text())
-            .then(res => this.setState({ apiResponse: res.text() }))
-            .catch(err => err);
-    }
+    // callAPI() {
+    //     fetch("http://localhost:5000/login")
+    //         .then(res => res.text())
+    //         .then(res => this.setState({ apiResponse: res.text() }))
+    //         .catch(err => err);
+    // }
 
-    componentDidMount() {
-        this.callAPI();
-    }
+    // componentDidMount() {
+    //     this.callAPI();
+    // }
     render() {
         return (
             <>

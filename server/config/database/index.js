@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 async function connect() {
     try {
         await mongoose.connect(
-            'mongodb://localhost:27017/citizen_v',
+            'mongodb+srv://namdeptrai:Namdeptrai2502@cluster0.bzcyy.mongodb.net/citizen_v',
             {
                 useNewUrlParser: true,
                 useUnifiedTopology: true,
