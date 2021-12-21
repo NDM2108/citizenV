@@ -21,6 +21,7 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import { mainListItems } from './listItems';
 import TimeTable from './Table';
 import PopulationDeclaration from '../populationDeclaration/PopulationDeclaration';
+import BangTienDo from './Table1'
 
 
 const drawerWidth = 240;
@@ -148,8 +149,8 @@ function DashboardContent() {
                     <div>
                         <>
                             <Routes>
-                                <Route path="/admin" element={<TimeTable />} />
-                                <Route path="/TimeTable" element={<TimeTable />} />
+                                <Route path="/admin" element={<BangTienDo />} />
+                                <Route path="/TimeTable" element={<BangTienDo />} />
                                 <Route path="/declaration" element={<PopulationDeclaration />} />
                             </Routes>
                             <Outlet />
