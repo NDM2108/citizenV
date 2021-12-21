@@ -2,9 +2,16 @@ const Account = require('../models/Account')
 
 class Controller {
     login(req, res, next) {
-        Account.find({}, function(err, accounts) {
+        console.log(req.body);
+        Account.findOne({'username': req.body.username}, function(err, account) {
             if (!err) {
-                res.json(accounts)
+                if (account == null) {
+                    res.send('failed')
+                } else if (account.password == req.body.password) {
+                    res.send('success')
+                } else {
+                    res.send('failed')
+                }
             } else {
                 res.staus(400).json({err: 'ERROR'})
             }

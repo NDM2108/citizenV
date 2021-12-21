@@ -8,7 +8,9 @@ db.connect()
 
 const app = express()
 
-app.use(cors());
+app.use(express.urlencoded())
+app.use(express.json())
+app.use(cors())
 app.use('/', route)
 
 const PORT = 5000
