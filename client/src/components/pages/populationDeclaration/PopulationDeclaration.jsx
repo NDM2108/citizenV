@@ -7,7 +7,7 @@ const PopulationDeclaration = () => {
   return (
     <div className="container-declaration">
       <div className="title"> Nhập liệu về dân số</div>
-      <form className="form-declaration" >
+      <form className="form-declaration">
         <div className="info">
           <div className="inputBox">
             <span className="details"> Họ và tên</span>
@@ -26,7 +26,6 @@ const PopulationDeclaration = () => {
               name="DOB"
               type="date"
               required
-              value={null}
             />
           </div>
 

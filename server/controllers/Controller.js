@@ -1,8 +1,9 @@
 const Account = require('../models/Account')
+const Citizen_info = require('../models/Citizen_info')
+const mongoose = require('mongoose')
 
 class Controller {
     login(req, res, next) {
-        console.log(req.body);
         Account.findOne({'username': req.body.username}, function(err, account) {
             if (!err) {
                 if (account == null) {
@@ -16,6 +17,25 @@ class Controller {
                 res.staus(400).json({err: 'ERROR'})
             }
         })
+    }
+
+    register(req, res, next) {
+        var citizen_info = {
+            'id': req.body.id,
+            'id_card_number': req.body.id_card_number,
+            'fullname': req.body.fullname,
+            'date_of_birth': req.body.date_of_birth,
+            'gender': req.body.gender,
+            'hometown': req.body.hometown,
+            'permanent_address': req.body.permanent_address,
+            'temporary': req.body.temporary,
+            'religion': req.body.religion,
+            'education_level': req.body.education_level,
+            'job': req.body.job,
+        }
+        var connection = mongoose.connection;
+        connection.collection('citizen_info').insertOne(citizen_info)
+        res.send('sucess');
     }
 }
 
