@@ -19,6 +19,10 @@ import Tooltip from '@mui/material/Tooltip';
 import DeleteIcon from '@mui/icons-material/Delete';
 import FilterListIcon from '@mui/icons-material/FilterList';
 import { visuallyHidden } from '@mui/utils';
+import { useState } from 'react';
+import { useEffect } from 'react';
+import {axios} from 'axios';
+
 
 function createData(tinh, sodan, soho, tiendo) {
     return {
@@ -100,6 +104,12 @@ const headCells = [
 ];
 
 function TimeTable(props) {
+    fetch("http://localhost:5000/provinces").then((response) => {
+        response.json().then((data) => {
+            console.log(data);
+        });
+    });
+
     const { onSelectAllClick, order, orderBy, numSelected, rowCount, onRequestSort } =
         props;
     const createSortHandler = (property) => (event) => {
