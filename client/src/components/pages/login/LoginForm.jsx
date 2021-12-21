@@ -10,13 +10,12 @@ import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-// import Link from '@mui/material/Link';
-import { Link } from "react-router-dom";
+import Link from '@mui/material/Link';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 const theme = createTheme();
 
-export default function Login() {
+export default function LoginForm() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -76,23 +75,13 @@ export default function Login() {
               type="submit"
               fullWidth
               variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-            // to="/congdan/:id"
-            // onClick="/congdan/:id"
-
+              sx={{ mt: 3, mb: 2 }}    
+              onClick={(e) => {e.preventDefault(); window.location.href='/admin';}}     
             >
               Login
             </Button>
-            <Link
-
-              to="/admin"
-              className="bg-gray-900 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-gray-50 text-white font-semibold h-12 px-6 rounded-lg flex items-center justify-center w-full max-w-xl"
-            >
-              Login giả
-            </Link>
             <Grid container>
               <Grid item xs>
-
               </Grid>
               <Grid item>
               </Grid>
@@ -103,3 +92,9 @@ export default function Login() {
     </ThemeProvider>
   );
 }
+
+
+
+
+
+

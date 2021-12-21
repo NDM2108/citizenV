@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { Routes, Route, Outlet } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { styled, createTheme, ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import MuiDrawer from '@mui/material/Drawer';
@@ -9,17 +11,16 @@ import List from '@mui/material/List';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
-// import Badge from '@mui/material/Badge';
+import Badge from '@mui/material/Badge';
+import NotificationsIcon from '@mui/icons-material/Notifications';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
-// import Paper from '@mui/material/Paper';
-// import Link from '@mui/material/Link';
 import MenuIcon from '@mui/icons-material/Menu';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-// import NotificationsIcon from '@mui/icons-material/Notifications';
-import { mainListItems, secondaryListItems } from './listItems';
-import EnhancedTableHead from './Table';
-
+import { mainListItems } from './listItems';
+import TimeTable from './Table';
+import PopulationDeclaration from '../populationDeclaration/PopulationDeclaration';
 
 
 const drawerWidth = 240;
@@ -107,11 +108,14 @@ function DashboardContent() {
                         >
                             TỔNG CỤC DÂN SỐ
                         </Typography>
-                        {/* <IconButton color="inherit">
-              <Badge badgeContent={4} color="secondary">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton> */}
+    
+                        <IconButton  style = {{}}color="inherit">
+                            <Badge color="secondary">
+                                <ExitToAppIcon />
+                            </Badge>
+                        </IconButton>
+                        
+                        
                     </Toolbar>
                 </AppBar>
                 <Drawer variant="permanent" open={open}>
@@ -129,8 +133,6 @@ function DashboardContent() {
                     </Toolbar>
                     <Divider />
                     <List>{mainListItems}</List>
-                    <Divider />
-                    <List>{secondaryListItems}</List>
                 </Drawer>
                 <Box
                     component="main"
@@ -146,9 +148,15 @@ function DashboardContent() {
                 >
                     <Toolbar />
                     <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-                        <Grid container spacing={3}>
-                            <EnhancedTableHead />
-
+                        <Grid container spacing={1}>
+                            <>
+                                <Routes>
+                                    <Route path="/admin" element={<TimeTable />} />
+                                    <Route path="/TimeTable" element={<TimeTable />} />
+                                    <Route path="/declaration" element={<PopulationDeclaration />} />
+                                </Routes>
+                                <Outlet />
+                            </>
                         </Grid>
                     </Container>
                 </Box>

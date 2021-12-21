@@ -16,8 +16,6 @@ import Paper from '@mui/material/Paper';
 import Checkbox from '@mui/material/Checkbox';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Switch from '@mui/material/Switch';
 import DeleteIcon from '@mui/icons-material/Delete';
 import FilterListIcon from '@mui/icons-material/FilterList';
 import { visuallyHidden } from '@mui/utils';
@@ -32,11 +30,11 @@ function createData(tinh, sodan, soho, tiendo) {
 }
 
 const rows = [
-    createData('Ha Noi',1000,1400,'Hoàn thành'),
-    createData('Nghe An',5000,1400,'Chưa hoàn thành'),
-    createData('Lang Son',7000,1600,'Hoàn thành'),
-    createData('Thanh Hoa',71000,1500,'Chưa hoàn thành'),
-    createData('HCM',19000,700,'Chưa hoàn thành'),
+    createData('Ha Noi', 1000, 1400, 'Hoàn thành'),
+    createData('Nghe An', 5000, 1400, 'Chưa hoàn thành'),
+    createData('Lang Son', 7000, 1600, 'Hoàn thành'),
+    createData('Thanh Hoa', 71000, 1500, 'Chưa hoàn thành'),
+    createData('HCM', 19000, 700, 'Chưa hoàn thành'),
 ];
 
 function descendingComparator(a, b, orderBy) {
@@ -96,7 +94,7 @@ const headCells = [
     },
 ];
 
-function EnhancedTableHead(props) {
+function TimeTable(props) {
     const { onSelectAllClick, order, orderBy, numSelected, rowCount, onRequestSort } =
         props;
     const createSortHandler = (property) => (event) => {
@@ -143,7 +141,7 @@ function EnhancedTableHead(props) {
     );
 }
 
-EnhancedTableHead.propTypes = {
+TimeTable.propTypes = {
     numSelected: PropTypes.number.isRequired,
     onRequestSort: PropTypes.func.isRequired,
     onSelectAllClick: PropTypes.func.isRequired,
@@ -212,7 +210,7 @@ export default function EnhancedTable() {
     const [orderBy, setOrderBy] = React.useState('sodan');
     const [selected, setSelected] = React.useState([]);
     const [page, setPage] = React.useState(0);
-    const [dense, setDense] = React.useState(false);
+    // const [dense, setDense] = React.useState(false);
     const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
     const handleRequestSort = (event, property) => {
@@ -259,9 +257,6 @@ export default function EnhancedTable() {
         setPage(0);
     };
 
-    const handleChangeDense = (event) => {
-        setDense(event.target.checked);
-    };
 
     const isSelected = (tinh) => selected.indexOf(tinh) !== -1;
 
@@ -277,9 +272,8 @@ export default function EnhancedTable() {
                     <Table
                         sx={{ minWidth: 750 }}
                         aria-labelledby="tableTitle"
-                        size={dense ? 'small' : 'medium'}
                     >
-                        <EnhancedTableHead
+                        <TimeTable
                             numSelected={selected.length}
                             order={order}
                             orderBy={orderBy}
@@ -331,11 +325,7 @@ export default function EnhancedTable() {
                                     );
                                 })}
                             {emptyRows > 0 && (
-                                <TableRow
-                                    style={{
-                                        height: (dense ? 33 : 53) * emptyRows,
-                                    }}
-                                >
+                                <TableRow>
                                     <TableCell colSpan={6} />
                                 </TableRow>
                             )}
@@ -352,10 +342,7 @@ export default function EnhancedTable() {
                     onRowsPerPageChange={handleChangeRowsPerPage}
                 />
             </Paper>
-            <FormControlLabel
-                control={<Switch checked={dense} onChange={handleChangeDense} />}
-                label="Dense padding"
-            />
+
         </Box>
     );
 }
