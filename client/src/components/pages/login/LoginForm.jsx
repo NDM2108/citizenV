@@ -25,7 +25,7 @@ export default function LoginForm() {
     });
     var login = {username: data.get('username'), password: data.get('password')}
     fetch('http://localhost:5000/login', {
-      method: "POST",
+      method: "GET",
      
       body: JSON.stringify(login),
   

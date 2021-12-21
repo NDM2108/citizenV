@@ -12,7 +12,7 @@ import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import Badge from '@mui/material/Badge';
-import NotificationsIcon from '@mui/icons-material/Notifications';
+// import NotificationsIcon from '@mui/icons-material/Notifications';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -114,8 +114,6 @@ function DashboardContent() {
                                 <ExitToAppIcon />
                             </Badge>
                         </IconButton>
-                        
-                        
                     </Toolbar>
                 </AppBar>
                 <Drawer variant="permanent" open={open}>
@@ -147,8 +145,18 @@ function DashboardContent() {
                     }}
                 >
                     <Toolbar />
-                    <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-                        <Grid container spacing={1}>
+                    <div>
+                        <>
+                            <Routes>
+                                <Route path="/admin" element={<TimeTable />} />
+                                <Route path="/TimeTable" element={<TimeTable />} />
+                                <Route path="/declaration" element={<PopulationDeclaration />} />
+                            </Routes>
+                            <Outlet />
+                        </>
+                    </div>
+                    {/* <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
+                        <Grid container spacing={1}>        
                             <>
                                 <Routes>
                                     <Route path="/admin" element={<TimeTable />} />
@@ -158,7 +166,7 @@ function DashboardContent() {
                                 <Outlet />
                             </>
                         </Grid>
-                    </Container>
+                    </Container> */}
                 </Box>
             </Box>
         </ThemeProvider>

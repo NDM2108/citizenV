@@ -1,6 +1,6 @@
 .container-declaration {
   border: solid 1px black;
-  max-width: 100%;
+  max-width: 750px;
   background: #ffff;
   padding: 25px 30px;
   border-radius: 5px;

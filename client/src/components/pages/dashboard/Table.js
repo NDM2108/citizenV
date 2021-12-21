@@ -35,6 +35,11 @@ const rows = [
     createData('Lang Son', 7000, 1600, 'Hoàn thành'),
     createData('Thanh Hoa', 71000, 1500, 'Chưa hoàn thành'),
     createData('HCM', 19000, 700, 'Chưa hoàn thành'),
+    createData('Ha Noi', 1000, 1400, 'Hoàn thành'),
+    createData('Nghe An', 5000, 1400, 'Chưa hoàn thành'),
+    createData('Lang Son', 7000, 1600, 'Hoàn thành'),
+    createData('Thanh Hoa', 71000, 1500, 'Chưa hoàn thành'),
+    createData('HCM', 19000, 700, 'Chưa hoàn thành'),
 ];
 
 function descendingComparator(a, b, orderBy) {
