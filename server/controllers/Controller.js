@@ -1,6 +1,7 @@
-const Account = require('../models/Account')
-const Citizen_info = require('../models/Citizen_info')
 const mongoose = require('mongoose')
+const Account = require('../models/Account')
+const Province = require('../models/Province')
+const Citizen_info = require('../models/Citizen_info')
 
 class Controller {
     login(req, res, next) {
@@ -36,6 +37,12 @@ class Controller {
         var connection = mongoose.connection;
         connection.collection('citizen_info').insertOne(citizen_info)
         res.send('sucess');
+    }
+
+    provinces(req, res, next) {
+        Province.find({}, function(err, provinces) {
+            res.json(provinces)
+        })
     }
 }
 
