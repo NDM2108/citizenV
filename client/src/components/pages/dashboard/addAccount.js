@@ -1,7 +1,7 @@
-const addAccount = () =>{
+const AddAccount = () =>{
     return(
         <h1>Thêm tài khoản</h1>
     )
 }
 
-export default addAccount;
+export default AddAccount;

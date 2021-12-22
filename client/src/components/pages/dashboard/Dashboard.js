@@ -21,7 +21,11 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import { mainListItems } from './listItems';
 import TimeTable from './Table';
 import PopulationDeclaration from '../populationDeclaration/PopulationDeclaration';
-import DataProvinces from './Table1';
+import DataProvinces from './DataProvinces';
+import DataPopulations from './DataPopulations';
+import Chart from './Chart';
+import AddAccount from './addAccount';
+import AccountManager from './AccountManager';
 
 
 const drawerWidth = 240;
@@ -151,23 +155,15 @@ function DashboardContent() {
                             <Routes>
                                 <Route path="/admin" element={<DataProvinces />} />
                                 <Route path="/TimeTable" element={<DataProvinces />} />
+                                <Route path="/chart" element={<Chart />} />
+                                <Route path="/accMan" element={<AccountManager />} />
+                                <Route path="/addaccount" element={<AddAccount />} />
+                                <Route path="/population" element={<DataPopulations />} />
                                 <Route path="/declaration" element={<PopulationDeclaration />} />
                             </Routes>
                             <Outlet />
                         </>
                     </div>
-                    {/* <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-                        <Grid container spacing={1}>        
-                            <>
-                                <Routes>
-                                    <Route path="/admin" element={<TimeTable />} />
-                                    <Route path="/TimeTable" element={<TimeTable />} />
-                                    <Route path="/declaration" element={<PopulationDeclaration />} />
-                                </Routes>
-                                <Outlet />
-                            </>
-                        </Grid>
-                    </Container> */}
                 </Box>
             </Box>
         </ThemeProvider>

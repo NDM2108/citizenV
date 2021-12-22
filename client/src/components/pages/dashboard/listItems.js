@@ -6,37 +6,40 @@ import DashboardIcon from '@mui/icons-material/Dashboard';
 import PeopleIcon from '@mui/icons-material/People';
 import BarChartIcon from '@mui/icons-material/BarChart';
 import AssignmentIcon from '@mui/icons-material/Assignment';
+import AccountBoxIcon from '@mui/icons-material/AccountBox';
+import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import "./listItems.css";
 import { Outlet, Link } from "react-router-dom";
+import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
 
 
-const ListItemData = [
-  {
-    title: "Home",
-    path: "/home",
-    icon: <DashboardIcon />,
-    cName: "nav-text",
-  },
-  {
-    title: "Analytics",
-    path: "/analytics",
-    icon: <PeopleIcon />,
-    cName: "nav-text",
-  },
-  {
-    title: "Accounts",
-    path: "/accounts",
-    icon: <BarChartIcon />,
-    cName: "nav-text",
-  },
+// const ListItemData = [
+//   {
+//     title: "Home",
+//     path: "/home",
+//     icon: <DashboardIcon />,
+//     cName: "nav-text",
+//   },
+//   {
+//     title: "Analytics",
+//     path: "/analytics",
+//     icon: <PeopleIcon />,
+//     cName: "nav-text",
+//   },
+//   {
+//     title: "Accounts",
+//     path: "/accounts",
+//     icon: <BarChartIcon />,
+//     cName: "nav-text",
+//   },
 
-  {
-    title: "Population",
-    path: "/population",
-    icon: <AssignmentIcon />,
-    cName: "nav-text",
-  },
-];
+//   {
+//     title: "Population",
+//     path: "/population",
+//     icon: <AssignmentIcon />,
+//     cName: "nav-text",
+//   },
+// ];
 
 export const mainListItems = (
   <div>
@@ -49,20 +52,42 @@ export const mainListItems = (
       </ListItem>
     </Link>
     
-    
+    <Link to = '/accMan' style = {{textDecoration: 'none', color: 'black'}}>
     <ListItem button>
       <ListItemIcon>
-        <PeopleIcon />
+        <ManageAccountsIcon />
       </ListItemIcon>
       <ListItemText primary="Quản lý tài khoản" />
     </ListItem>
+    </Link>
+
     
+    <Link to = '/chart' style = {{textDecoration: 'none', color: 'black'}}>
     <ListItem button>
       <ListItemIcon>
         <BarChartIcon />
       </ListItemIcon>
       <ListItemText primary="Thống kê" />
     </ListItem>
+    </Link>
+
+    <Link to = '/addaccount' style = {{textDecoration: 'none', color: 'black'}}>
+    <ListItem button>
+      <ListItemIcon>
+        <PersonAddAltIcon />
+      </ListItemIcon>
+      <ListItemText primary="Cấp tài khoản" />
+    </ListItem>
+    </Link>
+
+    <Link to = '/population' style = {{textDecoration: 'none', color: 'black'}}>
+    <ListItem button>
+      <ListItemIcon>
+        <PeopleIcon />
+      </ListItemIcon>
+      <ListItemText primary="Thông tin người dân" />
+    </ListItem>
+    </Link>
 
     <Link to = '/declaration' style = {{textDecoration: 'none', color: 'black'}} >
     <ListItem button>
