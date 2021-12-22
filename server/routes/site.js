@@ -9,6 +9,6 @@ router.post('/register', controller.register)
 
 router.get('/provinces', controller.provinces)
 
-router.get('/citizen_infos', verifyToken, controller.citizen_infos)
+router.get('/citizen_infos', controller.citizen_infos)
 
 module.exports = router

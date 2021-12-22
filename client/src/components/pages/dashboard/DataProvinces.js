@@ -46,7 +46,6 @@ function DataProvinces() {
                 setProvince(province)
             })
     }, [])
-    console.log(province);
 
   return (
     <div style={{ height: 400, width: '100%' }}>
