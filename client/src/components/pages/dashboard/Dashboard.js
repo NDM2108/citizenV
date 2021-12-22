@@ -80,15 +80,15 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 const mdTheme = createTheme();
 
 function DashboardContent() {
+    const navigate = useNavigate();
     const [open, setOpen] = React.useState(true);
     const toggleDrawer = () => {
         setOpen(!open);
     };
-    const navigate = useNavigate();
-
-
-    function logOut() {
+    
+    const logOut = async () => {
         localStorage.removeItem('accessToken')
+        console.log('out')
         navigate('/login')
     }    
 
@@ -124,7 +124,7 @@ function DashboardContent() {
                             TỔNG CỤC DÂN SỐ
                         </Typography>
     
-                        <IconButton  onClick={logOut()} style = {{}}color="inherit">
+                        <IconButton  onClick={ () => logOut() } style = {{}}color="inherit">
                             <Badge color="secondary">
                                 <ExitToAppIcon />
                             </Badge>
