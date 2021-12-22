@@ -9,21 +9,7 @@ import PopulationDeclaration from "./components/pages/populationDeclaration/Popu
 
 
 class App extends Component {
-    constructor(props) {
-        super(props);
-        this.state = { apiResponse: "" };
-    }
-
-    // callAPI() {
-    //     fetch("http://localhost:5000/login")
-    //         .then(res => res.text())
-    //         .then(res => this.setState({ apiResponse: res.text() }))
-    //         .catch(err => err);
-    // }
-
-    // componentDidMount() {
-    //     this.callAPI();
-    // }
+    
     render() {
         return (
             <>
@@ -31,8 +17,6 @@ class App extends Component {
                     <Route path="/" element={<Home />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="*" element={<DashboardContent />} />
-                    {/* <Route path="/declaration" element={<PopulationDeclaration />} /> */}
-
                 </Routes>
             </> 
         )

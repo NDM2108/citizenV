@@ -1,45 +1,65 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import * as React from 'react';
-// import DropdownMenu, { DropdownItem, DropdownItemGroup } from '@atlaskit/dropdown-menu';
-import { CSmartTable, CButton, CBadge, CCollapse, CCardBody } from '@coreui/react-pro'
-// import bar from '../baselayout/bar.scss'
-
-import { visuallyHidden } from '@mui/utils';
 import { useEffect, useState } from "react"
 import axios from 'axios';
+import { DataGrid } from '@mui/x-data-grid';
 
-var keys
+const columns = [
+  { field: 'id', headerName: 'ID', width: 90 },
+  {
+    field: 'province',
+    headerName: 'Tỉnh',
+    width: 150,
+    editable: true,
+  },
+  {
+    field: 'population',
+    headerName: 'Số dân',
+    type: 'number',
+    width: 150,
+    editable: true,
+  },
+  {
+    field: 'houses',
+    headerName: 'Số hộ',
+    type: 'number',
+    width: 110,
+    editable: true,
+  },
+  {
+    field: 'progress',
+    headerName: 'Tiến độ',
+    width: 110,
+    editable: true,
+  },
+];
 
-function BangTienDo() {
-    // const [province, setProvince] = useState([])
-    // useEffect(() => {
-    //     axios.get('http://localhost:5000/provinces')
-    //         .then(response => {
-    //             const province = response.data
-    //             setProvince(province)
-    //         })
-    // }, [])
-    // const keys = (province)
-    // console.log(keys)
 
-    axios.get('http://localhost:5000/provinces')
+function DataProvinces() {
+  
+  const [province, setProvince] = useState([])
+    useEffect(() => {
+        axios.get('http://localhost:5000/provinces')
             .then(response => {
-                keys = response.data
+                const province = response.data
+                setProvince(province)
             })
-    console.log(keys);
-    
-    return (
-        <CSmartTable
-          items={keys}
-          columnFilter
-          columnSorter
-          pagination
-          tableProps={{
-            hover: true,
-          }}
-        />
-      )
+    }, [])
+    console.log(province);
+
+  return (
+    <div style={{ height: 400, width: '100%' }}>
+      <DataGrid
+        rows={province}
+        columns={columns}
+        pageSize={5}
+        rowsPerPageOptions={[5]}
+        checkboxSelection
+        disableSelectionOnClick
+      />
+    </div>
+  );
+          
 }
 
-
-export default BangTienDo
+export default DataProvinces
