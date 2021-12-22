@@ -26,6 +26,9 @@ import DataPopulations from './DataPopulations';
 import Chart from './Chart';
 import AddAccount from './addAccount';
 import AccountManager from './AccountManager';
+import { useNavigate } from "react-router-dom";
+
+
 
 
 const drawerWidth = 240;
@@ -81,6 +84,13 @@ function DashboardContent() {
     const toggleDrawer = () => {
         setOpen(!open);
     };
+    const navigate = useNavigate();
+
+
+    function logOut() {
+        localStorage.removeItem('accessToken')
+        navigate('/login')
+    }    
 
     return (
         <ThemeProvider theme={mdTheme}>
@@ -114,7 +124,7 @@ function DashboardContent() {
                             TỔNG CỤC DÂN SỐ
                         </Typography>
     
-                        <IconButton  style = {{}}color="inherit">
+                        <IconButton  onClick={logOut()} style = {{}}color="inherit">
                             <Badge color="secondary">
                                 <ExitToAppIcon />
                             </Badge>

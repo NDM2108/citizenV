@@ -33,8 +33,11 @@ export default function LoginForm() {
           "Content-type": "application/json; charset=UTF-8"
       }
     })
-    .then(response => response.text())
-    .then(data => console.log(data));
+    .then(response => response.json())
+    .then(data => {
+      localStorage.setItem('accessToken', data.accessToken);
+      console.log(localStorage.getItem('accessToken'));
+    });
   };
 
   return (

@@ -12,8 +12,9 @@ class Controller {
                 if (account == null) {
                     res.sendStatus(401)
                 } else if (account.password == req.body.password) {
-                    console.log(account)
-                    const accessToken = jwt.sign(account.username, process.env.ACCESS_TOKEN_SECRET)
+                    const accessToken = jwt.sign({"username": account.username}, process.env.ACCESS_TOKEN_SECRET, {
+                        expiresIn:'1h'
+                    })
                     res.json({accessToken})
                 } else {
                     res.sendStatus(401)
