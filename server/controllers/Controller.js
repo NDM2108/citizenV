@@ -1,18 +1,22 @@
+require('dotenv').config()
 const mongoose = require('mongoose')
 const Account = require('../models/Account')
 const Province = require('../models/Province')
 const Citizen_info = require('../models/Citizen_info')
+const jwt = require('jsonwebtoken')
 
 class Controller {
     login(req, res, next) {
         Account.findOne({'username': req.body.username}, function(err, account) {
             if (!err) {
                 if (account == null) {
-                    res.send('failed')
+                    res.sendStatus(401)
                 } else if (account.password == req.body.password) {
-                    res.send('success')
+                    console.log(account)
+                    const accessToken = jwt.sign(account.username, process.env.ACCESS_TOKEN_SECRET)
+                    res.json({accessToken})
                 } else {
-                    res.send('failed')
+                    res.sendStatus(401)
                 }
             } else {
                 res.staus(400).json({err: 'ERROR'})
@@ -35,12 +39,18 @@ class Controller {
             'job': req.body.job,
         }
         var connection = mongoose.connection;
-        connection.collection('citizen_info').insertOne(citizen_info)
+        connection.collection('citizen_infos').insertOne(citizen_info)
         res.send('sucess');
     }
 
     provinces(req, res, next) {
         Province.find({}, function(err, provinces) {
+            res.json(provinces)
+        })
+    }
+
+    citizen_infos(req, res, next) {
+        Citizen_info.find({}, function(err, provinces) {
             res.json(provinces)
         })
     }
