@@ -23,12 +23,10 @@ import TimeTable from './Table';
 import PopulationDeclaration from '../populationDeclaration/PopulationDeclaration';
 import DataProvinces from './DataProvinces';
 import DataPopulations from './DataPopulations';
-import Chart from './Chart';
+import Analysis from './Analysis';
 import AddAccount from './addAccount';
 import AccountManager from './AccountManager';
-import { useNavigate } from "react-router-dom";
-
-
+import InfoPopulation from '../population/InfoPopulation';
 
 
 const drawerWidth = 240;
@@ -80,17 +78,10 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 const mdTheme = createTheme();
 
 function DashboardContent() {
-    const navigate = useNavigate();
     const [open, setOpen] = React.useState(true);
     const toggleDrawer = () => {
         setOpen(!open);
     };
-    
-    const logOut = async () => {
-        localStorage.removeItem('accessToken')
-        console.log('out')
-        navigate('/login')
-    }    
 
     return (
         <ThemeProvider theme={mdTheme}>
@@ -124,7 +115,7 @@ function DashboardContent() {
                             TỔNG CỤC DÂN SỐ
                         </Typography>
     
-                        <IconButton  onClick={ () => logOut() } style = {{}}color="inherit">
+                        <IconButton  style = {{}}color="inherit">
                             <Badge color="secondary">
                                 <ExitToAppIcon />
                             </Badge>
@@ -165,10 +156,11 @@ function DashboardContent() {
                             <Routes>
                                 <Route path="/admin" element={<DataProvinces />} />
                                 <Route path="/TimeTable" element={<DataProvinces />} />
-                                <Route path="/chart" element={<Chart />} />
+                                <Route path="/chart" element={<Analysis />} />
                                 <Route path="/accMan" element={<AccountManager />} />
                                 <Route path="/addaccount" element={<AddAccount />} />
                                 <Route path="/population" element={<DataPopulations />} />
+                                <Route path="/population/:personID" element={<InfoPopulation />} />         
                                 <Route path="/declaration" element={<PopulationDeclaration />} />
                             </Routes>
                             <Outlet />

@@ -5,7 +5,6 @@ import Home from "./components/pages/home/Home";
 import DashboardContent from "../src/components/pages/dashboard/Dashboard"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import PopulationDeclaration from "./components/pages/populationDeclaration/PopulationDeclaration";
-import { Navigate } from 'react-router-dom';
 
 
 
@@ -16,16 +15,11 @@ class App extends Component {
             <>
                 <Routes>
                     <Route path="/" element={<Home />} />
-                    <Route path="/login" element = {checkAccessToken()} />
+                    <Route path="/login" element={<Login />} />
                     <Route path="*" element={<DashboardContent />} />
                 </Routes>
             </> 
         )
     }
 }
-
-function checkAccessToken() {
-    return localStorage.getItem('accessToken') ? <Navigate to="/admin" /> : <Login />
-}
-
 export default App;
