@@ -2,10 +2,13 @@
 import "./popuDeclaration.css";
 import { Navigate, useNavigate } from "react-router-dom";
 import { useState } from "react"
-
+import Select from 'react-select'
 
 const PopulationDeclaration = () => {
   const navigate = useNavigate();
+  var provinceOptions
+  var districtOptions
+  var villageOptions
 
   const [citizen, setInput] = useState({
     id: '',
@@ -48,6 +51,15 @@ const PopulationDeclaration = () => {
       
     navigate('/population')
   }
+
+  const loadProvinces = () => {
+    fetch('http://localhost:5000/provinces')
+    .then(response => {
+      return response.json()
+    }).then(data => {
+      console.log(data)
+    })
+  }
   return (
     <div className="container-declaration">
       <div className="title"> Nhập liệu về dân số</div>
@@ -85,12 +97,15 @@ const PopulationDeclaration = () => {
 
           <div className="inputBox">
             <span className="details"> Quê quán</span>
-            <input
-              name="hometown"
-              type="text"
-              required
-              onChange={handleChange}
-            />
+            <Select 
+            placeholder="Tỉnh"
+            options={provinceOptions} />
+            <Select 
+            placeholder="Quận"
+            options={districtOptions} />
+            <Select 
+            placeholder="Xã"
+            options={villageOptions} />
           </div>
 
           <div className="inputBox">

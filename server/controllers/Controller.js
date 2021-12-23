@@ -2,6 +2,8 @@ require('dotenv').config()
 const mongoose = require('mongoose')
 const Account = require('../models/Account')
 const Province = require('../models/Province')
+const District = require('../models/District')
+const Village = require('../models/Village')
 const Citizen_info = require('../models/Citizen_info')
 const jwt = require('jsonwebtoken')
 
@@ -77,6 +79,18 @@ class Controller {
     get_accounts(req, res, next) {
         Account.find({}, function(err, accounts) {
             res.json(accounts)
+        })
+    }
+
+    get_districts(req, res, next) {
+        District.find({'provinceid': req.body.provinceid}, function(err, districts) {
+            res.json(districts)
+        })
+    }
+
+    get_villages(req, res, next) {
+        Village.find({'districtid': req.body.districtid}, function(err, villages) {
+            res.json(villages)
         })
     }
 }

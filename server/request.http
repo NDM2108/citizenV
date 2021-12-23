@@ -1,7 +1,6 @@
 POST http://localhost:5000/add_account
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjAwIiwibGV2ZWwiOiJhMSIsImlhdCI6MTY0MDI4MjQ2OCwiZXhwIjoxNjQwMjg2MDY4fQ.hu5REgYnzzYsSRVfmQFXmaB_AJG1FQ69_Zg-4bwb4JM
-
 {
     "id": "20",
     "address": "Lào Cai",
@@ -13,3 +12,10 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjAwIiwibGV2Z
 GET http://localhost:5000/provinces
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjAwIiwibGV2ZWwiOiJhMSIsImlhdCI6MTY0MDI4MTAzMiwiZXhwIjoxNjQwMjg0NjMyfQ.XVWgzFGCHi2dR6PIKS7bhw98_uXIO7yTo-Wk8DMXomQ
 
+### 
+POST http://localhost:5000/get_villages
+Content-Type: application/json
+
+{
+    "districtid": "3601"
+}
