@@ -25,7 +25,7 @@ class Controller {
         })
     }
 
-    populationDeclaration(req, res, next) {
+    population_declaration(req, res, next) {
         var citizen_info = {
             'id': req.body.id,
             'card': req.body.card,
@@ -64,7 +64,13 @@ class Controller {
         }
         var connection = mongoose.connection;
         connection.collection('accounts').insertOne(account)
-        res.send('success');
+        res.send('success')++
+    }
+
+    get_accounts(req, res, next) {
+        Account.find({}, function(err, accounts) {
+            res.json(accounts)
+        })
     }
 }
 
