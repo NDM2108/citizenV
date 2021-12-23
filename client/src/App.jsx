@@ -15,11 +15,16 @@ class App extends Component {
             <>
                 <Routes>
                     <Route path="/" element={<Home />} />
-                    <Route path="/login" element={<Login />} />
+                    <Route path="/login" element= {checkAccessToken()} />
                     <Route path="*" element={<DashboardContent />} />
                 </Routes>
             </> 
         )
     }
 }
+
+function checkAccessToken() {
+    return localStorage.getItem('accessToken') ? <Navigate to="/admin" /> : <Login />
+}
+
 export default App;
