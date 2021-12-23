@@ -30,8 +30,8 @@ const AddAccount = () => {
   }
 
   return (
-    <div className="new-account">
-      <h1 className="newUserTitle">Tạo Tài Khoản Mới</h1>
+    <div className="new-account" >
+      <h1 className="h3">Tạo Tài Khoản Mới</h1>
 
       <form className="newUserForm" onSubmit={handleSubmit}>
         <div className="newUserItem">

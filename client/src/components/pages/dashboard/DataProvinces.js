@@ -49,7 +49,7 @@ function DataProvinces() {
 
   return (
     <div style={{ height: 400, width: '100%' }}>
-      <h1 style={{ height:20, fontSize: '20px' ,textAlign: 'center', marginTop: '10px' }}>Tiến độ khai báo dân số</h1>
+      <h1 className ="h1" style={{ /* height:20, fontSize: '20px' , */textAlign: 'center', marginTop: '10px' }}>Tiến độ khai báo dân số</h1>
       <br></br>
       <DataGrid
         rows={province}
