@@ -23,7 +23,7 @@ export default function LoginForm() {
       username: data.get('username'),
       password: data.get('password')
     });
-    var login = {username: data.get('username'), password: data.get('password')}
+    var login = {id: data.get('id'), password: data.get('password')}
     fetch('http://localhost:5000/login', {
       method: "POST",
      
@@ -65,9 +65,9 @@ export default function LoginForm() {
               margin="normal"
               required
               fullWidth
-              id="username"
+              id="id"
               label="Username"
-              name="username"
+              name="id"
               autoComplete="username"
               autoFocus
             />

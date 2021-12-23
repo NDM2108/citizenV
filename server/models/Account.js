@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 const Account = new Schema({
-    username: {
+    id: {
         type: String,
         required: true,
         unique: true
@@ -10,6 +10,17 @@ const Account = new Schema({
         type: String,
         required: true
     },
+    address: {
+        type: String,
+    },
+    level: {
+        type: String,
+        required: true
+    },
+    status: {
+        type: String,
+        required: true
+    }
 })
 
 module.exports = mongoose.model('Account', Account)

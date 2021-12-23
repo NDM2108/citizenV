@@ -1,13 +1,15 @@
-POST http://localhost:5000/login
+POST http://localhost:5000/add_account
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjAwIiwibGV2ZWwiOiJhMSIsImlhdCI6MTY0MDI4MjQ2OCwiZXhwIjoxNjQwMjg2MDY4fQ.hu5REgYnzzYsSRVfmQFXmaB_AJG1FQ69_Zg-4bwb4JM
 
 {
-    "username": "admin",
-    "password": 123456
+    "id": "20",
+    "address": "Lào Cai",
+    "password": "1234"
 }
 
 ###
 
 GET http://localhost:5000/provinces
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNjQwMTg4ODU2LCJleHAiOjE2NDAxOTI0NTZ9.tBAYIFbXuY32pVnlc5X0iaLCh13LkRBwpJYUayGsq9I
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjAwIiwibGV2ZWwiOiJhMSIsImlhdCI6MTY0MDI4MTAzMiwiZXhwIjoxNjQwMjg0NjMyfQ.XVWgzFGCHi2dR6PIKS7bhw98_uXIO7yTo-Wk8DMXomQ
 

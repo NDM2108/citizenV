@@ -8,13 +8,14 @@ const AddAccount = () => {
     e.preventDefault()
     const data = new FormData(e.currentTarget);
     if (data.get('pass') == data.get('rePass')) {
-      const account = { locationid: data.get('location_id'), location: data.get('location'), password: data.get('pass') }
+      const account = { id: data.get('id'), address: data.get('address'), password: data.get('pass') }
       console.log(account);
       fetch('http://localhost:5000/add_account', {
         method: "POST",
         body: JSON.stringify(account),
         headers: {
-          "Content-type": "application/json; charset=UTF-8"
+          "Content-type": "application/json; charset=UTF-8",
+          "Authentication": "Bearer " + localStorage.getItem('accessToken')
         }
       })
         .then(response => response.text())
@@ -36,7 +37,7 @@ const AddAccount = () => {
         <div className="newUserItem">
           <label>Tài Khoản - ID</label>
           <input
-            name="location_id"
+            name="id"
             type="text"
             placeholder=""
             required
@@ -46,7 +47,7 @@ const AddAccount = () => {
         <div className="newUserItem">
           <label>Tỉnh/Thành Phố</label>
           <input
-            name="location"
+            name="address"
             type="text"
             placeholder=""
             required

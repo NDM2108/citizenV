@@ -7,12 +7,12 @@ const jwt = require('jsonwebtoken')
 
 class Controller {
     login(req, res, next) {
-        Account.findOne({'username': req.body.username}, function(err, account) {
+        Account.findOne({'id': req.body.id}, function(err, account) {
             if (!err) {
                 if (account == null) {
                     res.sendStatus(401)
                 } else if (account.password == req.body.password) {
-                    const accessToken = jwt.sign({"username": account.username}, process.env.ACCESS_TOKEN_SECRET, {
+                    const accessToken = jwt.sign({"id": account.id, "level": account.level}, process.env.ACCESS_TOKEN_SECRET, {
                         expiresIn:'1h'
                     })
                     res.json({accessToken})
@@ -57,10 +57,17 @@ class Controller {
     }
 
     add_account(req, res, next) {
+        let level
+        if (res.locals.decoded.level == 'a1') level = 'a2'
+        if (res.locals.decoded.level == 'a2') level = 'a3'
+        if (res.locals.decoded.level == 'a3') level = 'b1'
+        if (res.locals.decoded.level == 'b1') level = 'b2'
         var account = {
-            'locationid': req.body.locationid,
-            'location': req.body.location,
-            'password': req.body.password
+            'password': req.body.password,
+            'id': req.body.id,
+            'address': req.body.address,
+            'level': level,
+            'status': "Active"
         }
         var connection = mongoose.connection;
         connection.collection('accounts').insertOne(account)
