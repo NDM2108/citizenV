@@ -1,81 +1,125 @@
 // import { useContext, useState, useRef } from "react";
 import "./popuDeclaration.css";
+import { Navigate, useNavigate } from "react-router-dom";
+import { useState } from "react"
 
 
 const PopulationDeclaration = () => {
+  const navigate = useNavigate();
 
+  const [citizen, setInput] = useState({
+    id: '',
+    gender: '',
+    hometown: '',
+    regilion: '',
+    job: '',
+    card: '',
+    dob: '',
+    educationallevel: '',
+    fullname: '',
+    permanentaddress: '',
+    temporaryaddress: '',
+  });
+
+  const handleChange = e => {
+    setInput({...citizen, [e.target.name]: e.target.value })
+    console.log(citizen)
+  };
+
+  const handleSubmit = e => {
+    async function createData(citizen) {
+      const dataResult = await fetch('http://localhost:5000/population_declaration', {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(citizen),
+      });
+      return dataResult
+    }
+
+    createData(citizen)
+      .then((response) => {
+        console.log(response.data)
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+      
+    navigate('/population')
+  }
   return (
     <div className="container-declaration">
       <div className="title"> Nhập liệu về dân số</div>
-      <form className="form-declaration">
+      <form className="form-declaration" method="post" action="http://localhost:5000/population_declaration" onSubmit={handleSubmit}>
         <div className="info">
           <div className="inputBox">
             <span className="details"> Họ và tên</span>
             <input
-              name="name"
+              name="fullname"
               type="text"
               required
-            // value={data.name}
-
+              onChange={handleChange}
             />
           </div>
 
           <div className="inputBox">
             <span className="details"> Ngày sinh</span>
             <input
-              name="DOB"
+              name="dob"
               type="date"
               required
+              onChange={handleChange}
             />
           </div>
 
           <div className="inputBox">
             <span className="details"> Số CCCD/CMND</span>
             <input
-              name="CCCD"
+              name="card"
               type="text"
               required
-            // value={data.CCCD}
+              onChange={handleChange}
             />
           </div>
 
           <div className="inputBox">
             <span className="details"> Quê quán</span>
             <input
-              name="idAddress"
+              name="hometown"
               type="text"
               required
-            // value={data.idAddress}
+              onChange={handleChange}
             />
           </div>
 
           <div className="inputBox">
             <span className="details"> Địa chỉ thường trú</span>
             <input
-              name="idAddress"
+              name="permanentaddress"
               type="text"
               required
-            // value={data.idAddress}
+              onChange={handleChange}
             />
           </div>
 
           <div className="inputBox">
             <span className="details"> Địa chỉ tạm trú</span>
             <input
-              name="idAddress"
+              name="temporaryaddress"
               type="text"
               required
-            // value={data.idAddress}
+              onChange={handleChange}
             />
           </div>
 
           <div className="inputBox">
             <span className="details">Trình độ học vấn</span>
             <input
-              name="academicLevel"
+              name="educationallevel"
               type="text"
               required
-            // value={data.academicLevel}
+              onChange={handleChange}
             />
           </div>
 
@@ -85,6 +129,7 @@ const PopulationDeclaration = () => {
               name="job"
               type="text"
               required
+              onChange={handleChange}
             />
           </div>
 
@@ -94,7 +139,7 @@ const PopulationDeclaration = () => {
               name="religion"
               type="text"
               required
-            // value={data.religion}
+              onChange={handleChange}
             />
           </div>
         </div>
@@ -102,15 +147,17 @@ const PopulationDeclaration = () => {
         <div className="gender-info">
           <input
             type="radio"
-            name="sex"
+            name="gender"
             id="dot1"
             value="nam"
+            onChange={handleChange}
           />
           <input
             type="radio"
-            name="sex"
+            name="gender"
             id="dot2"
             value="nữ"
+            onChange={handleChange}
           />
           <span className="title"> Giới tính</span>
           <div className="option">

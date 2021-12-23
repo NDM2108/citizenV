@@ -5,7 +5,7 @@ const verifyToken = require('../middleware/auth')
 
 router.post('/login', controller.login)
 
-router.post('/register', controller.register)
+router.post('/population_declaration', controller.populationDeclaration)
 
 router.get('/provinces', controller.provinces)
 

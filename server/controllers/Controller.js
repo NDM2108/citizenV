@@ -25,23 +25,24 @@ class Controller {
         })
     }
 
-    register(req, res, next) {
+    populationDeclaration(req, res, next) {
+        console.log(req.body);
         var citizen_info = {
             'id': req.body.id,
-            'id_card_number': req.body.id_card_number,
+            'card': req.body.card,
             'fullname': req.body.fullname,
-            'date_of_birth': req.body.date_of_birth,
+            'dob': req.body.dob,
             'gender': req.body.gender,
             'hometown': req.body.hometown,
-            'permanent_address': req.body.permanent_address,
-            'temporary': req.body.temporary,
+            'permanentaddress': req.body.permanentaddress,
+            'temporaryaddress': req.body.temporaryaddress,
             'religion': req.body.religion,
-            'education_level': req.body.education_level,
+            'educationallevel': req.body.educationallevel,
             'job': req.body.job,
         }
         var connection = mongoose.connection;
         connection.collection('citizen_infos').insertOne(citizen_info)
-        res.send('sucess');
+        res.send('success');
     }
 
     provinces(req, res, next) {
