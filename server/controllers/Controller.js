@@ -26,7 +26,6 @@ class Controller {
     }
 
     populationDeclaration(req, res, next) {
-        console.log(req.body);
         var citizen_info = {
             'id': req.body.id,
             'card': req.body.card,
@@ -55,6 +54,17 @@ class Controller {
         Citizen_info.find({}, function(err, provinces) {
             res.json(provinces)
         })
+    }
+
+    add_account(req, res, next) {
+        var account = {
+            'locationid': req.body.locationid,
+            'location': req.body.location,
+            'password': req.body.password
+        }
+        var connection = mongoose.connection;
+        connection.collection('accounts').insertOne(account)
+        res.send('success');
     }
 }
 

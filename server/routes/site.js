@@ -11,4 +11,6 @@ router.get('/provinces', controller.provinces)
 
 router.get('/citizen_infos', controller.citizen_infos)
 
+router.post('/add_account', controller.add_account)
+
 module.exports = router
