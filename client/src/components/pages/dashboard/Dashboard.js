@@ -27,6 +27,7 @@ import Analysis from './Analysis';
 import AddAccount from '../addAccount/AddAccount';
 import AccountManager from './AccountManager';
 import InfoPopulation from '../population/InfoPopulation';
+import { useNavigate } from "react-router-dom";
 
 
 const drawerWidth = 240;
@@ -78,10 +79,17 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 const mdTheme = createTheme();
 
 function DashboardContent() {
+    const navigate = useNavigate();
     const [open, setOpen] = React.useState(true);
     const toggleDrawer = () => {
         setOpen(!open);
     };
+
+    const logOut = async () => {
+        localStorage.removeItem('accessToken')
+        console.log('out')
+        navigate('/login')
+    }  
 
     return (
         <ThemeProvider theme={mdTheme}>
@@ -115,7 +123,7 @@ function DashboardContent() {
                             TỔNG CỤC DÂN SỐ
                         </Typography>
     
-                        <IconButton  style = {{}}color="inherit">
+                        <IconButton  onClick={ () => logOut() } style = {{}}color="inherit">
                             <Badge color="secondary">
                                 <ExitToAppIcon />
                             </Badge>
