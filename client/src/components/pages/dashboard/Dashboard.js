@@ -24,7 +24,7 @@ import PopulationDeclaration from '../populationDeclaration/PopulationDeclaratio
 import DataProvinces from './DataProvinces';
 import DataPopulations from './DataPopulations';
 import Analysis from './Analysis';
-import AddAccount from './addAccount';
+import AddAccount from '../addAccount/AddAccount';
 import AccountManager from './AccountManager';
 import InfoPopulation from '../population/InfoPopulation';
 
