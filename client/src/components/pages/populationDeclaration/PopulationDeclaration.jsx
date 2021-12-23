@@ -6,7 +6,11 @@ import Select from 'react-select'
 
 const PopulationDeclaration = () => {
   const navigate = useNavigate();
-  var provinceOptions
+  var provinceOptions = [
+    { value: 'chocolate', label: 'Chocolate' },
+    { value: 'strawberry', label: 'Strawberry' },
+    { value: 'vanilla', label: 'Vanilla' }
+  ]
   var districtOptions
   var villageOptions
 
