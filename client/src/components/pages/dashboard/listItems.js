@@ -67,7 +67,7 @@ export const mainListItems = (
       <ListItemIcon>
         <BarChartIcon />
       </ListItemIcon>
-      <ListItemText primary="Thống kê" />
+      <ListItemText primary="Phân tích" />
     </ListItem>
     </Link>
 

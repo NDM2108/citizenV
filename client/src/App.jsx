@@ -6,6 +6,7 @@ import DashboardContent from "../src/components/pages/dashboard/Dashboard"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import PopulationDeclaration from "./components/pages/populationDeclaration/PopulationDeclaration";
 import { Navigate } from 'react-router-dom';
+import Test from "./Test";
 
 
 class App extends Component {
@@ -17,6 +18,7 @@ class App extends Component {
                     <Route path="/" element={<Home />} />
                     <Route path="/login" element= {checkAccessToken()} />
                     <Route path="*" element={<DashboardContent />} />
+                    <Route path="test" element={<Test />} />
                 </Routes>
             </> 
         )

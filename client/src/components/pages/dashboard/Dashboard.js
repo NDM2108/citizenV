@@ -28,6 +28,7 @@ import AddAccount from '../addAccount/AddAccount';
 import AccountManager from '../accountManager/AccountManager';
 import InfoPopulation from '../population/InfoPopulation';
 import { useNavigate } from "react-router-dom";
+import TestInfo from '../population/TestInfo';
 
 
 const drawerWidth = 240;
@@ -168,7 +169,8 @@ function DashboardContent() {
                                 <Route path="/accMan" element={<AccountManager />} />
                                 <Route path="/addaccount" element={<AddAccount />} />
                                 <Route path="/population" element={<DataPopulations />} />
-                                <Route path="/population/:personID" element={<InfoPopulation />} />         
+                                <Route path="/population/:personID" element={<TestInfo />} />
+                                {/* <Route path="/population/:personID" element={<InfoPopulation />} /> */}
                                 <Route path="/declaration" element={<PopulationDeclaration />} />
                             </Routes>
                             <Outlet />

@@ -104,6 +104,8 @@ function InfoPopulation() {
         }
 
     }
+
+    // {person} = this.state;
     return (
         <div style={{ height: 400, width: '100%' }}>
             <h1 style={{ height: 20, fontSize: '20px', textAlign: 'center', marginTop: '10px' }}>Thông tin cá nhân</h1>
