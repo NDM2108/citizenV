@@ -38,6 +38,7 @@ export default function LoginForm() {
       localStorage.setItem('accessToken', data.accessToken);
       console.log(localStorage.getItem('accessToken'));
     });
+
   };
 
   return (
@@ -55,6 +56,7 @@ export default function LoginForm() {
           <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
             <LockOutlinedIcon />
           </Avatar>
+          
           <Typography component="h1" variant="h5">
             Login
           </Typography>
@@ -88,6 +90,7 @@ export default function LoginForm() {
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
+              // onClick={"document.location.reload(true)"}
             >
               Login
             </Button>

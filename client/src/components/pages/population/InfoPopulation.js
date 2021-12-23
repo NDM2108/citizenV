@@ -114,9 +114,10 @@ function InfoPopulation() {
                 columnFilter
                 columnSorter
                 pagination
+                autoHeight
                 pageSize={5}
                 rowsPerPageOptions={[5]}
-                checkboxSelection
+                // checkboxSelection
                 disableSelectionOnClick
                 tableProps={{
                     hover: true,

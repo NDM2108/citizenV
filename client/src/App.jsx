@@ -8,7 +8,6 @@ import PopulationDeclaration from "./components/pages/populationDeclaration/Popu
 import { Navigate } from 'react-router-dom';
 
 
-
 class App extends Component {
     
     render() {
@@ -25,7 +24,9 @@ class App extends Component {
 }
 
 function checkAccessToken() {
-    return localStorage.getItem('accessToken') ? <Navigate to="/admin" /> : <Login />
+    return  localStorage.getItem('accessToken') ?  <Navigate to="/admin" /> : <Login />
 }
+
+
 
 export default App;

@@ -58,6 +58,7 @@ function DataProvinces() {
         columnSorter
         pagination
         pageSize={5}
+        autoHeight
         rowsPerPageOptions={[5]}
         checkboxSelection
         disableSelectionOnClick

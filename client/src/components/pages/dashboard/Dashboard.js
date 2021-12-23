@@ -25,7 +25,7 @@ import DataProvinces from './DataProvinces';
 import DataPopulations from './DataPopulations';
 import Analysis from './Analysis';
 import AddAccount from '../addAccount/AddAccount';
-import AccountManager from './AccountManager';
+import AccountManager from '../accountManager/AccountManager';
 import InfoPopulation from '../population/InfoPopulation';
 import { useNavigate } from "react-router-dom";
 
@@ -88,7 +88,7 @@ function DashboardContent() {
     const logOut = async () => {
         localStorage.removeItem('accessToken')
         console.log('out')
-        navigate('/login')
+        setTimeout(navigate('/login'),3000)
     }  
 
     return (
