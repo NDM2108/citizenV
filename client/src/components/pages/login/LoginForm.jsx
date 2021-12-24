@@ -36,7 +36,11 @@ export default function LoginForm() {
     .then(response => response.json())
     .then(data => {
       localStorage.setItem('accessToken', data.accessToken);
+      localStorage.setItem('level', data.level);
+      localStorage.setItem('id', data.id);
       console.log(localStorage.getItem('accessToken'));
+      console.log(localStorage.getItem('level'));
+      console.log(localStorage.getItem('id'));
     });
 
   };
