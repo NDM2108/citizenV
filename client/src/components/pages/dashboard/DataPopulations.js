@@ -52,7 +52,6 @@ const columns = [
           <Link to={"/population/" + params.row.id} >
             <Button
               variant="contained"
-
               // onClick={() => {}}
             >
               Xem thông tin
