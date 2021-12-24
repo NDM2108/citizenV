@@ -8,19 +8,19 @@ import { DataGrid } from '@mui/x-data-grid';
 import { CSmartTable } from '@coreui/react-pro'
 
 const columns = [
-  
-  { field: 'id', headerName: 'ID Vùng', width: 90 },
+
+  // { field: 'id', headerName: 'ID Vùng', width: 90 },
   {
     field: 'fullname',
     headerName: 'Họ tên',
-    width: 150,
+    width: 250,
     editable: true,
   },
   {
-    field: 'card',
+    field: 'id',
     headerName: 'CCCD',
     // type: 'number',
-    width: 100,
+    width: 160,
     editable: true,
   },
   {
@@ -31,9 +31,9 @@ const columns = [
     editable: true,
   },
   {
-    field: 'hometown',
+    field: 'province',
     headerName: 'Quê quán',
-    width: 400,
+    width: 200,
     editable: true,
   },
   {
@@ -44,42 +44,83 @@ const columns = [
   },
   {
     field: "action",
-    headerName: " ",
-    width: 200,
+    headerName: "",
+    width: 100,
     renderCell: (params) => {
       return (
         <>
           <Link to={"/population/" + params.row.id} >
             <Button
               variant="contained"
-              // onClick={() => {}}
+            // onClick={() => {}}
             >
-              Xem thông tin
+              Xem
             </Button>
           </Link>
         </>
       );
     },
   },
-  
+  {
+    field: ",",
+    headerName: "",
+    width: 100,
+    renderCell: (params) => {
+      return (
+        <>
+          <Link to={"/population/" + params.row.id} >
+            <Button
+              variant="contained"
+            // onClick={() => {}}
+            >
+              Xóa
+            </Button>
+          </Link>
+        </>
+      );
+    },
+  },
+  {
+    field: ".",
+    headerName: "",
+    width: 100,
+    renderCell: (params) => {
+      return (
+        <>
+          <Link to={"/population/" + params.row.id} >
+            <Button
+              variant="contained"
+            // onClick={() => {}}
+            >
+              Sửa
+            </Button>
+          </Link>
+        </>
+      );
+    },
+  },
+
+
 ];
 
 
 function DataPopulations() {
-  
+
   const [population, setPopulation] = useState([])
-    useEffect(() => {
-        axios.get('http://localhost:5000/citizen_infos')
-            .then(response => {
-                const population = response.data
-                setPopulation(population)
-            })
-    }, [])
-    // console.log(population);
+  useEffect(() => {
+    axios.get('http://localhost:5000/citizen_infos')
+      .then(response => {
+        const population = response.data
+        setPopulation(population)
+      })
+  }, [])
+  console.log(population[0]);
+
+
 
   return (
     <div style={{ height: 400, width: '100%' }}>
-      <h1 className ="h1" style={{ /* height:20, fontSize: '20px' , */textAlign: 'center', marginTop: '10px' }}>Thông tin dân số</h1>
+      <h1 className="h1" style={{ /* height:20, fontSize: '20px' , */textAlign: 'center', marginTop: '10px' }}>Thông tin dân số</h1>
       <br></br>
       <DataGrid
         rows={population}
@@ -99,9 +140,9 @@ function DataPopulations() {
 
     </div>
 
-    
+
   );
-          
+
 }
 
 export default DataPopulations;

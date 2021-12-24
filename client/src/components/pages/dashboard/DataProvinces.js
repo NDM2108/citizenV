@@ -14,20 +14,6 @@ const columns = [
     editable: true,
   },
   {
-    field: 'population',
-    headerName: 'Số dân',
-    type: 'number',
-    width: 150,
-    editable: true,
-  },
-  {
-    field: 'houses',
-    headerName: 'Số hộ',
-    type: 'number',
-    width: 110,
-    editable: true,
-  },
-  {
     field: 'progress',
     headerName: 'Tiến độ',
     width: 110,
