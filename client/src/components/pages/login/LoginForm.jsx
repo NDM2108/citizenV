@@ -33,7 +33,13 @@ export default function LoginForm() {
           "Content-type": "application/json; charset=UTF-8"
       }
     })
-    .then(response => response.json())
+    .then(response => {
+      if (response.status == 401) {
+        alert('Tên đăng nhập hoặc mật khẩu không đúng')
+      } else {
+        return response.json()
+      }
+    })
     .then(data => {
       localStorage.setItem('accessToken', data.accessToken);
       localStorage.setItem('level', data.level);
