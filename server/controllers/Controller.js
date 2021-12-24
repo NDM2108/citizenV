@@ -108,6 +108,40 @@ class Controller {
             res.json(villages)
         })
     }
+
+    add_code(req, res, next) {
+        if (res.locals.decoded.level == 'A1') {
+            let province = {
+                'province': req.body.name,
+                'id': req.body.id,
+                'progress': 'Chưa hoàn thành'
+            }
+            let connection = mongoose.connection;
+            connection.collection('provinces').insertOne(province)
+            res.send('success')
+        } else if (res.locals.decoded.level == 'A2') {
+            const province = Province.findOne({'id': res.locals.decoded.id})
+            let district = {
+                'district': req.body.name,
+                'id': req.body.id,
+                'province': province.province
+            }
+            let connection = mongoose.connection;
+            connection.collection('districts').insertOne(district)
+            res.send('success')
+        } else if (res.locals.decoded.level == 'A3') {
+            const district = District.findOne({'id': res.locals.decoded.id})
+            let village = {
+                'village': req.body.name,
+                'id': req.body.id,
+                'district': district.district
+            }
+            let connection = mongoose.connection;
+            connection.collection('village').insertOne(village)
+            res.send('success')
+        }
+        console.log(req.body.id, req.body.name)
+    }
 }
 
 module.exports = new Controller;
