@@ -2,17 +2,70 @@
 import "./popuDeclaration.css";
 import { Navigate, useNavigate } from "react-router-dom";
 import { useState } from "react"
+import { useEffect } from "react"
 import Select from 'react-select'
+import axios from 'axios';
 
-const PopulationDeclaration = () => {
+function PopulationDeclaration() {
   const navigate = useNavigate();
-  var provinceOptions = [
-    { value: 'chocolate', label: 'Chocolate' },
-    { value: 'strawberry', label: 'Strawberry' },
-    { value: 'vanilla', label: 'Vanilla' }
-  ]
-  var districtOptions
-  var villageOptions
+
+  const [provinceOptions, setProvince] = useState([]);
+  const [districtOptions, setDistrict] = useState([]);
+  const [villageOptions, setVillage] = useState([]);
+
+  useEffect(() => {
+    axios.get('http://localhost:5000/all_provinces')
+        .then(response => {
+            var json = response.data
+            var ops = []
+            for (let i = 0; i < json.length; i++) {
+              ops.push({value: json[i].province, label: json[i].province})
+            }
+            setProvince(ops)
+            console.log(ops);
+            console.log(provinceOptions)
+        })
+  }, [])
+
+  const getDistricts = selected => {
+    console.log(selected.value)
+    fetch('http://localhost:5000/get_districts',{
+      method: "POST",
+      body: JSON.stringify({province: selected.value}),
+      headers: {
+          "Content-type": "application/json; charset=UTF-8"
+      }
+    })
+        .then(response => {
+            var json = response.data
+            console.log()
+            var ops = []
+            for (let i = 0; i < json.length; i++) {
+              ops.push({value: json[i].province, label: json[i].province})
+            }
+            setDistrict(ops)
+            console.log(ops)
+        })
+  }
+
+  const getVillages = selected => {
+    fetch('http://localhost:5000/get_villages',{
+      method: "POST",
+      body: JSON.stringify({province: selected.value}),
+      headers: {
+          "Content-type": "application/json; charset=UTF-8"
+      }
+    })
+        .then(response => {
+            var json = response.data
+            var ops = []
+            for (let i = 0; i < json.length; i++) {
+              ops.push({value: json[i].province, label: json[i].province})
+            }
+            setVillage(ops)
+            console.log(ops)
+        })
+  }
 
   const [citizen, setInput] = useState({
     id: '',
@@ -56,14 +109,6 @@ const PopulationDeclaration = () => {
     navigate('/population')
   }
 
-  const loadProvinces = () => {
-    fetch('http://localhost:5000/provinces')
-    .then(response => {
-      return response.json()
-    }).then(data => {
-      console.log(data)
-    })
-  }
   return (
     <div className="container-declaration">
       <div className="title"> Nhập liệu về dân số</div>
@@ -102,13 +147,15 @@ const PopulationDeclaration = () => {
           <div className="inputBox">
             <span className="details"> Quê quán</span>
             <Select 
-            placeholder="Tỉnh"
-            options={provinceOptions} />
+            placeholder="Tỉnh" 
+            options={provinceOptions}
+            onChange={getDistricts}/>
             <Select 
-            placeholder="Quận"
-            options={districtOptions} />
+            placeholder="Quận" 
+            options={districtOptions} 
+            onChange={getVillages}/>
             <Select 
-            placeholder="Xã"
+            placeholder="Xã" 
             options={villageOptions} />
           </div>
 

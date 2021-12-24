@@ -10,7 +10,7 @@ const District = new Schema({
         type: String,
         required: true
     },
-    provinceid: {
+    province: {
         type: String,
         required: true
     }

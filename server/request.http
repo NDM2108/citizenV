@@ -13,9 +13,9 @@ GET http://localhost:5000/provinces
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjAwIiwibGV2ZWwiOiJhMSIsImlhdCI6MTY0MDI4MTAzMiwiZXhwIjoxNjQwMjg0NjMyfQ.XVWgzFGCHi2dR6PIKS7bhw98_uXIO7yTo-Wk8DMXomQ
 
 ### 
-POST http://localhost:5000/get_villages
+POST http://localhost:5000/get_districts
 Content-Type: application/json
 
 {
-    "districtid": "3601"
+    "province": "Nghệ An"
 }

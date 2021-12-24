@@ -52,6 +52,12 @@ class Controller {
         })
     }
 
+    all_provinces(req, res, next) {
+        Province.find({}, function(err, provinces) {
+            res.json(provinces)
+        })
+    }
+
     citizen_infos(req, res, next) {
         Citizen_info.find({}, function(err, provinces) {
             res.json(provinces)
@@ -84,13 +90,15 @@ class Controller {
     }
 
     get_districts(req, res, next) {
-        District.find({'provinceid': req.body.provinceid}, function(err, districts) {
+        District.find({'province': req.body.province}, function(err, districts) {
+            console.log(req.body.province);
+            console.log(districts)
             res.json(districts)
         })
     }
 
     get_villages(req, res, next) {
-        Village.find({'districtid': req.body.districtid}, function(err, villages) {
+        Village.find({'district': req.body.district}, function(err, villages) {
             res.json(villages)
         })
     }

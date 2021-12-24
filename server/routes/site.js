@@ -9,6 +9,8 @@ router.post('/population_declaration', controller.population_declaration)
 
 router.get('/provinces', controller.provinces)
 
+router.get('/all_provinces', controller.all_provinces)
+
 router.get('/citizen_infos', controller.citizen_infos)
 
 router.post('/add_account', verifyToken, controller.add_account)
