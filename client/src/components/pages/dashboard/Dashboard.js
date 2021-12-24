@@ -30,6 +30,7 @@ import InfoPopulation from '../population/InfoPopulation';
 import { useNavigate } from "react-router-dom";
 import TestInfo from '../population/TestInfo';
 import EditAccount from '../accountManager/editAccount/EditAccount';
+import AddCode from '../addCode/AddCode';
 
 
 const drawerWidth = 240;
@@ -174,6 +175,7 @@ function DashboardContent() {
                                 <Route path="/TimeTable" element={<DataProvinces />} />
                                 <Route path="/chart" element={<Analysis />} />
                                 <Route path="/accMan" element={<AccountManager />} />
+                                <Route path="/addCode" element={<AddCode />} />
                                 <Route path="/accMan/:accountID" element={<EditAccount />} />
                                 <Route path="/addaccount" element={<AddAccount />} />
                                 <Route path="/population" element={<DataPopulations />} />

@@ -11,7 +11,7 @@ import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import "./listItems.css";
 import { Outlet, Link } from "react-router-dom";
 import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
-
+import VpnKeyIcon from '@mui/icons-material/VpnKey';
 
 // const ListItemData = [
 //   {
@@ -58,6 +58,15 @@ export const mainListItems = (
         <ManageAccountsIcon />
       </ListItemIcon>
       <ListItemText primary="Quản lý tài khoản" />
+    </ListItem>
+    </Link>
+
+    <Link to = '/addCode' style = {{textDecoration: 'none', color: 'black'}}>
+    <ListItem button>
+      <ListItemIcon>
+        <VpnKeyIcon />
+      </ListItemIcon>
+      <ListItemText primary="Cấp mã" />
     </ListItem>
     </Link>
 
