@@ -91,6 +91,7 @@ function PopulationDeclaration() {
   };
 
   const handleSubmit = e => {
+    e.preventDefault()
     async function createData(citizen) {
       const dataResult = await fetch('http://localhost:5000/population_declaration', {
         method: "POST",
@@ -103,13 +104,12 @@ function PopulationDeclaration() {
     }
 
     createData(citizen)
-      .then((response) => {
-        console.log(response.data)
-      navigate('/population')
+      .then(response => response.text())
+      .then(data => {
+        if (data == 'success') {
+          navigate('/population')
+        }
       })
-      .catch((err) => {
-        console.error(err);
-      });
   }
 
   return (
