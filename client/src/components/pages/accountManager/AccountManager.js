@@ -27,7 +27,7 @@ function AccountManager() {
         // { field: "district", headerName: "Quận/Huyện", width: 250 },
         // { field: "xa", headerName: "Xã/Phường", width: 250 },
         // { field: "xom", headerName: "Thôn/Xóm", width: 250 },
-        { field: "status", headerName: "Trạng Thái", width: 150},
+        { field: "status", headerName: "Trạng Thái", width: 150 },
         {
             field: "action",
             headerName: " ",
@@ -51,7 +51,7 @@ function AccountManager() {
 
 
     const [styleTable, setStyleTable] = useState({
-        marginTop: "100px",
+        marginTop: "10px",
         width: "650px",
         display: "flex",
     });
@@ -59,26 +59,28 @@ function AccountManager() {
 
     return (
         <MDBTable responsive>
-            <div /* className="AccountManager" */>
-                <div /* className="wrap-container" */>
-                    
-                    <div id="datatable" style={styleTable}>
-                        <DataGrid
-                            rows={account}
-                            columns={columns}
-                            eslint-disable-next-line
-                            rowsPerPageOptions={[5]}
-                            pageSize={5}
-                            disableSelectionOnClick
-                            autoHeight
-                            density="comfortable"
-                        />
-                    </div>
-                    {/* <div className="top-container">
-                        <Link to="/addaccount">
-                            <button className="btnCreateAccount">Thêm Tài Khoản</button>
-                        </Link>
-                    </div> */}
+            <div >
+                <div className="top-container">
+                    <Link to="/addaccount">
+                        <button className="btnCreateAccount">Thêm Tài Khoản</button>
+                    </Link>
+                </div>
+                <div id="datatable" style={styleTable}>
+                    <DataGrid
+                        rows={account}
+                        columns={columns}
+                        // eslint-disable-next-line
+                        columnSorter
+                        columnFilter
+                        pagination
+                        rowsPerPageOptions={[10]}
+                        pageSize={6}
+                        disableSelectionOnClick
+                        autoHeight
+                        tableProps={{
+                            hover: true,
+                        }}
+                    />
                 </div>
             </div>
         </MDBTable>
