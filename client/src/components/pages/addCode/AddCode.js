@@ -7,26 +7,22 @@ const AddCode = () => {
   const handleSubmit = e => {
     e.preventDefault()
     const data = new FormData(e.currentTarget);
-    if (data.get('pass') == data.get('rePass')) {
-      const account = { id: data.get('id'), address: data.get('address'), password: data.get('pass') }
-      console.log(account);
-      fetch('http://localhost:5000/add_account', {
-        method: "POST",
-        body: JSON.stringify(account),
-        headers: {
-          "Content-type": "application/json; charset=UTF-8",
-          "Authentication": "Bearer " + localStorage.getItem('accessToken')
-        }
-      })
-        .then(response => response.text())
-        .then(data => {
-          if (data == 'success') {
-            navigate('/accMan')
-          }
-        });
-    } else {
-      alert('Mật khẩu không trùng nhau')
-    }
+    const code = { id: data.get('id'), name: data.get('name') }
+    console.log(code);
+    fetch('http://localhost:5000/add_code', {
+      method: "POST",
+      body: JSON.stringify(code),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+        "Authentication": "Bearer " + localStorage.getItem('accessToken')
+      }
+    })
+    .then(response => response.text())
+    .then(data => {
+      if (data == 'success') {
+        navigate('/admin')
+      }
+    });
   }
 
   return (
@@ -49,7 +45,7 @@ const AddCode = () => {
             <span className="details">Tỉnh, thành phố </span>
             <input
               className="text_field"
-              name="address"
+              name="name"
               type="text"
               placeholder=""
               required
