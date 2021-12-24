@@ -6,15 +6,11 @@ const Citizen_info = new Schema({
         required: true,
         unique: true
     },
-    id_card_number: {
+    fullname: {
         type: String,
         required: true
     },
-    full_name: {
-        type: String,
-        required: true
-    },
-    date_of_birth: {
+    dob: {
         type: String,
         required: true
     },
@@ -22,15 +18,35 @@ const Citizen_info = new Schema({
         type: String,
         required: true
     },
-    hometown: {
+    provinceid: {
         type: String,
         required: true
     },
-    permanent_address: {
+    districtid: {
         type: String,
         required: true
     },
-    temporary_address: {
+    villageid: {
+        type: String,
+        required: true
+    },
+    province: {
+        type: String,
+        required: true
+    },
+    district: {
+        type: String,
+        required: true
+    },
+    village: {
+        type: String,
+        required: true
+    },
+    permanentaddress: {
+        type: String,
+        required: true
+    },
+    temporaryaddress: {
         type: String,
         required: true
     },
@@ -38,7 +54,7 @@ const Citizen_info = new Schema({
         type: String,
         required: true
     },
-    education_level: {
+    educationallevel: {
         type: String,
         required: true
     },

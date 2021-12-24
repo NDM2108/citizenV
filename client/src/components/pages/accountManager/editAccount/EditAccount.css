@@ -25,12 +25,14 @@
   }
   
   .accountContainer {
-    /* width: 500px; */
     display: flex;
     margin: 30px 0 50px 0;
+    /* position: relative; */
   }
   
   .accountShow {
+    
+    position: relative;
     flex: 1;
     padding: 20px;
     -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
@@ -38,7 +40,8 @@
   }
   
   .accountUpdate {
-    flex: 2;
+    
+    flex: 1;
     padding: 20px;
     -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
     box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
@@ -161,13 +164,13 @@
   }
   
   .accountUpdateButton {
-    border-radius: 5px;
+    border-radius: 10px;
     border: none;
   
     cursor: pointer;
-    background-color: darkblue;
+    background-color: #0f7ddf;
     color: white;
-    font-weight: 600;
+    font-weight: 6400;
     position: absolute;
     bottom: 20px;
     right: 40px;
@@ -175,6 +178,10 @@
     padding: 5px 30px;
   }
   
+  .accountUpdateButton:hover {
+    background: #003cff;
+    transition: 0.5s;
+  }
   .containerButton {
     display: flex;
     justify-content: center;
@@ -183,7 +190,9 @@
   }
   .containerButton button {
     margin: auto;
+    
   }
+
   
   /* ----- */
   div.change-password {

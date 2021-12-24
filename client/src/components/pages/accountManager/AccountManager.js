@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import { MDBTable, MDBTableBody, MDBTableHead } from 'mdbreact';
+import { height } from "@mui/system";
 
 function AccountManager() {
 
@@ -26,7 +27,7 @@ function AccountManager() {
         // { field: "district", headerName: "Quận/Huyện", width: 250 },
         // { field: "xa", headerName: "Xã/Phường", width: 250 },
         // { field: "xom", headerName: "Thôn/Xóm", width: 250 },
-        { field: "status", headerName: "Trạng Thái", width: 150 },
+        { field: "status", headerName: "Trạng Thái", width: 150},
         {
             field: "action",
             headerName: " ",
