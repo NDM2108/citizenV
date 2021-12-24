@@ -29,6 +29,7 @@ import AccountManager from '../accountManager/AccountManager';
 import InfoPopulation from '../population/InfoPopulation';
 import { useNavigate } from "react-router-dom";
 import TestInfo from '../population/TestInfo';
+import EditAccount from '../accountManager/editAccount/EditAccount';
 
 
 const drawerWidth = 240;
@@ -89,8 +90,8 @@ function DashboardContent() {
     const logOut = async () => {
         localStorage.removeItem('accessToken')
         console.log('out')
-        setTimeout(navigate('/login'),3000)
-    }  
+        setTimeout(navigate('/login'), 3000)
+    }
 
     return (
         <ThemeProvider theme={mdTheme}>
@@ -114,6 +115,12 @@ function DashboardContent() {
                         >
                             <MenuIcon />
                         </IconButton>
+                        <img
+                            // className="accountUpdateImg"
+                            style = {{width: '50px', height: '50px', marginRight: '20px'}}
+                            src="https://www.gso.gov.vn/wp-content/uploads/2021/01/gso_logo.png"
+                            alt=""
+                        />
                         <Typography
                             component="h1"
                             variant="h6"
@@ -121,10 +128,11 @@ function DashboardContent() {
                             noWrap
                             sx={{ flexGrow: 1 }}
                         >
-                            TỔNG CỤC DÂN SỐ
+
+                            TỔNG CỤC THỐNG KÊ
                         </Typography>
-    
-                        <IconButton  onClick={ () => logOut() } style = {{}}color="inherit">
+
+                        <IconButton onClick={() => logOut()} style={{}} color="inherit">
                             <Badge color="secondary">
                                 <ExitToAppIcon />
                             </Badge>
@@ -167,6 +175,7 @@ function DashboardContent() {
                                 <Route path="/TimeTable" element={<DataProvinces />} />
                                 <Route path="/chart" element={<Analysis />} />
                                 <Route path="/accMan" element={<AccountManager />} />
+                                <Route path="/accMan/1" element={<EditAccount />} />
                                 <Route path="/addaccount" element={<AddAccount />} />
                                 <Route path="/population" element={<DataPopulations />} />
                                 <Route path="/population/:personID" element={<TestInfo />} />

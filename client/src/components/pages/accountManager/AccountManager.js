@@ -34,7 +34,7 @@ function AccountManager() {
             renderCell: (params) => {
                 return (
                     <>
-                        <Link to={"/accounts/1"}>
+                        <Link to={"/accMan/1"}>
                             <button
                                 className="btnEdit"
                             >
@@ -57,21 +57,25 @@ function AccountManager() {
 
 
     return (
-        <div className="AccountManager">
+        <div className="AccountManager" /* className="container" */ >
             <div className="wrap-container">
                 <div className="top-container">
                     <Link to="/addaccount">
                         <button className="btnCreateAccount">Thêm Tài Khoản</button>
                     </Link>
                 </div>
-                <div id="datatable" style={styleTable}>
+                <div id="datatable" style={styleTable} /* className="table table-striped" */>
                     <DataGrid
                         rows={account}
                         columns={columns}
-                        eslint-disable-next-line
+                        // eslint-disable-next-line
+                        pagination
+                        // pageSize={5}
+                        // autoPageSize
                         rowsPerPageOptions={[5]}
                         disableSelectionOnClick
                         autoHeight
+                        autoWidth
                         density="comfortable"
                     />
                 </div>
