@@ -1,13 +1,11 @@
-/* eslint-disable */
 import { useState, useContext, useEffect, useRef } from "react";
+import axios from 'axios';
+import { useParams } from "react-router-dom";
 import "./EditAccount.css";
 import { CalendarToday, PermIdentity, Publish } from "@material-ui/icons";
 import { Link } from "react-router-dom";
-// import { AccContext } from "../../../contexts/accContext";
-// import AlertDialog from "../accountList/AlertDialog";
 import Button from "@mui/material/Button";
 import DeleteIcon from "@mui/icons-material/Delete";
-// import { locations } from "../../../utils/constant";
 import { useNavigate } from "react-router-dom";
 import GppGoodIcon from "@mui/icons-material/GppGood";
 import AssignmentIndIcon from "@mui/icons-material/AssignmentInd";
@@ -19,7 +17,8 @@ import DomainIcon from "@mui/icons-material/Domain";
 import EventAvailableIcon from "@mui/icons-material/EventAvailable";
 import EventBusyIcon from "@mui/icons-material/EventBusy";
 
-const EditAccount = ({ accountID }) => {
+const EditAccount = () => {
+
     const [subAccount, setSubAccount] = useState({
         id: "",
         name: "",
@@ -29,34 +28,33 @@ const EditAccount = ({ accountID }) => {
         address: "",
     });
 
-    const levels = ["A1", "A2", "A3", "B1", "B2"];
+    const { accountID } = useParams();
+    console.log(accountID);
 
-    // Get infor account
-    const GetSubAccount = async () => {
-        try {
-            const DataSubAccount = await getSubAccount(accountID);
-            if (DataSubAccount.success) {
-                const { name, id, progress, role, state, address } =
-                    DataSubAccount.subAccount;
-                const addr = address && address.split("-");
 
-                setSubAccount({
-                    ...subAccount,
-                    name,
-                    id,
-                    progress,
-                    role,
-                    state,
-                    address,
-                });
+    const [accounts, setAccounts] = useState([])
+    useEffect(() => {
+        axios.get('http://localhost:5000/accounts')
+            .then(response => {
+                const accounts = response.data
+                setAccounts(accounts)
+            })
+    }, [])
+    console.log(accounts);
+
+    var account = {}
+
+    for (var i = 0; i < accounts.length; i++) {
+        if (accounts[i] !== undefined) {
+            if (accounts[i].id == accountID) {
+                // setTimeout(person = listUsers[i], 1)
+                account = accounts[i];
             }
-        } catch (error) {
-            console.log(error);
         }
-    };
-    // useEffect(() => {
-    //     GetSubAccount();
-    // }, []);
+    }
+    console.log(account);
+
+    const levels = ["A1", "A2", "A3", "B1", "B2"];
 
     // state for dialog
     const [open, setOpen] = useState(false);
@@ -64,25 +62,6 @@ const EditAccount = ({ accountID }) => {
     // func delete account
     const navigate = useNavigate();
 
-    const handleClickDelBtn = () => {
-        setOpen(true);
-        console.log(accState);
-    };
-
-    const deleteAccount = async () => {
-        try {
-            const reponse = await deleteSubAccount();
-            if (reponse.success) {
-                navigate("/accounts");
-            }
-        } catch (error) {
-            console.log(error);
-        }
-    };
-
-    // Change Password
-    const [formChangePass, setFormChangePass] = useState(false);
-    const [formChangeStatus, setFormChangeStatus] = useState(false);
 
     return (
         <div className="account">
@@ -98,7 +77,7 @@ const EditAccount = ({ accountID }) => {
                             <span className="accountShowUsername">
                                 Tài Khoản Điều Tra Dân Số
                             </span>
-                            <span className="accountShowUserTitle"> {subAccount.name}</span>
+                            <span className="accountShowUserTitle">{account.address} </span>
                         </div>
                     </div>
                     <div className="accountShowBottom">
@@ -109,7 +88,7 @@ const EditAccount = ({ accountID }) => {
                                 <PermIdentity className="accountShowIcon" />
                                 <span> Account ID:</span>
                             </span>
-                            <span>{subAccount.id}</span>
+                            <span>{account.id}</span>
                         </div>
 
                         <div className="accountShowInfo">
@@ -117,7 +96,7 @@ const EditAccount = ({ accountID }) => {
                                 <DomainIcon className="accountShowIcon" />
                                 <span>Tỉnh/Thành phố :</span>
                             </span>
-                            <span>{subAccount.address}</span>
+                            <span>{account.address}</span>
                         </div>
 
                         <div className="accountShowInfo">
@@ -125,7 +104,7 @@ const EditAccount = ({ accountID }) => {
                                 <DomainIcon className="accountShowIcon" />
                                 <span>Thuộc :</span>
                             </span>
-                            <span>{subAccount.address}</span>
+                            <span>{account.superior}</span>
                         </div>
 
                         <div className="accountShowInfo">
@@ -133,7 +112,7 @@ const EditAccount = ({ accountID }) => {
                                 <SchoolIcon className="accountShowIcon" />
                                 <span style={{ display: 'inline', }}>Cấp bậc tài khoản :</span>
                             </span>
-                            <span> {levels[subAccount.role]}</span>
+                            <span> {account.level}</span>
                         </div>
 
                         <div className="accountShowInfo">
@@ -141,7 +120,7 @@ const EditAccount = ({ accountID }) => {
                                 <CalendarToday className="accountShowIcon" />
                                 <span >Quyền khai báo:</span>
                             </span>
-                            <span>{subAccount.state ? "Active" : "Disabled"}</span>
+                            <span>{account.status}</span>
                         </div>
                     </div>
                 </div>

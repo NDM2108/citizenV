@@ -35,7 +35,7 @@ function AccountManager() {
             renderCell: (params) => {
                 return (
                     <>
-                        <Link to={"/accMan/1"}>
+                        <Link to={"/accMan/" + params.row.id}>
                             <button
                                 className="btnEdit"
                             >

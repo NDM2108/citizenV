@@ -27,20 +27,28 @@ class Controller {
         })
     }
 
-    population_declaration(req, res, next) {
+    async population_declaration(req, res, next) {
+        const province = await Province.findOne({'province': req.body.province})
+        const district = await District.findOne({'district': req.body.district})
+        const village = await Village.findOne({'village': req.body.village})
         var citizen_info = {
             'id': req.body.id,
-            'card': req.body.card,
             'fullname': req.body.fullname,
             'dob': req.body.dob,
             'gender': req.body.gender,
-            'hometown': req.body.hometown,
+            'provinceid': province.id,
+            'districtid': district.id,
+            'villageid': village.id,
+            'province': province.province,
+            'district': district.district,
+            'village':village.village,
             'permanentaddress': req.body.permanentaddress,
             'temporaryaddress': req.body.temporaryaddress,
             'religion': req.body.religion,
             'educationallevel': req.body.educationallevel,
             'job': req.body.job,
         }
+        console.log(citizen_info);
         var connection = mongoose.connection;
         connection.collection('citizen_infos').insertOne(citizen_info)
         res.send('success');
@@ -66,10 +74,10 @@ class Controller {
 
     add_account(req, res, next) {
         let level
-        if (res.locals.decoded.level == 'a1') level = 'a2'
-        if (res.locals.decoded.level == 'a2') level = 'a3'
-        if (res.locals.decoded.level == 'a3') level = 'b1'
-        if (res.locals.decoded.level == 'b1') level = 'b2'
+        if (res.locals.decoded.level == 'A1') level = 'A2'
+        if (res.locals.decoded.level == 'A2') level = 'A3'
+        if (res.locals.decoded.level == 'A3') level = 'B1'
+        if (res.locals.decoded.level == 'B1') level = 'B2'
         var account = {
             'password': req.body.password,
             'id': req.body.id,
@@ -80,7 +88,7 @@ class Controller {
         }
         var connection = mongoose.connection;
         connection.collection('accounts').insertOne(account)
-        res.send('success')++
+        res.send('success')
     }
 
     get_accounts(req, res, next) {
@@ -91,8 +99,6 @@ class Controller {
 
     get_districts(req, res, next) {
         District.find({'province': req.body.province}, function(err, districts) {
-            console.log(req.body.province);
-            console.log(districts)
             res.json(districts)
         })
     }

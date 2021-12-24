@@ -10,7 +10,7 @@ const Village = new Schema({
         type: String,
         required: true
     },
-    districtid: {
+    district: {
         type: String,
         required: true
     }
