@@ -117,7 +117,7 @@ function DashboardContent() {
                         </IconButton>
                         <img
                             // className="accountUpdateImg"
-                            style = {{width: '50px', height: '50px', marginRight: '20px'}}
+                            style={{ width: '50px', height: '50px', marginRight: '20px' }}
                             src="https://www.gso.gov.vn/wp-content/uploads/2021/01/gso_logo.png"
                             alt=""
                         />
@@ -175,7 +175,7 @@ function DashboardContent() {
                                 <Route path="/TimeTable" element={<DataProvinces />} />
                                 <Route path="/chart" element={<Analysis />} />
                                 <Route path="/accMan" element={<AccountManager />} />
-                                <Route path="/accMan/1" element={<EditAccount />} />
+                                <Route path="/accMan/:accountID" element={<EditAccount />} />
                                 <Route path="/addaccount" element={<AddAccount />} />
                                 <Route path="/population" element={<DataPopulations />} />
                                 <Route path="/population/:personID" element={<TestInfo />} />
