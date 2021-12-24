@@ -88,9 +88,8 @@ function DashboardContent() {
     };
 
     const logOut = async () => {
-        localStorage.clear()
-        console.log('out')
-        setTimeout(navigate('/login'), 3000)
+        await localStorage.clear()
+        navigate('/login')
     }
 
     return (

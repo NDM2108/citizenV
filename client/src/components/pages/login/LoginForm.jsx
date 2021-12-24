@@ -12,10 +12,12 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Link from '@mui/material/Link';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { Navigate, useNavigate } from "react-router-dom";
 
 const theme = createTheme();
 
 export default function LoginForm() {
+  const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -39,6 +41,7 @@ export default function LoginForm() {
       console.log(localStorage.getItem('accessToken'));
       console.log(localStorage.getItem('level'));
       console.log(localStorage.getItem('id'));
+      navigate('/admin')
     });
 
   };
