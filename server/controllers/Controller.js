@@ -27,20 +27,25 @@ class Controller {
         })
     }
 
-    population_declaration(req, res, next) {
+    async population_declaration(req, res, next) {
+        const province = await Province.findOne({'province': req.body.province})
+        const district = await District.findOne({'district': req.body.district})
+        const village = await Village.findOne({'village': req.body.village})
         var citizen_info = {
             'id': req.body.id,
-            'card': req.body.card,
             'fullname': req.body.fullname,
             'dob': req.body.dob,
             'gender': req.body.gender,
-            'hometown': req.body.hometown,
+            'provinceid': province.id,
+            'districtid': district.id,
+            'villageid': village.id,
             'permanentaddress': req.body.permanentaddress,
             'temporaryaddress': req.body.temporaryaddress,
             'religion': req.body.religion,
             'educationallevel': req.body.educationallevel,
             'job': req.body.job,
         }
+        console.log(citizen_info);
         var connection = mongoose.connection;
         connection.collection('citizen_infos').insertOne(citizen_info)
         res.send('success');
@@ -80,7 +85,7 @@ class Controller {
         }
         var connection = mongoose.connection;
         connection.collection('accounts').insertOne(account)
-        res.send('success')++
+        res.send('success')
     }
 
     get_accounts(req, res, next) {
@@ -91,8 +96,6 @@ class Controller {
 
     get_districts(req, res, next) {
         District.find({'province': req.body.province}, function(err, districts) {
-            console.log(req.body.province);
-            console.log(districts)
             res.json(districts)
         })
     }

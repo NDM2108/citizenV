@@ -13,22 +13,36 @@ function PopulationDeclaration() {
   const [districtOptions, setDistrict] = useState([]);
   const [villageOptions, setVillage] = useState([]);
 
+  const [citizen, setInput] = useState({
+    id: '',
+    gender: '',
+    province: '',
+    district: '',
+    village: '',
+    regilion: '',
+    job: '',
+    dob: '',
+    educationallevel: '',
+    fullname: '',
+    permanentaddress: '',
+    temporaryaddress: '',
+  });
+
   useEffect(() => {
     axios.get('http://localhost:5000/all_provinces')
         .then(response => {
-            var json = response.data
-            var ops = []
+            let json = response.data
+            let ops = []
             for (let i = 0; i < json.length; i++) {
               ops.push({value: json[i].province, label: json[i].province})
             }
             setProvince(ops)
             console.log(ops);
-            console.log(provinceOptions)
         })
   }, [])
 
   const getDistricts = selected => {
-    console.log(selected.value)
+    setInput({...citizen, province: selected.value })
     fetch('http://localhost:5000/get_districts',{
       method: "POST",
       body: JSON.stringify({province: selected.value}),
@@ -36,50 +50,40 @@ function PopulationDeclaration() {
           "Content-type": "application/json; charset=UTF-8"
       }
     })
-        .then(response => {
-            var json = response.data
-            console.log()
-            var ops = []
-            for (let i = 0; i < json.length; i++) {
-              ops.push({value: json[i].province, label: json[i].province})
-            }
-            setDistrict(ops)
-            console.log(ops)
-        })
+    .then(response => response.json())
+    .then(data => {
+      let ops = []
+      for (let i = 0; i < data.length; i++) {
+        ops.push({value: data[i].district, label: data[i].district})
+      }
+      setDistrict(ops)
+      console.log(ops)
+    })
   }
 
   const getVillages = selected => {
+    setInput({...citizen, district: selected.value })
     fetch('http://localhost:5000/get_villages',{
       method: "POST",
-      body: JSON.stringify({province: selected.value}),
+      body: JSON.stringify({district: selected.value}),
       headers: {
           "Content-type": "application/json; charset=UTF-8"
       }
     })
-        .then(response => {
-            var json = response.data
-            var ops = []
-            for (let i = 0; i < json.length; i++) {
-              ops.push({value: json[i].province, label: json[i].province})
-            }
-            setVillage(ops)
-            console.log(ops)
-        })
+    .then(response => response.json())
+    .then(data => {
+      let ops = []
+      for (let i = 0; i < data.length; i++) {
+        ops.push({value: data[i].village, label: data[i].village})
+      }
+      setVillage(ops)
+      console.log(ops)
+    })
   }
 
-  const [citizen, setInput] = useState({
-    id: '',
-    gender: '',
-    hometown: '',
-    regilion: '',
-    job: '',
-    card: '',
-    dob: '',
-    educationallevel: '',
-    fullname: '',
-    permanentaddress: '',
-    temporaryaddress: '',
-  });
+  const selectVillage = selected => {
+    setInput({...citizen, village: selected.value })
+  }
 
   const handleChange = e => {
     setInput({...citizen, [e.target.name]: e.target.value })
@@ -137,7 +141,7 @@ function PopulationDeclaration() {
           <div className="inputBox">
             <span className="details"> Số CCCD/CMND</span>
             <input
-              name="card"
+              name="id"
               type="text"
               required
               onChange={handleChange}
@@ -156,7 +160,8 @@ function PopulationDeclaration() {
             onChange={getVillages}/>
             <Select 
             placeholder="Xã" 
-            options={villageOptions} />
+            options={villageOptions} 
+            onChange={selectVillage}/>
           </div>
 
           <div className="inputBox">
