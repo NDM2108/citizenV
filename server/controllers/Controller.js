@@ -39,6 +39,9 @@ class Controller {
             'provinceid': province.id,
             'districtid': district.id,
             'villageid': village.id,
+            'province': province.province,
+            'district': district.district,
+            'village':village.village,
             'permanentaddress': req.body.permanentaddress,
             'temporaryaddress': req.body.temporaryaddress,
             'religion': req.body.religion,
@@ -71,10 +74,10 @@ class Controller {
 
     add_account(req, res, next) {
         let level
-        if (res.locals.decoded.level == 'a1') level = 'a2'
-        if (res.locals.decoded.level == 'a2') level = 'a3'
-        if (res.locals.decoded.level == 'a3') level = 'b1'
-        if (res.locals.decoded.level == 'b1') level = 'b2'
+        if (res.locals.decoded.level == 'A1') level = 'A2'
+        if (res.locals.decoded.level == 'A2') level = 'A3'
+        if (res.locals.decoded.level == 'A3') level = 'B1'
+        if (res.locals.decoded.level == 'B1') level = 'B2'
         var account = {
             'password': req.body.password,
             'id': req.body.id,

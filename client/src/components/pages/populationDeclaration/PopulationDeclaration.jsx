@@ -105,12 +105,11 @@ function PopulationDeclaration() {
     createData(citizen)
       .then((response) => {
         console.log(response.data)
+      navigate('/population')
       })
       .catch((err) => {
         console.error(err);
       });
-      
-    navigate('/population')
   }
 
   return (
@@ -220,14 +219,14 @@ function PopulationDeclaration() {
             type="radio"
             name="gender"
             id="dot1"
-            value="nam"
+            value="Nam"
             onChange={handleChange}
           />
           <input
             type="radio"
             name="gender"
             id="dot2"
-            value="nữ"
+            value="Nữ"
             onChange={handleChange}
           />
           <span className="title"> Giới tính</span>
