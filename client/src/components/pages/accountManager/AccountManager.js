@@ -5,7 +5,7 @@ import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
-
+import { MDBTable, MDBTableBody, MDBTableHead } from 'mdbreact';
 
 function AccountManager() {
 
@@ -57,26 +57,28 @@ function AccountManager() {
 
 
     return (
-        <div className="AccountManager">
-            <div className="wrap-container">
-                <div className="top-container">
-                    <Link to="/addaccount">
-                        <button className="btnCreateAccount">Thêm Tài Khoản</button>
-                    </Link>
-                </div>
-                <div id="datatable" style={styleTable}>
-                    <DataGrid
-                        rows={account}
-                        columns={columns}
-                        eslint-disable-next-line
-                        rowsPerPageOptions={[5]}
-                        disableSelectionOnClick
-                        autoHeight
-                        density="comfortable"
-                    />
+        <MDBTable responsive>
+            <div className="AccountManager">
+                <div className="wrap-container">
+                    <div className="top-container">
+                        <Link to="/addaccount">
+                            <button className="btnCreateAccount">Thêm Tài Khoản</button>
+                        </Link>
+                    </div>
+                    <div id="datatable" style={styleTable}>
+                        <DataGrid
+                            rows={account}
+                            columns={columns}
+                            eslint-disable-next-line
+                            rowsPerPageOptions={[5]}
+                            disableSelectionOnClick
+                            autoHeight
+                            density="comfortable"
+                        />
+                    </div>
                 </div>
             </div>
-        </div>
+        </MDBTable>
     );
 }
 
