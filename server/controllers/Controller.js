@@ -17,7 +17,7 @@ class Controller {
                     const accessToken = jwt.sign({"id": account.id, "level": account.level}, process.env.ACCESS_TOKEN_SECRET, {
                         expiresIn:'1h'
                     })
-                    res.json({accessToken})
+                    res.json({'accessToken':accessToken, 'id': account.id, 'level':account.level})
                 } else {
                     res.sendStatus(401)
                 }
@@ -69,7 +69,8 @@ class Controller {
             'id': req.body.id,
             'address': req.body.address,
             'level': level,
-            'status': "Active"
+            'status': "Active",
+            'superior': res.locals.decoded.id
         }
         var connection = mongoose.connection;
         connection.collection('accounts').insertOne(account)

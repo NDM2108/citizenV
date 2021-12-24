@@ -13,8 +13,10 @@ function TestInfo() {
     useEffect(() => {
         axios.get('http://localhost:5000/citizen_infos')
             .then(response => {
-                const listUsers = response.data
-                setListUsers(listUsers)
+                const list = response.data
+                setListUsers(list)
+                console.log(list);
+
             })
     }, [])
 
@@ -29,7 +31,7 @@ function TestInfo() {
     //     axiosAPI();
     // }, [])
 
-    console.log(listUsers);
+    // console.log(listUsers);
 
     var persons = listUsers;
     var person = {}
