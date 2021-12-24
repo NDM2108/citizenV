@@ -59,24 +59,26 @@ function AccountManager() {
 
     return (
         <MDBTable responsive>
-            <div className="AccountManager">
-                <div className="wrap-container">
-                    <div className="top-container">
-                        <Link to="/addaccount">
-                            <button className="btnCreateAccount">Thêm Tài Khoản</button>
-                        </Link>
-                    </div>
+            <div /* className="AccountManager" */>
+                <div /* className="wrap-container" */>
+                    
                     <div id="datatable" style={styleTable}>
                         <DataGrid
                             rows={account}
                             columns={columns}
                             eslint-disable-next-line
                             rowsPerPageOptions={[5]}
+                            pageSize={5}
                             disableSelectionOnClick
                             autoHeight
                             density="comfortable"
                         />
                     </div>
+                    {/* <div className="top-container">
+                        <Link to="/addaccount">
+                            <button className="btnCreateAccount">Thêm Tài Khoản</button>
+                        </Link>
+                    </div> */}
                 </div>
             </div>
         </MDBTable>
