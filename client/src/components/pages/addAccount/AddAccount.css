@@ -1,13 +1,14 @@
 .newUserButton {
     background-color: #0f7ddf;
     border: none;
-    border-radius: 4px;
+    border-radius: 10px;
     color: #fff;
-    height: 36px;
+    height: 40px;
     text-align: center;
-    width: 150px;
+    width: 155px;
     padding: 7px 10px;
     margin-top: 25px;
+    font-size: 20px;
     
   }
 
@@ -34,7 +35,7 @@
   
   .container-add-account-form .title {
     text-align: center;
-    font-size: 45px;
+    font-size: 35px;
     font-weight: 500;
     position: relative;
     font-family: Arial, Helvetica, sans-serif;
