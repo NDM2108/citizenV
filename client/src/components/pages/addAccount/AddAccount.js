@@ -30,54 +30,114 @@ const AddAccount = () => {
   }
 
   return (
-    <div className="new-account" >
-      
+    // <div className="new-account" className="" className="background">
+    //   <div className="form-container">
+    //     <form className="newUserForm" onSubmit={handleSubmit}>
+    //       <h1 className="h3">Tạo Tài Khoản Mới</h1>
+    //       <div className="newUserItem">
+    //         <label>Tài Khoản - ID</label>
+    //         <input
+    //           className="text_field"
+    //           name="id"
+    //           type="text"
+    //           placeholder=""
+    //           required
+    //         />
+    //       </div>
 
-      <form className="newUserForm" onSubmit={handleSubmit}>
-        <h1 className="h3">Tạo Tài Khoản Mới</h1>
-        <div className="newUserItem">
-          <label>Tài Khoản - ID</label>
-          <input
-            name="id"
-            type="text"
-            placeholder=""
-            required
-          />
+    //       <div className="newUserItem">
+    //         <label>Tỉnh/Thành Phố</label>
+    //         <input
+    //           className="text_field"
+    //           name="address"
+    //           type="text"
+    //           placeholder=""
+    //           required
+    //         />
+    //       </div>
+
+    //       <div className="newUserItem" className="col-12 form-group">
+    //         <label>Mật Khẩu</label>
+    //         <input
+    //           className="text_field"
+    //           name="pass"
+    //           type="password"
+    //           placeholder=""
+    //           required
+    //         />
+    //       </div>
+
+    //       <div className="newUserItem" className="col-12 form-group">
+    //         <label>Nhập Lại Mật Khẩu</label>
+    //         <input
+    //           className="text_field"
+    //           name="rePass"
+    //           type="password"
+    //           placeholder=""
+    //           required
+    //         />
+    //       </div>
+
+    //       <button className="newUserButton" type="submit">
+    //         Xác Nhận
+    //       </button>
+    //     </form>
+    //   </div>
+    // </div>
+    <div className="container-add-account-form">
+      <div className="title"> Thêm tài khoản</div>
+      <form form className="newUserForm" onSubmit={handleSubmit}>
+        <div className="info">
+          <div className="inputBox">
+            <span className="details"> Tài khoản - ID</span>
+            <input
+              className="text_field"
+              name="id"
+              type="text"
+              placeholder=""
+              required
+            />
+          </div>
+
+          <div className="inputBox">
+            <span className="details">Tỉnh, thành phố </span>
+            <input
+              className="text_field"
+              name="address"
+              type="text"
+              placeholder=""
+              required
+            />
+          </div>
+
+          <div className="inputBox">
+            <span className="details">Mật khẩu</span>
+            <input
+              className="text_field"
+              name="pass"
+              type="password"
+              placeholder=""
+              required
+            />
+          </div>
+
+          <div className="inputBox">
+            <span className="details">Xác nhận mật khẩu</span>
+            <input
+              className="text_field"
+              name="rePass"
+              type="password"
+              placeholder=""
+              required
+            />
+          </div>
+          <div className="button-container">
+            <button className="newUserButton" type="submit">
+              Xác Nhận
+            </button>
+          </div>
+          
         </div>
-
-        <div className="newUserItem">
-          <label>Tỉnh/Thành Phố</label>
-          <input
-            name="address"
-            type="text"
-            placeholder=""
-            required
-          />
-        </div>
-
-        <div className="newUserItem">
-          <label>Mật Khẩu</label>
-          <input
-            name="pass"
-            type="password"
-            placeholder=""
-            required
-          />
-        </div>
-
-        <div className="newUserItem">
-          <label>Nhập Lại Mật Khẩu</label>
-          <input
-            name="rePass"
-            type="password"
-            placeholder=""
-            required
-          />
-        </div>
-
-        <button className="newUserButton" type="submit">
-          Xác Nhận
-        </button>
       </form>
     </div>
   );
