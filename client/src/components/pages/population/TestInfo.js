@@ -63,7 +63,7 @@ function TestInfo() {
                     </tr>
                     <tr >
                         <th>CCCD</th>
-                        <td>{item.card}</td>
+                        <td>{item.id}</td>
                     </tr>
                     <tr >
                         <th>Giới tính</th>
@@ -71,7 +71,7 @@ function TestInfo() {
                     </tr>
                     <tr >
                         <th>Quê quán</th>
-                        <td>{item.hometown}</td>
+                        <td>{item.village} - {item.district} - {item.province}</td>
                     </tr>
                     <tr >
                         <th>Địa chỉ thường trú</th>
