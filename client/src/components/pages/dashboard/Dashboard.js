@@ -88,7 +88,7 @@ function DashboardContent() {
     };
 
     const logOut = async () => {
-        localStorage.removeItem('accessToken')
+        localStorage.clear()
         console.log('out')
         setTimeout(navigate('/login'), 3000)
     }

@@ -26,9 +26,7 @@ export default function LoginForm() {
     var login = {id: data.get('id'), password: data.get('password')}
     fetch('http://localhost:5000/login', {
       method: "POST",
-     
       body: JSON.stringify(login),
-  
       headers: {
           "Content-type": "application/json; charset=UTF-8"
       }
