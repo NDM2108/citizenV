@@ -1,0 +1,250 @@
+.account {
+    padding: 20px;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .accountTitleContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 50px;
+  }
+  
+  .accountAddButton {
+    width: 130px;
+    border: none;
+    padding: 5px;
+    background-color: teal;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+    font-size: 16px;
+    padding: 8px 18px;
+  }
+  
+  .accountContainer {
+    /* width: 500px; */
+    display: flex;
+    margin: 30px 0 50px 0;
+  }
+  
+  .accountShow {
+    flex: 1;
+    padding: 20px;
+    -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+  }
+  
+  .accountUpdate {
+    flex: 2;
+    padding: 20px;
+    -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+    margin-left: 20px;
+    position: relative;
+  }
+  
+  .accountShowTop {
+    display: flex;
+    align-items: center;
+  }
+  
+  .accountShowImg {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .accountShowTopTitle {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+  }
+  
+  .accountShowUsername {
+    font-weight: 600;
+  }
+  
+  .accountShowUserTitle {
+    font-weight: 300;
+  }
+  
+  .accountShowBottom {
+    margin-top: 20px;
+  }
+  
+  .accountShowTitle {
+    font-size: 14px;
+    font-weight: 600;
+    color: rgb(175, 170, 170);
+  }
+  
+  .accountShowInfo {
+    margin: 20px 0px;
+    color: #444;
+    display: flex;
+    align-items: center;
+  }
+  
+  .accountShowIcon {
+    font-size: 16px !important;
+  }
+  
+  .accountShowInfoTitle {
+    display: flex;
+    align-items: center;
+  
+    margin-left: 0;
+    color: black;
+    width: 150px;
+  }
+  
+  .accountShowInfoTitle span {
+    margin-left: 6px;
+  }
+  
+  /* ----- Update Form CSS ------  */
+  
+  .accountUpdateTitle {
+    font-size: 24px;
+    font-weight: 600;
+  }
+  
+  .accountUpdateForm {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  .accountUpdateItem {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+  }
+  
+  .accountUpdateItem > label {
+    margin-bottom: 5px;
+    font-size: 14px;
+  }
+  
+  .accountUpdateInput {
+    border: none;
+    width: 250px;
+    height: 30px;
+    border-bottom: 1px solid gray;
+  }
+  
+  .accountUpdateRight {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .accountUpdateUpload {
+    display: flex;
+    align-items: center;
+  }
+  
+  .accountUpdateImg {
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+    object-fit: cover;
+    margin-right: 20px;
+  }
+  
+  .accountUpdateIcon {
+    cursor: pointer;
+  }
+  
+  .accountUpdateButton {
+    border-radius: 5px;
+    border: none;
+  
+    cursor: pointer;
+    background-color: darkblue;
+    color: white;
+    font-weight: 600;
+    position: absolute;
+    bottom: 20px;
+    right: 40px;
+    font-size: 18px;
+    padding: 5px 30px;
+  }
+  
+  .containerButton {
+    display: flex;
+    justify-content: center;
+  
+    padding: 40px 0 30px 0;
+  }
+  .containerButton button {
+    margin: auto;
+  }
+  
+  /* ----- */
+  div.change-password {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .accountContainer {
+      display: block;
+    }
+    .accountUpdate {
+      margin: 30px 0;
+    }
+  
+    .accountUpdateForm {
+      display: block;
+    }
+    .accountUpdateUpload {
+      margin-top: 20px;
+    }
+    .accountUpdateImg {
+      width: 50px;
+      height: 50px;
+    }
+  
+    .accountUpdateInput {
+      width: 80%;
+    }
+  
+    .accountUpdateButton {
+      padding: 5px 10px;
+    }
+  
+    .containerButton button {
+      margin: auto;
+      padding: 8px 15px;
+    }
+  }
+  
+  @media screen and (max-width: 426px) {
+    .accountTitleContainer {
+      display: block;
+      margin-bottom: 30px;
+    }
+    .accountTitle {
+      margin: 0 0 45px 0;
+    }
+  
+    .containerButton {
+      flex-direction: column;
+      padding: 10px 0 30px 0;
+    }
+    .containerButton button {
+      margin: 30px 0 0 0;
+      padding: 8px 2px;
+    }
+    .accountShowInfoTitle {
+      width: auto;
+    }
+  }
+  
