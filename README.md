@@ -1,10 +1,10 @@
-## * SERVER:
+### * SERVER:
 #### Bước 1: Mở folder server
 
-## Bước 2: Mở terminal của server và gõ lệnh:
+#### Bước 2: Mở terminal của server và gõ lệnh:
 ###### *'npm run server'*
 
-## * CLIENT:
+### * CLIENT:
 #### Bước 1: Mở folder client
 
 #### Bước 2: Mở terminal của client và gõ lệnh
