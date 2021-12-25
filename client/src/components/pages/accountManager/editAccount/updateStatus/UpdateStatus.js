@@ -61,7 +61,7 @@ function UpdateStatus({ subId, setOpen, params }) {
                 <div className="status-event">
                     <p>Ngày bắt đầu</p>
                     <input
-                        type="datetime-local"
+                        type="date"
                         className="status-date"
                         onChange={(e) => setStart(e.target.valueAsDate)}
                         onFocus={() => setIsError(false)}
@@ -69,7 +69,7 @@ function UpdateStatus({ subId, setOpen, params }) {
                     />
                     <p>Ngày kết thúc</p>
                     <input
-                        type="datetime-local"
+                        type="date"
                         className="status-date"
                         onChange={(e) => setDate(e.target.valueAsDate)}
                         onFocus={() => setIsError(false)}

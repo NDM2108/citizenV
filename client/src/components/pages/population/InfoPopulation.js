@@ -11,12 +11,23 @@ function TestInfo() {
     const [listUsers, setListUsers] = useState([])
 
     useEffect(() => {
-        axios.get('http://localhost:5000/citizen_infos')
-            .then(response => {
-                const list = response.data
-                setListUsers(list)
-                console.log(list);
+        // axios.get('http://localhost:5000/citizen_infos')
+        //     .then(response => {
+        //         const list = response.data
+        //         setListUsers(list)
+        //         console.log(list);
 
+        //     })
+        fetch('http://localhost:5000/citizen_infos', {
+            method: "GET",
+            headers: {
+                "Content-type": "application/json; charset=UTF-8",
+                "Authentication": "Bearer " + localStorage.getItem('accessToken')
+            }
+        })
+            .then(response => response.json())
+            .then(data => {
+                setListUsers(data)
             })
     }, [])
 
