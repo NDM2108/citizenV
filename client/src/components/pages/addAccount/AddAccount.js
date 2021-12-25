@@ -34,6 +34,10 @@ const AddAccount = () => {
           for (let i = 0; i < data.length; i++) {
             ops.push({value: data[i].village, label: data[i].village, id: data[i].id})
           }
+        } else if (localStorage.getItem('level') == 'B1') {
+          for (let i = 0; i < data.length; i++) {
+            ops.push({value: data[i].clan, label: data[i].clan, id: data[i].id})
+          }
         }
         setInferiors(ops)
       });
