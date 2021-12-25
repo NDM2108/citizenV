@@ -35,8 +35,18 @@ function DataProvinces() {
     })
       .then(response => response.json())
       .then(data => {
+        let s 
+        if (localStorage.getItem('level') === 'A1') s = 'province'
+        if (localStorage.getItem('level') === 'A2') s = 'district'
+        if (localStorage.getItem('level') === 'A3') s = 'village'
+        let progress = []
+        for (let i = 0; i < data.length; i++) {
+          progress.push(
+            {id: data[i].id, name: data[i][s], status: data[i].status}
+          )
+        }
+        console.log(progress);
         setProvince(data)
-        console.log(data)
       })
   }, [])
 
