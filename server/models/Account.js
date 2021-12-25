@@ -20,6 +20,10 @@ const Account = new Schema({
     status: {
         type: String,
         required: true
+    },
+    superior: {
+        type: String,
+        required: true
     }
 })
 

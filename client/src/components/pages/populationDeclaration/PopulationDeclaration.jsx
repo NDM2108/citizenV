@@ -150,15 +150,15 @@ function PopulationDeclaration() {
           <div className="inputBox">
             <span className="details"> Quê quán</span>
             <Select 
-            placeholder="Tỉnh" 
+            placeholder="Tỉnh / Thành phố" 
             options={provinceOptions}
             onChange={getDistricts}/>
             <Select 
-            placeholder="Quận" 
+            placeholder="Quận / Huyện" 
             options={districtOptions} 
             onChange={getVillages}/>
             <Select 
-            placeholder="Xã" 
+            placeholder="Xã / Phường" 
             options={villageOptions} 
             onChange={selectVillage}/>
           </div>

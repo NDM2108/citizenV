@@ -92,13 +92,14 @@ class Controller {
     }
 
     get_accounts(req, res, next) {
-        Account.find({}, function(err, accounts) {
+        Account.find({'superior': req.body.id}, function(err, accounts) {
             res.json(accounts)
         })
     }
 
     get_districts(req, res, next) {
         District.find({'province': req.body.province}, function(err, districts) {
+            console.log(districts)
             res.json(districts)
         })
     }

@@ -12,10 +12,21 @@ function AccountManager() {
 
     const [account, setAccount] = useState([])
     useEffect(() => {
-        axios.get('http://localhost:5000/accounts')
+        fetch('http://localhost:5000/accounts', {
+            method: "POST",
+            body: JSON.stringify({'id': localStorage.getItem('id')}),
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+            }
+        })
             .then(response => {
-                const account = response.data
-                setAccount(account)
+                if(response.status == 200) {
+                    return response.json()
+                }
+            })
+            .then(data => {
+                console.log(data)
+                setAccount(data)
             })
     }, [])
     console.log(account);
