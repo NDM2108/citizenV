@@ -46,7 +46,7 @@ function DataProvinces() {
           )
         }
         console.log(progress);
-        setProvince(data)
+        setProvince(progress)
       })
   }, [])
 
