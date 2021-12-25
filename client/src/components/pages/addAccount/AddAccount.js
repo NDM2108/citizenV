@@ -13,7 +13,7 @@ const AddAccount = () => {
 
   useEffect(() => {
     fetch('http://localhost:5000/get_inferiors', {
-      method: "POST",
+      method: "GET",
       headers: {
         "Content-type": "application/json; charset=UTF-8",
         "Authentication": "Bearer " + localStorage.getItem('accessToken')

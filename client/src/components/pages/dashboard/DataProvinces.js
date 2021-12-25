@@ -27,10 +27,16 @@ function DataProvinces() {
 
   const [province, setProvince] = useState([])
   useEffect(() => {
-    axios.get('http://localhost:5000/provinces')
-      .then(response => {
-        const province = response.data
-        setProvince(province)
+    fetch('http://localhost:5000/get_inferiors', {
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+        "Authentication": "Bearer " + localStorage.getItem('accessToken')
+      }
+    })
+      .then(response => response.json())
+      .then(data => {
+        setProvince(data)
+        console.log(data)
       })
   }, [])
 

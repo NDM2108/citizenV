@@ -7,7 +7,7 @@ router.post('/login', controller.login)
 
 router.post('/population_declaration', controller.population_declaration)
 
-router.get('/provinces', controller.provinces)
+router.get('/provinces', verifyToken, controller.provinces)
 
 router.get('/all_provinces', controller.all_provinces)
 
@@ -23,6 +23,6 @@ router.post('/get_villages', controller.get_villages)
 
 router.post('/add_code', verifyToken, controller.add_code)
 
-router.post('/get_inferiors', verifyToken, controller.get_inferiors)
+router.get('/get_inferiors', verifyToken, controller.get_inferiors)
 
 module.exports = router
