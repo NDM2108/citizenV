@@ -9,8 +9,8 @@ import { MDBTable, MDBTableBody, MDBTableHead } from 'mdbreact';
 const columns = [
   { field: 'id', headerName: 'ID', width: 90 },
   {
-    field: 'province',
-    headerName: 'Tỉnh',
+    field: 'name',
+    headerName: 'Tên',
     width: 200,
     editable: true,
   },
