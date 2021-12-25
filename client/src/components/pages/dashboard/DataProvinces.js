@@ -42,7 +42,7 @@ function DataProvinces() {
         let progress = []
         for (let i = 0; i < data.length; i++) {
           progress.push(
-            {id: data[i].id, name: data[i][s], status: data[i].status}
+            {id: data[i].id, name: data[i][s], progress: data[i].status}
           )
         }
         console.log(progress);

@@ -88,15 +88,19 @@ function DataPopulations() {
 
   const [population, setPopulation] = useState([])
   useEffect(() => {
-    axios.get('http://localhost:5000/citizen_infos')
-      .then(response => {
-        const population = response.data
-        setPopulation(population)
-      })
+    fetch('http://localhost:5000/citizen_infos', {
+      method: "GET",
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+        "Authentication": "Bearer " + localStorage.getItem('accessToken')
+      }
+    })
+    .then(response => response.json())
+    .then(data => {
+      setPopulation(data)
+    })
   }, [])
   console.log(population[0]);
-
-
 
   return (
     <div style={{ height: 400, width: '100%' }}>

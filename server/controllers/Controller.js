@@ -67,9 +67,23 @@ class Controller {
     }
 
     citizen_infos(req, res, next) {
-        Citizen_info.find({}, function(err, provinces) {
-            res.json(provinces)
-        })
+        if (res.locals.decoded.level == 'A1') {
+            Citizen_info.find({}, function(err, infos) {
+                res.send(infos)
+            })
+        } else if (res.locals.decoded.level == 'A2') {
+            Citizen_info.find({'province': res.locals.decoded.address}, function(err, infos) {
+                res.send(infos)
+            })
+        } else if (res.locals.decoded.level == 'A3') {
+            Citizen_info.find({'district': res.locals.decoded.address}, function(err, infos) {
+                res.send(infos)
+            })
+        } else if (res.locals.decoded.level == 'B1') {
+            Citizen_info.find({'village': res.locals.decoded.address}, function(err, infos) {
+                res.send(infos)
+            })
+        }
     }
 
     add_account(req, res, next) {
