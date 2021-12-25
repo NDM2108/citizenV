@@ -17,7 +17,7 @@ class Controller {
                     const accessToken = jwt.sign({"id": account.id, "level": account.level, "address": account.address}, process.env.ACCESS_TOKEN_SECRET, {
                         expiresIn:'1h'
                     })
-                    res.json({'accessToken':accessToken, 'id': account.id, 'level':account.level})
+                    res.json({'accessToken':accessToken, 'id': account.id, 'level':account.level, 'address': account.address})
                 } else {
                     res.sendStatus(401)
                 }
@@ -147,6 +147,7 @@ class Controller {
     }
 
     async get_inferiors(req, res, next) {
+        console.log(res.locals.decoded.level)
         if (res.locals.decoded.level == 'A1') {
             const provinces = await Province.find({})
             res.json(provinces)
