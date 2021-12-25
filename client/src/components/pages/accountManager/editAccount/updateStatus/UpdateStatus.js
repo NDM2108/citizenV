@@ -12,14 +12,14 @@ function UpdateStatus({ subId, setOpen, params }) {
     const [start, setStart] = useState();
     const [isError, setIsError] = useState(false);
 
-    // const { accountID } = useParams();
-    // console.log(accountID);
+    const { accountID } = useParams();
+    console.log(accountID);
 
 
     const navigate = useNavigate();
 
     const [update, setUpdate] = useState({
-        status: '',
+        status: false,
         timeopen: '',
         timeclosed: '',
     });
@@ -37,6 +37,7 @@ function UpdateStatus({ subId, setOpen, params }) {
             });
             return dataResult
         }
+
         updateData(update)
             .then(response => response.text())
             .then(data => {
@@ -45,6 +46,21 @@ function UpdateStatus({ subId, setOpen, params }) {
                 }
             })
     }
+
+    const handleChange = e => {
+        setUpdate({...update, [e.target.name]: e.target.value })
+        console.log(e.target.value)
+    };
+
+    const handleChangeOption = e => {
+        if (e.target.value == 'true') {
+            setUpdate({...update, [e.target.name]: true })
+            console.log(e.target.value)
+        } else {
+            setUpdate({...update, [e.target.name]: false })
+            console.log(e.target.value)
+        }
+    };
 
 
     return (
@@ -58,16 +74,15 @@ function UpdateStatus({ subId, setOpen, params }) {
                         type="radio"
                         name="status"
                         id="dot1"
-                        value={false}
-                        onChange={(e) => setValueStatus(false)}
-                        checked={!valueStatus}
+                        value={'false'}
+                        onChange={handleChangeOption}
                     />
                     <input
                         type="radio"
                         name="status"
                         id="dot2"
-                        value={true}
-                        onChange={(e) => setValueStatus(true)}
+                        value={'true'}
+                        onChange={handleChangeOption}
                     />
                     <span className="title">Khai báo dân số</span>
                     <div className="option">
@@ -89,18 +104,18 @@ function UpdateStatus({ subId, setOpen, params }) {
                         name='timeopen'
                         type="date"
                         className="status-date"
-                        onChange={(e) => setStart(e.target.valueAsDate)}
+                        onChange={handleChange}
                         onFocus={() => setIsError(false)}
-                        disabled={!valueStatus}
+                        disabled={!update.status}
                     />
                     <p>Ngày kết thúc</p>
                     <input
                         name='timeclosed'
                         type="date"
                         className="status-date"
-                        onChange={(e) => setDate(e.target.valueAsDate)}
+                        onChange={handleChange}
                         onFocus={() => setIsError(false)}
-                        disabled={!valueStatus}
+                        disabled={!update.status}
                     />
 
                     <Button type="submit" variant="outlined" className="status-button">
