@@ -19,16 +19,14 @@ import MenuIcon from '@mui/icons-material/Menu';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import { mainListItems } from './listItems';
-import TimeTable from './Table';
 import PopulationDeclaration from '../populationDeclaration/PopulationDeclaration';
 import DataProvinces from './DataProvinces';
 import DataPopulations from './DataPopulations';
-import Analysis from './Analysis';
+import Analysis from '../analysis/Analysis';
 import AddAccount from '../addAccount/AddAccount';
 import AccountManager from '../accountManager/AccountManager';
 import InfoPopulation from '../population/InfoPopulation';
 import { useNavigate } from "react-router-dom";
-import TestInfo from '../population/TestInfo';
 import EditAccount from '../accountManager/editAccount/EditAccount';
 import AddCode from '../addCode/AddCode';
 
@@ -179,8 +177,8 @@ function DashboardContent() {
                                 <Route path="/accMan/:accountID" element={<EditAccount />} />
                                 <Route path="/addaccount" element={<AddAccount />} />
                                 <Route path="/population" element={<DataPopulations />} />
-                                <Route path="/population/:personID" element={<TestInfo />} />
-                                {/* <Route path="/population/:personID" element={<InfoPopulation />} /> */}
+                                {/* <Route path="/population/:personID" element={<TestInfo />} /> */}
+                                <Route path="/population/:personID" element={<InfoPopulation />} />
                                 <Route path="/declaration" element={<PopulationDeclaration />} />
                             </Routes>
                             <Outlet />

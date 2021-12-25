@@ -1,136 +1,107 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-import * as React from 'react';
 import { useEffect, useState } from "react"
 import axios from 'axios';
-import { Link } from "react-router-dom";
-import { Button } from "@mui/material";
-import { DataGrid } from '@mui/x-data-grid';
-import { CSmartTable } from '@coreui/react-pro'
+import React from "react";
 import { useParams } from "react-router-dom";
 
 
-const columns = [
-    { field: 'id', headerName: 'ID Vùng', width: 90 },
-    {
-        field: 'fullname',
-        headerName: 'Họ tên',
-        width: 100,
-        editable: true,
-    },
-    {
-        field: 'card',
-        headerName: 'CCCD',
-        // type: 'number',
-        width: 100,
-        editable: true,
-    },
-    {
-        field: 'dob',
-        headerName: 'Ngày sinh',
-        type: 'date',
-        width: 100,
-        editable: true,
-    },
-    {
-        field: 'gender',
-        headerName: 'Giới tính',
-        width: 100,
-        editable: true,
-    },
-    {
-        field: 'hometown',
-        headerName: 'Quê quán',
-        width: 100,
-        editable: true,
-    },
-    {
-        field: 'permanentaddress',
-        headerName: 'Địa chỉ thường trú',
-        width: 100,
-        editable: true,
-    },
-    {
-        field: 'temporaryaddress',
-        headerName: 'Địa chỉ tạm trú',
-        width: 100,
-        editable: true,
-    },
-    {
-        field: 'educationallevel',
-        headerName: 'Trình độ học vấn',
-        width: 100,
-        editable: true,
-    },
-    {
-        field: 'job',
-        headerName: 'Nghề nghiệp',
-        width: 100,
-        editable: true,
-    },
-    {
-        field: 'religion',
-        headerName: 'Tôn giáo',
-        width: 100,
-        editable: true,
-    },
-];
-
-
-function InfoPopulation() {
+function TestInfo() {
 
     const { personID } = useParams();
+    console.log(personID);
+    const [listUsers, setListUsers] = useState([])
 
-    const [population, setPopulation] = useState([])
     useEffect(() => {
         axios.get('http://localhost:5000/citizen_infos')
             .then(response => {
-                const population = response.data
-                setPopulation(population)
+                const list = response.data
+                setListUsers(list)
+                console.log(list);
+
             })
     }, [])
 
-    // console.log(population);
-    var persons = population;
-    var person = {};
-    
+    // useEffect(async () => {
+    //     async function axiosAPI() {
+    //         let response = await axios.get('http://localhost:5000/citizen_infos')
+    //             .then(response => {
+    //                 const listUsers = response.data
+    //                 setListUsers(listUsers)
+    //             })
+    //     }
+    //     axiosAPI();
+    // }, [])
+
+    // console.log(listUsers);
+
+    var persons = listUsers;
+    var person = {}
+
     for (var i = 0; i < persons.length; i++) {
-        // console.log(population[i]);
-        if (population[i] !== undefined) {
-            if (population[i].id == personID) {
-                setTimeout(person = population[i],
-                    console.log(person), 1000)
-                    person = [person]
+        if (listUsers[i] !== undefined) {
+            if (listUsers[i].id == personID) {
+                // setTimeout(person = listUsers[i], 1)
+                person = listUsers[i]
             }
         }
-
     }
+    const item = person;
 
-    // {person} = this.state;
+    console.log(item.dob);
+
     return (
-        <div style={{ height: 400, width: '100%' }}>
-            <h1 style={{ height: 20, fontSize: '20px', textAlign: 'center', marginTop: '10px' }}>Thông tin cá nhân</h1>
-            <br></br>
-            <DataGrid
-                rows={person}
-                columns={columns}
-                columnFilter
-                columnSorter
-                pagination
-                autoHeight
-                pageSize={5}
-                rowsPerPageOptions={[5]}
-                // checkboxSelection
-                disableSelectionOnClick
-                tableProps={{
-                    hover: true,
-                }}
-            />
+        <div className="container" style={{ marginTop: '50px' }}>
+            <h1 className="h1">Thông tin cá nhân</h1>
+            <table className="table table-striped">
+                <tbody key={item.id}>
+                    <tr >
+                        <th>Họ tên</th>
+                        <td>{item.fullname}</td>
+                    </tr>
+                    <tr >
+                        <th>Ngày sinh</th>
+                        <td>{item.dob}</td>
+                    </tr>
+                    <tr >
+                        <th>CCCD</th>
+                        <td>{item.id}</td>
+                    </tr>
+                    <tr >
+                        <th>Giới tính</th>
+                        <td>{item.gender}</td>
+                    </tr>
+                    <tr >
+                        <th>Quê quán</th>
+                        <td>{item.village} - {item.district} - {item.province}</td>
+                    </tr>
+                    <tr >
+                        <th>Địa chỉ thường trú</th>
+                        <td>{item.permanentaddress}</td>
+                    </tr>
+                    <tr >
+                        <th>Địa chỉ tạm trú</th>
+                        <td>{item.temporaryaddress}</td>
+                    </tr>
+                    <tr >
+                        <th>Trình độ học vấn</th>
+                        <td>{item.educationallevel}</td>
+                    </tr>
+                    <tr >
+                        <th>Nghề nghiệp</th>
+                        <td>{item.job}</td>
+                    </tr>
+                    <tr >
+                        <th>Tôn giáo</th>
+                        <td>{item.religion}</td>
+                    </tr>
 
+                </tbody>
+            </table>
         </div>
 
 
-    );
+
+    )
 
 }
 
-export default InfoPopulation;
+export default TestInfo;

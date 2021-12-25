@@ -48,8 +48,6 @@ function AccountManager() {
         },
     ];
 
-
-
     const [styleTable, setStyleTable] = useState({
         marginTop: "10px",
         width: "650px",
