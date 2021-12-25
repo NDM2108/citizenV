@@ -52,11 +52,6 @@ const AppBar = styled(MuiAppBar, {
     }),
 }));
 
-setTimeout(console.log(localStorage.getItem('address')),1000)
-setTimeout(console.log(localStorage.getItem('level')),1000)
-
-const addressAccount = localStorage.getItem('address')
-const levelAccount = localStorage.getItem('level')
 
 const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
     ({ theme, open }) => ({
@@ -87,6 +82,8 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 const mdTheme = createTheme();
 
 function DashboardContent() {
+    const addressAccount = localStorage.getItem('address')
+    const levelAccount = localStorage.getItem('level')
     const navigate = useNavigate();
     const [open, setOpen] = React.useState(true);
     const toggleDrawer = () => {
@@ -139,7 +136,7 @@ function DashboardContent() {
 
 
                         <IconButton color="inherit">
-                            <span style={{fontSize: '15px'}}>{levelAccount} : {addressAccount}</span>
+                            <span style={{ fontSize: '15px' }}>{levelAccount} : {addressAccount}</span>
                             <Badge color="secondary">
                                 <AccountBoxIcon />
                             </Badge>
