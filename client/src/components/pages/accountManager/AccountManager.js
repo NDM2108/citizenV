@@ -81,6 +81,7 @@ function AccountManager() {
         columns[0],
         columns[role + 1],
         columns[5],
+        columns[6],
 
     ];
 
