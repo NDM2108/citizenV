@@ -79,9 +79,9 @@ const AddAccount = () => {
       <form form className="newUserForm" onSubmit={handleSubmit}>
         <div className="info">
           <div className="inputBox">
-            <span className="details">Tỉnh, thành phố </span>
+            <span className="details">Tên tài khoản </span>
             <Select
-              placeholder="Tỉnh / Thành phố"
+              placeholder="Tên tài khoản"
               options={inferiors} 
               onChange={handleSelect}/>
           </div>

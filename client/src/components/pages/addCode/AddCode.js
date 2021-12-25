@@ -17,12 +17,27 @@ const AddCode = () => {
         "Authentication": "Bearer " + localStorage.getItem('accessToken')
       }
     })
-    .then(response => response.text())
-    .then(data => {
-      if (data == 'success') {
-        navigate('/admin')
-      }
-    });
+      .then(response => response.text())
+      .then(data => {
+        if (data == 'success') {
+          navigate('/admin')
+        }
+      });
+  }
+
+  const levelAccount = localStorage.getItem('level')
+  console.log(levelAccount);
+
+  var role = '';
+
+  if (levelAccount == 'A1') {
+    role = 'Tỉnh/Thành phố';
+  } else if (levelAccount == 'A2') {
+    role = 'Quận/Huyện';
+  } else if (levelAccount == 'A3') {
+    role = 'Xã/Phường';
+  } else if (levelAccount == 'B1') {
+    role = 'Thôn/Xóm';
   }
 
   return (
@@ -42,7 +57,7 @@ const AddCode = () => {
           </div>
 
           <div className="inputBox">
-            <span className="details">Tỉnh, thành phố </span>
+            <span className="details">{role} </span>
             <input
               className="text_field"
               name="name"
@@ -57,7 +72,7 @@ const AddCode = () => {
               Xác Nhận
             </button>
           </div>
-          
+
         </div>
       </form>
     </div>

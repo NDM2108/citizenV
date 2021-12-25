@@ -12,8 +12,8 @@ function UpdateStatus({ subId, setOpen, params }) {
     const [start, setStart] = useState();
     const [isError, setIsError] = useState(false);
 
-    const { accountID } = useParams();
-    console.log(accountID);
+    // const { accountID } = useParams();
+    // console.log(accountID);
 
 
     const navigate = useNavigate();
@@ -37,7 +37,6 @@ function UpdateStatus({ subId, setOpen, params }) {
             });
             return dataResult
         }
-
         updateData(update)
             .then(response => response.text())
             .then(data => {

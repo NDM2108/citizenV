@@ -6,24 +6,67 @@ import { DataGrid } from '@mui/x-data-grid';
 import { CSmartTable } from '@coreui/react-pro'
 import { MDBTable, MDBTableBody, MDBTableHead } from 'mdbreact';
 
-const columns = [
-  { field: 'id', headerName: 'ID', width: 90 },
-  {
-    field: 'name',
-    headerName: 'Tên',
-    width: 200,
-    editable: true,
-  },
-  {
-    field: 'progress',
-    headerName: 'Tiến độ',
-    width: 200,
-    editable: true,
-  },
-];
+
 
 
 function DataProvinces() {
+  const columns = [
+    { field: 'id', headerName: 'ID', width: 90 },
+    {
+      field: 'name',
+      headerName: 'Tỉnh/Thành phố',
+      width: 200,
+      editable: true,
+    },
+    {
+      field: 'name',
+      headerName: 'Quận/Huyện',
+      width: 200,
+      editable: true,
+    },
+    {
+      field: 'name',
+      headerName: 'Xã/Phường',
+      width: 200,
+      editable: true,
+    },
+    {
+      field: 'name',
+      headerName: 'Thôn/Xóm',
+      width: 200,
+      editable: true,
+    },
+    {
+      field: 'progress',
+      headerName: 'Tiến độ',
+      width: 200,
+      editable: true,
+    },
+  ];
+
+  const levelAccount = localStorage.getItem('level')
+  console.log(levelAccount);
+
+  var role = 0;
+
+  if (levelAccount == 'A1') {
+    role = 0;
+  } else if (levelAccount == 'A2') {
+    role = 1;
+  } else if (levelAccount == 'A3') {
+    role = 2;
+  } else if (levelAccount == 'B1') {
+    role = 3;
+  }
+
+  const cols = [
+    columns[0],
+    columns[role + 1],
+    columns[5],
+
+  ];
+
+
 
   const [province, setProvince] = useState([])
   useEffect(() => {
@@ -35,14 +78,14 @@ function DataProvinces() {
     })
       .then(response => response.json())
       .then(data => {
-        let s 
+        let s
         if (localStorage.getItem('level') === 'A1') s = 'province'
         if (localStorage.getItem('level') === 'A2') s = 'district'
         if (localStorage.getItem('level') === 'A3') s = 'village'
         let progress = []
         for (let i = 0; i < data.length; i++) {
           progress.push(
-            {id: data[i].id, name: data[i][s], progress: data[i].progress}
+            { id: data[i].id, name: data[i][s], progress: data[i].progress }
           )
         }
         console.log(progress);
@@ -58,28 +101,28 @@ function DataProvinces() {
 
   return (
     <MDBTable responsive>
+      <div>
         <div>
-          <div>
-            <h2 className="h2" style={{ textAlign: 'center', marginTop: '30px' }}>Tiến độ khai báo dân số</h2>
-          </div>
-          <div style={styleTable} id="datatable">
-             <DataGrid
-              rows={province}
-              columns={columns}
-              columnFilter
-              columnSorter
-              pagination
-              pageSize={5}
-              autoHeight
-              rowsPerPageOptions={[5]}
-              checkboxSelection
-              disableSelectionOnClick
-              tableProps={{
-                hover: true,
-              }}
-            />
-          </div>
+          <h2 className="h2" style={{ textAlign: 'center', marginTop: '30px' }}>Tiến độ khai báo dân số</h2>
         </div>
+        <div style={styleTable} id="datatable">
+          <DataGrid
+            rows={province}
+            columns={cols}
+            columnFilter
+            columnSorter
+            pagination
+            pageSize={5}
+            autoHeight
+            rowsPerPageOptions={[5]}
+            checkboxSelection
+            disableSelectionOnClick
+            tableProps={{
+              hover: true,
+            }}
+          />
+        </div>
+      </div>
     </MDBTable>
   );
 
