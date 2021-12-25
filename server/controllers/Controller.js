@@ -145,6 +145,19 @@ class Controller {
         }
         console.log(req.body.id, req.body.name)
     }
+
+    async get_inferiors(req, res, next) {
+        if (res.locals.decoded.level == 'A1') {
+            const provinces = await Province.find({})
+            res.json(provinces)
+        } else if (res.locals.decoded.level == 'A2') {
+            const districts = await District.find({'province': res.locals.decoded.address})
+            res.json(districts)
+        } else if (res.locals.decoded.level == 'A3') {
+            const villages = await Village.find({'district': res.locals.decoded.address})
+            res.json(villages)
+        }
+    }
 }
 
 module.exports = new Controller;

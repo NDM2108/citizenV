@@ -1,8 +1,30 @@
 import "./AddAccount.css";
 import { Navigate, useNavigate } from "react-router-dom";
+import { useState } from "react"
+import { useEffect } from "react"
+import Select from 'react-select'
 
 const AddAccount = () => {
   const navigate = useNavigate();
+  const [inferiors, setInferiors] = useState([]);
+
+  useEffect(() => {
+    fetch('http://localhost:5000/get_inferiors', {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+        "Authentication": "Bearer " + localStorage.getItem('accessToken')
+      }
+    })
+      .then(response => response.json())
+      .then(data => {
+        let ops = []
+        for (let i = 0; i < data.length; i++) {
+          ops.push({value: data[i].district, label: data[i].district})
+        }
+      setInferiors(ops)
+      });
+  }, [])
 
   const handleSubmit = e => {
     e.preventDefault()
@@ -30,84 +52,15 @@ const AddAccount = () => {
   }
 
   return (
-    // <div className="new-account" className="" className="background">
-    //   <div className="form-container">
-    //     <form className="newUserForm" onSubmit={handleSubmit}>
-    //       <h1 className="h3">Tạo Tài Khoản Mới</h1>
-    //       <div className="newUserItem">
-    //         <label>Tài Khoản - ID</label>
-    //         <input
-    //           className="text_field"
-    //           name="id"
-    //           type="text"
-    //           placeholder=""
-    //           required
-    //         />
-    //       </div>
-
-    //       <div className="newUserItem">
-    //         <label>Tỉnh/Thành Phố</label>
-    //         <input
-    //           className="text_field"
-    //           name="address"
-    //           type="text"
-    //           placeholder=""
-    //           required
-    //         />
-    //       </div>
-
-    //       <div className="newUserItem" className="col-12 form-group">
-    //         <label>Mật Khẩu</label>
-    //         <input
-    //           className="text_field"
-    //           name="pass"
-    //           type="password"
-    //           placeholder=""
-    //           required
-    //         />
-    //       </div>
-
-    //       <div className="newUserItem" className="col-12 form-group">
-    //         <label>Nhập Lại Mật Khẩu</label>
-    //         <input
-    //           className="text_field"
-    //           name="rePass"
-    //           type="password"
-    //           placeholder=""
-    //           required
-    //         />
-    //       </div>
-
-    //       <button className="newUserButton" type="submit">
-    //         Xác Nhận
-    //       </button>
-    //     </form>
-    //   </div>
-    // </div>
     <div className="container-add-account-form">
       <div className="title"> Thêm tài khoản</div>
       <form form className="newUserForm" onSubmit={handleSubmit}>
         <div className="info">
           <div className="inputBox">
-            <span className="details"> Tài khoản - ID</span>
-            <input
-              className="text_field"
-              name="id"
-              type="text"
-              placeholder=""
-              required
-            />
-          </div>
-
-          <div className="inputBox">
             <span className="details">Tỉnh, thành phố </span>
-            <input
-              className="text_field"
-              name="address"
-              type="text"
-              placeholder=""
-              required
-            />
+            <Select
+              placeholder="Tỉnh / Thành phố"
+              options={inferiors} />
           </div>
 
           <div className="inputBox">
@@ -136,7 +89,7 @@ const AddAccount = () => {
               Xác Nhận
             </button>
           </div>
-          
+
         </div>
       </form>
     </div>

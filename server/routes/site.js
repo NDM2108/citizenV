@@ -23,4 +23,6 @@ router.post('/get_villages', controller.get_villages)
 
 router.post('/add_code', verifyToken, controller.add_code)
 
+router.post('/get_inferiors', verifyToken, controller.get_inferiors)
+
 module.exports = router
