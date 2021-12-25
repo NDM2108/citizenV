@@ -33,14 +33,34 @@ const EditAccount = () => {
 
 
     const [accounts, setAccounts] = useState([])
+    // useEffect(() => {
+    //     axios.get('http://localhost:5000/accounts')
+    //         .then(response => {
+    //             const accounts = response.data
+    //             setAccounts(accounts)
+    //         })
+    // }, [])
+    // console.log(accounts);
     useEffect(() => {
-        axios.get('http://localhost:5000/accounts')
+        fetch('http://localhost:5000/accounts', {
+            method: "POST",
+            body: JSON.stringify({'id': localStorage.getItem('id')}),
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+            }
+        })
             .then(response => {
-                const accounts = response.data
-                setAccounts(accounts)
+                if(response.status == 200) {
+                    return response.json()
+                }
+            })
+            .then(data => {
+                console.log(data)
+                setAccounts(data)
             })
     }, [])
     console.log(accounts);
+
 
     var account = {}
 

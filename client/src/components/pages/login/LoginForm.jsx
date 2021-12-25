@@ -18,6 +18,7 @@ const theme = createTheme();
 
 export default function LoginForm() {
   const navigate = useNavigate();
+  
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -25,32 +26,32 @@ export default function LoginForm() {
       username: data.get('username'),
       password: data.get('password')
     });
-    var login = {id: data.get('id'), password: data.get('password')}
+    var login = { id: data.get('id'), password: data.get('password') }
     fetch('http://localhost:5000/login', {
       method: "POST",
       body: JSON.stringify(login),
       headers: {
-          "Content-type": "application/json; charset=UTF-8"
+        "Content-type": "application/json; charset=UTF-8"
       }
     })
-    .then(response => {
-      if (response.status == 401) {
-        alert('Tên đăng nhập hoặc mật khẩu không đúng')
-      } else {
-        return response.json()
-      }
-    })
-    .then(data => {
-      localStorage.setItem('accessToken', data.accessToken);
-      localStorage.setItem('level', data.level);
-      localStorage.setItem('id', data.id);
-      localStorage.setItem('address', data.address);
-      console.log(localStorage.getItem('accessToken'));
-      console.log(localStorage.getItem('level'));
-      console.log(localStorage.getItem('id'));
-      console.log(localStorage.getItem('address'));
-      navigate('/admin')
-    });
+      .then(response => {
+        if (response.status == 401) {
+          alert('Tên đăng nhập hoặc mật khẩu không đúng')
+        } else {
+          return response.json()
+        }
+      })
+      .then(data => {
+        localStorage.setItem('accessToken', data.accessToken);
+        localStorage.setItem('level', data.level);
+        localStorage.setItem('id', data.id);
+        localStorage.setItem('address', data.address);
+        console.log(localStorage.getItem('accessToken'));
+        console.log(localStorage.getItem('level'));
+        console.log(localStorage.getItem('id'));
+        console.log(localStorage.getItem('address'));
+        navigate('/admin')
+      });
 
   };
 
@@ -69,7 +70,7 @@ export default function LoginForm() {
           <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
             <LockOutlinedIcon />
           </Avatar>
-          
+
           <Typography component="h1" variant="h5">
             Login
           </Typography>
@@ -93,17 +94,18 @@ export default function LoginForm() {
               type="password"
               id="password"
               autoComplete="current-password"
+
             />
-            <FormControlLabel
+            {/* <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
-            />
+            /> */}
             <Button
               type="submit"
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
-              // onClick={"document.location.reload(true)"}
+            // onClick={"document.location.reload(true)"}
             >
               Login
             </Button>

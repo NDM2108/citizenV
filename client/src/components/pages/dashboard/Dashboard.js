@@ -17,6 +17,7 @@ import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import MenuIcon from '@mui/icons-material/Menu';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import { mainListItems } from './listItems';
 import PopulationDeclaration from '../populationDeclaration/PopulationDeclaration';
@@ -51,6 +52,7 @@ const AppBar = styled(MuiAppBar, {
     }),
 }));
 
+
 const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
     ({ theme, open }) => ({
         '& .MuiDrawer-paper': {
@@ -80,6 +82,8 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 const mdTheme = createTheme();
 
 function DashboardContent() {
+    const addressAccount = localStorage.getItem('address')
+    const levelAccount = localStorage.getItem('level')
     const navigate = useNavigate();
     const [open, setOpen] = React.useState(true);
     const toggleDrawer = () => {
@@ -129,6 +133,14 @@ function DashboardContent() {
 
                             TỔNG CỤC THỐNG KÊ
                         </Typography>
+
+
+                        <IconButton color="inherit">
+                            <span style={{ fontSize: '15px' }}>{levelAccount} : {addressAccount}</span>
+                            <Badge color="secondary">
+                                <AccountBoxIcon />
+                            </Badge>
+                        </IconButton>
 
                         <IconButton onClick={() => logOut()} style={{}} color="inherit">
                             <Badge color="secondary">
