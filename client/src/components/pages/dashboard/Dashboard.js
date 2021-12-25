@@ -17,6 +17,7 @@ import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import MenuIcon from '@mui/icons-material/Menu';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import { mainListItems } from './listItems';
 import PopulationDeclaration from '../populationDeclaration/PopulationDeclaration';
@@ -50,6 +51,12 @@ const AppBar = styled(MuiAppBar, {
         }),
     }),
 }));
+
+setTimeout(console.log(localStorage.getItem('address')),1000)
+setTimeout(console.log(localStorage.getItem('level')),1000)
+
+const addressAccount = localStorage.getItem('address')
+const levelAccount = localStorage.getItem('level')
 
 const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
     ({ theme, open }) => ({
@@ -129,6 +136,14 @@ function DashboardContent() {
 
                             TỔNG CỤC THỐNG KÊ
                         </Typography>
+
+
+                        <IconButton color="inherit">
+                            <span style={{fontSize: '15px'}}>{levelAccount} : {addressAccount}</span>
+                            <Badge color="secondary">
+                                <AccountBoxIcon />
+                            </Badge>
+                        </IconButton>
 
                         <IconButton onClick={() => logOut()} style={{}} color="inherit">
                             <Badge color="secondary">
