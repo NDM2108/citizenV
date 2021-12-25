@@ -126,7 +126,7 @@ class Controller {
             let district = {
                 'district': req.body.name,
                 'id': req.body.id,
-                'province': province.province,
+                'province': res.locals.decoded.address,
                 'progress': 'Chưa hoàn thành'
             }
             let connection = mongoose.connection;
@@ -137,7 +137,7 @@ class Controller {
             let village = {
                 'village': req.body.name,
                 'id': req.body.id,
-                'district': district.district,
+                'district': res.locals.decoded.address,
                 'progress': 'Chưa hoàn thành'
             }
             let connection = mongoose.connection;
