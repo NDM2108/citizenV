@@ -25,4 +25,6 @@ router.post('/add_code', verifyToken, controller.add_code)
 
 router.get('/get_inferiors', verifyToken, controller.get_inferiors)
 
+router.post('/update_account', verifyToken, controller.update_account)
+
 module.exports = router

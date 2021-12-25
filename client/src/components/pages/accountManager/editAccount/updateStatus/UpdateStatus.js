@@ -6,9 +6,6 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 
-
-
-
 function UpdateStatus({ subId, setOpen, params }) {
     const [valueStatus, setValueStatus] = useState(false);
     const [date, setDate] = useState();
@@ -33,7 +30,8 @@ function UpdateStatus({ subId, setOpen, params }) {
             const dataResult = await fetch('http://localhost:5000/update_account', {
                 method: "POST",
                 headers: {
-                    "Content-Type": "application/json"
+                    "Content-type": "application/json; charset=UTF-8",
+                    "Authentication": "Bearer " + localStorage.getItem('accessToken')
                 },
                 body: JSON.stringify(update),
             });
@@ -55,7 +53,7 @@ function UpdateStatus({ subId, setOpen, params }) {
             <Link to={"/accMan/"}>
                 <CloseIcon className="status-close" />
             </Link>
-            <form onSubmit={handleSubmit} method="post" action='http://localhost:5000/update_account'>
+            <form onSubmit={handleSubmit}>
                 <div className="status-info">
                     <input
                         type="radio"

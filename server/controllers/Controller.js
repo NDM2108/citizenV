@@ -186,6 +186,10 @@ class Controller {
             res.json(clans)
         }
     }
+
+    update_account(req, res, next) {
+        console.log(req.body);
+    }
 }
 
 module.exports = new Controller;
