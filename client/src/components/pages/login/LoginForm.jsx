@@ -44,9 +44,11 @@ export default function LoginForm() {
       localStorage.setItem('accessToken', data.accessToken);
       localStorage.setItem('level', data.level);
       localStorage.setItem('id', data.id);
+      localStorage.setItem('address', data.address);
       console.log(localStorage.getItem('accessToken'));
       console.log(localStorage.getItem('level'));
       console.log(localStorage.getItem('id'));
+      console.log(localStorage.getItem('address'));
       navigate('/admin')
     });
 

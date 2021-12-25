@@ -14,7 +14,7 @@ class Controller {
                 if (account == null) {
                     res.sendStatus(401)
                 } else if (account.password == req.body.password) {
-                    const accessToken = jwt.sign({"id": account.id, "level": account.level}, process.env.ACCESS_TOKEN_SECRET, {
+                    const accessToken = jwt.sign({"id": account.id, "level": account.level, "address": account.address}, process.env.ACCESS_TOKEN_SECRET, {
                         expiresIn:'1h'
                     })
                     res.json({'accessToken':accessToken, 'id': account.id, 'level':account.level})
@@ -124,7 +124,8 @@ class Controller {
             let district = {
                 'district': req.body.name,
                 'id': req.body.id,
-                'province': province.province
+                'province': province.province,
+                'progress': 'Chưa hoàn thành'
             }
             let connection = mongoose.connection;
             connection.collection('districts').insertOne(district)
@@ -134,7 +135,8 @@ class Controller {
             let village = {
                 'village': req.body.name,
                 'id': req.body.id,
-                'district': district.district
+                'district': district.district,
+                'progress': 'Chưa hoàn thành'
             }
             let connection = mongoose.connection;
             connection.collection('village').insertOne(village)
