@@ -14,13 +14,13 @@ function AccountManager() {
     useEffect(() => {
         fetch('http://localhost:5000/accounts', {
             method: "POST",
-            body: JSON.stringify({'id': localStorage.getItem('id')}),
+            body: JSON.stringify({ 'id': localStorage.getItem('id') }),
             headers: {
                 "Content-type": "application/json; charset=UTF-8"
             }
         })
             .then(response => {
-                if(response.status == 200) {
+                if (response.status == 200) {
                     return response.json()
                 }
             })
@@ -31,13 +31,31 @@ function AccountManager() {
     }, [])
     console.log(account);
 
+
+
+    const levelAccount = localStorage.getItem('level')
+    console.log(levelAccount);
+
+    var role = 0;
+
+    if (levelAccount == 'A1') {
+        role = 0;
+    } else if (levelAccount == 'A2') {
+        role = 1;
+    } else if (levelAccount == 'A3') {
+        role = 2;
+    } else if (levelAccount == 'B1') {
+        role = 3;
+    }
+
+
     const navigate = useNavigate();
     const columns = [
         { field: "id", headerName: "Account ID", width: 100 },
         { field: "address", headerName: "Tỉnh/Thành phố", width: 200 },
-        // { field: "district", headerName: "Quận/Huyện", width: 250 },
-        // { field: "xa", headerName: "Xã/Phường", width: 250 },
-        // { field: "xom", headerName: "Thôn/Xóm", width: 250 },
+        { field: "address", headerName: "Quận/Huyện", width: 250 },
+        { field: "address", headerName: "Xã/Phường", width: 250 },
+        { field: "address", headerName: "Thôn/Xóm", width: 250 },
         { field: "status", headerName: "Trạng Thái", width: 150 },
         {
             field: "action",
@@ -59,6 +77,13 @@ function AccountManager() {
         },
     ];
 
+    const cols = [
+        columns[0],
+        columns[role + 1],
+        columns[5],
+
+    ];
+
     const [styleTable, setStyleTable] = useState({
         marginTop: "10px",
         width: "650px",
@@ -77,7 +102,7 @@ function AccountManager() {
                 <div id="datatable" style={styleTable}>
                     <DataGrid
                         rows={account}
-                        columns={columns}
+                        columns={cols}
                         // eslint-disable-next-line
                         columnSorter
                         columnFilter
