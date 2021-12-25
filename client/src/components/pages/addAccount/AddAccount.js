@@ -7,6 +7,9 @@ import Select from 'react-select'
 const AddAccount = () => {
   const navigate = useNavigate();
   const [inferiors, setInferiors] = useState([]);
+  var selectedAddress
+  var selectedId
+  var ops = []
 
   useEffect(() => {
     fetch('http://localhost:5000/get_inferiors', {
@@ -18,19 +21,34 @@ const AddAccount = () => {
     })
       .then(response => response.json())
       .then(data => {
-        let ops = []
-        for (let i = 0; i < data.length; i++) {
-          ops.push({value: data[i].district, label: data[i].district})
+        if (localStorage.getItem('level') == 'A1') {
+          for (let i = 0; i < data.length; i++) {
+            ops.push({value: data[i].province, label: data[i].province, id: data[i].id})
+          }
+          console.log(ops);
+        } else if (localStorage.getItem('level') == 'A2') {
+          for (let i = 0; i < data.length; i++) {
+            ops.push({value: data[i].district, label: data[i].district, id: data[i].id})
+          }
+        } else if (localStorage.getItem('level') == 'A3') {
+          for (let i = 0; i < data.length; i++) {
+            ops.push({value: data[i].village, label: data[i].village, id: data[i].id})
+          }
         }
-      setInferiors(ops)
+        setInferiors(ops)
       });
   }, [])
+
+  const handleSelect = selected => {
+    selectedAddress = selected.value
+    selectedId = selected.id
+  }
 
   const handleSubmit = e => {
     e.preventDefault()
     const data = new FormData(e.currentTarget);
     if (data.get('pass') == data.get('rePass')) {
-      const account = { id: data.get('id'), address: data.get('address'), password: data.get('pass') }
+      const account = { address: selectedAddress, password: data.get('pass'), id: selectedId}
       console.log(account);
       fetch('http://localhost:5000/add_account', {
         method: "POST",
@@ -60,7 +78,8 @@ const AddAccount = () => {
             <span className="details">Tỉnh, thành phố </span>
             <Select
               placeholder="Tỉnh / Thành phố"
-              options={inferiors} />
+              options={inferiors} 
+              onChange={handleSelect}/>
           </div>
 
           <div className="inputBox">
