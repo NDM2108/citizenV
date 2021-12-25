@@ -155,7 +155,7 @@ class Controller {
                 'progress': 'Chưa hoàn thành'
             }
             let connection = mongoose.connection;
-            connection.collection('village').insertOne(village)
+            connection.collection('villages').insertOne(village)
             res.send('success')
         }
         console.log(req.body.id, req.body.name)

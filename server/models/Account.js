@@ -24,6 +24,14 @@ const Account = new Schema({
     superior: {
         type: String,
         required: true
+    },
+    activeStart: {
+        type: Date,
+        required: true
+    },
+    activeEnd: {
+        type: Date,
+        required: true
     }
 })
 
