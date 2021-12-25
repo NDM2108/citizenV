@@ -44,13 +44,13 @@ const EditAccount = () => {
     useEffect(() => {
         fetch('http://localhost:5000/accounts', {
             method: "POST",
-            body: JSON.stringify({'id': localStorage.getItem('id')}),
+            body: JSON.stringify({ 'id': localStorage.getItem('id') }),
             headers: {
                 "Content-type": "application/json; charset=UTF-8"
             }
         })
             .then(response => {
-                if(response.status == 200) {
+                if (response.status == 200) {
                     return response.json()
                 }
             })
@@ -81,7 +81,6 @@ const EditAccount = () => {
 
     // func delete account
     const navigate = useNavigate();
-
 
     return (
         <div className="account">
@@ -124,7 +123,7 @@ const EditAccount = () => {
                                 <DomainIcon className="accountShowIcon" />
                                 <span>Thuộc :</span>
                             </span>
-                            <span>{account.superior}</span>
+                            <span>{account.superiorAddress}</span>
                         </div>
 
                         <div className="accountShowInfo">
@@ -147,7 +146,7 @@ const EditAccount = () => {
 
                 {/* ----------------------------------------------------------------- */}
                 <div className="accountUpdate">
-                    <span className="accountUpdateTitle">Edit</span>
+                    <span className="accountUpdateTitle">Chỉnh sửa</span>
                     <form className="accountUpdateForm">
                         <div className="accountUpdateLeft">
                             <div>
@@ -183,7 +182,10 @@ const EditAccount = () => {
                                     alt=""
                                 />
                             </div>
-                            <button className="accountUpdateButton">Update</button>
+                            <Link to = "/accMan/update">
+                                <button className="accountUpdateButton">Update</button>
+
+                            </Link>
                         </div>
                     </form>
                 </div>

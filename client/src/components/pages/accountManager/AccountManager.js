@@ -50,7 +50,7 @@ function AccountManager() {
                             <button
                                 className="btnEdit"
                             >
-                                Edit
+                                Chỉnh sửa
                             </button>
                         </Link>
                     </>

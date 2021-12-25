@@ -13,37 +13,10 @@ import { Outlet, Link } from "react-router-dom";
 import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
 import VpnKeyIcon from '@mui/icons-material/VpnKey';
 
-// const ListItemData = [
-//   {
-//     title: "Home",
-//     path: "/home",
-//     icon: <DashboardIcon />,
-//     cName: "nav-text",
-//   },
-//   {
-//     title: "Analytics",
-//     path: "/analytics",
-//     icon: <PeopleIcon />,
-//     cName: "nav-text",
-//   },
-//   {
-//     title: "Accounts",
-//     path: "/accounts",
-//     icon: <BarChartIcon />,
-//     cName: "nav-text",
-//   },
-
-//   {
-//     title: "Population",
-//     path: "/population",
-//     icon: <AssignmentIcon />,
-//     cName: "nav-text",
-//   },
-// ];
 
 export const mainListItems = (
   <div>
-    <Link to = '/TimeTable' style = {{textDecoration: 'none', color: 'black'}}>
+    <Link to='/TimeTable' style={{ textDecoration: 'none', color: 'black' }}>
       <ListItem button>
         <ListItemIcon>
           <DashboardIcon />
@@ -51,68 +24,62 @@ export const mainListItems = (
         <ListItemText primary="Bảng điều khiển" />
       </ListItem>
     </Link>
-    
-    <Link to = '/accMan' style = {{textDecoration: 'none', color: 'black'}}>
-    <ListItem button>
-      <ListItemIcon>
-        <ManageAccountsIcon />
-      </ListItemIcon>
-      <ListItemText primary="Quản lý tài khoản" />
-    </ListItem>
-    </Link>
 
-    <Link to = '/addCode' style = {{textDecoration: 'none', color: 'black'}}>
-    <ListItem button>
-      <ListItemIcon>
-        <VpnKeyIcon />
-      </ListItemIcon>
-      <ListItemText primary="Cấp mã" />
-    </ListItem>
-    </Link>
-
-    
-    <Link to = '/chart' style = {{textDecoration: 'none', color: 'black'}}>
-    <ListItem button>
-      <ListItemIcon>
-        <BarChartIcon />
-      </ListItemIcon>
-      <ListItemText primary="Phân tích" />
-    </ListItem>
-    </Link>
-
-    <Link to = '/addaccount' style = {{textDecoration: 'none', color: 'black'}}>
-    <ListItem button>
-      <ListItemIcon>
-        <PersonAddAltIcon />
-      </ListItemIcon>
-      <ListItemText primary="Cấp tài khoản" />
-    </ListItem>
-    </Link>
-
-    <Link to = '/population' style = {{textDecoration: 'none', color: 'black'}}>
-    <ListItem button>
-      <ListItemIcon>
-        <PeopleIcon />
-      </ListItemIcon>
-      <ListItemText primary="Thông tin người dân" />
-    </ListItem>
-    </Link>
-
-    <Link to = '/declaration' style = {{textDecoration: 'none', color: 'black'}} >
-    <ListItem button>
-    {/* <ListItem button onClick={(e) => {e.preventDefault(); window.location.href='./declaration'}}> */}
+    <Link to='/accMan' style={{ textDecoration: 'none', color: 'black' }}>
+      <ListItem button>
         <ListItemIcon>
-        <AssignmentIcon />
-      </ListItemIcon>
-      <ListItemText primary="Khai báo" />
-    </ListItem>
+          <ManageAccountsIcon />
+        </ListItemIcon>
+        <ListItemText primary="Quản lý tài khoản" />
+      </ListItem>
+    </Link>
+
+    <Link to='/addCode' style={{ textDecoration: 'none', color: 'black' }}>
+      <ListItem button>
+        <ListItemIcon>
+          <VpnKeyIcon />
+        </ListItemIcon>
+        <ListItemText primary="Cấp mã" />
+      </ListItem>
+    </Link>
+
+    <Link to='/addaccount' style={{ textDecoration: 'none', color: 'black' }}>
+      <ListItem button>
+        <ListItemIcon>
+          <PersonAddAltIcon />
+        </ListItemIcon>
+        <ListItemText primary="Cấp tài khoản" />
+      </ListItem>
+    </Link>
+
+    <Link to='/population' style={{ textDecoration: 'none', color: 'black' }}>
+      <ListItem button>
+        <ListItemIcon>
+          <PeopleIcon />
+        </ListItemIcon>
+        <ListItemText primary="Thông tin người dân" />
+      </ListItem>
+    </Link>
+
+    <Link to='/chart' style={{ textDecoration: 'none', color: 'black' }}>
+      <ListItem button>
+        <ListItemIcon>
+          <BarChartIcon />
+        </ListItemIcon>
+        <ListItemText primary="Phân tích" />
+      </ListItem>
+    </Link>
+
+    <Link to='/declaration' style={{ textDecoration: 'none', color: 'black' }} >
+      <ListItem button>
+        <ListItemIcon>
+          <AssignmentIcon />
+        </ListItemIcon>
+        <ListItemText primary="Khai báo" />
+      </ListItem>
     </Link>
 
     <Outlet />
-
-
-   
-    
 
   </div>
 );
