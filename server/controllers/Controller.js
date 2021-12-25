@@ -4,6 +4,7 @@ const Account = require('../models/Account')
 const Province = require('../models/Province')
 const District = require('../models/District')
 const Village = require('../models/Village')
+const Clan = require('../models/Clan')
 const Citizen_info = require('../models/Citizen_info')
 const jwt = require('jsonwebtoken')
 
@@ -136,7 +137,6 @@ class Controller {
             connection.collection('provinces').insertOne(province)
             res.send('success')
         } else if (res.locals.decoded.level == 'A2') {
-            const province = Province.findOne({'id': res.locals.decoded.id})
             let district = {
                 'district': req.body.name,
                 'id': req.body.id,
@@ -147,7 +147,6 @@ class Controller {
             connection.collection('districts').insertOne(district)
             res.send('success')
         } else if (res.locals.decoded.level == 'A3') {
-            const district = District.findOne({'id': res.locals.decoded.id})
             let village = {
                 'village': req.body.name,
                 'id': req.body.id,
@@ -156,6 +155,16 @@ class Controller {
             }
             let connection = mongoose.connection;
             connection.collection('villages').insertOne(village)
+            res.send('success')
+        } else if (res.locals.decoded.level == 'B1') {
+            let clan = {
+                'clan': req.body.name,
+                'id': req.body.id,
+                'village': res.locals.decoded.address,
+                'progress': 'Chưa hoàn thành'
+            }
+            let connection = mongoose.connection;
+            connection.collection('clans').insertOne(clan)
             res.send('success')
         }
         console.log(req.body.id, req.body.name)
@@ -172,6 +181,9 @@ class Controller {
         } else if (res.locals.decoded.level == 'A3') {
             const villages = await Village.find({'district': res.locals.decoded.address})
             res.json(villages)
+        } else if (res.locals.decoded.level == 'B1') {
+            const clans = await Clan.find({'village': res.locals.decoded.address})
+            res.json(clans)
         }
     }
 }
