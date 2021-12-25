@@ -1,16 +1,10 @@
-import { useState, useContext, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import axios from 'axios';
 import { useParams } from "react-router-dom";
 import "./EditAccount.css";
 import { CalendarToday, PermIdentity, Publish } from "@material-ui/icons";
 import { Link } from "react-router-dom";
-import Button from "@mui/material/Button";
-import DeleteIcon from "@mui/icons-material/Delete";
 import { useNavigate } from "react-router-dom";
-import GppGoodIcon from "@mui/icons-material/GppGood";
-import AssignmentIndIcon from "@mui/icons-material/AssignmentInd";
-// import ChangePassword from "./ChangeSubPassword/ChangeSubPassword";
-// import ChangeSubStatus from "./ChangeSubStatus/ChangeSubStatus";
 import DonutLargeIcon from "@mui/icons-material/DonutLarge";
 import SchoolIcon from "@mui/icons-material/School";
 import DomainIcon from "@mui/icons-material/Domain";
@@ -33,14 +27,7 @@ const EditAccount = () => {
 
 
     const [accounts, setAccounts] = useState([])
-    // useEffect(() => {
-    //     axios.get('http://localhost:5000/accounts')
-    //         .then(response => {
-    //             const accounts = response.data
-    //             setAccounts(accounts)
-    //         })
-    // }, [])
-    // console.log(accounts);
+
     useEffect(() => {
         fetch('http://localhost:5000/accounts', {
             method: "POST",
@@ -74,7 +61,21 @@ const EditAccount = () => {
     }
     console.log(account);
 
-    const levels = ["A1", "A2", "A3", "B1", "B2"];
+    const levelAccount = localStorage.getItem('level')
+    console.log(levelAccount);
+
+    var role = '';
+
+    if (levelAccount == 'A1') {
+        role = 'Tỉnh/Thành phố';
+    } else if (levelAccount == 'A2') {
+        role = 'Quận/Huyện';
+    } else if (levelAccount == 'A3') {
+        role = 'Xã/Phường';
+    } else if (levelAccount == 'B1') {
+        role = 'Thôn/Xóm';
+    }
+
 
     // state for dialog
     const [open, setOpen] = useState(false);
@@ -100,7 +101,7 @@ const EditAccount = () => {
                         </div>
                     </div>
                     <div className="accountShowBottom">
-                        <span className="accountShowTitle">Account Details</span>
+                        <span className="accountShowTitle">Thông tin tài khoản</span>
 
                         <div className="accountShowInfo">
                             <span className="accountShowInfoTitle">
@@ -113,7 +114,7 @@ const EditAccount = () => {
                         <div className="accountShowInfo">
                             <span className="accountShowInfoTitle">
                                 <DomainIcon className="accountShowIcon" />
-                                <span>Tỉnh/Thành phố :</span>
+                                <span>{role}:</span>
                             </span>
                             <span>{account.address}</span>
                         </div>
@@ -121,7 +122,7 @@ const EditAccount = () => {
                         <div className="accountShowInfo">
                             <span className="accountShowInfoTitle">
                                 <DomainIcon className="accountShowIcon" />
-                                <span>Thuộc :</span>
+                                <span>Thuộc:</span>
                             </span>
                             <span>{account.superiorAddress}</span>
                         </div>
@@ -176,16 +177,17 @@ const EditAccount = () => {
 
                         <div className="accountUpdateRight">
                             <div className="accountUpdateUpload">
-                                <img
+                                {/* <img
                                     className="accountUpdateImg"
                                     src="https://www.gso.gov.vn/wp-content/uploads/2021/01/gso_logo.png"
                                     alt=""
-                                />
-                            </div>
-                            <Link to = "/accMan/update">
-                                <button className="accountUpdateButton">Update</button>
+                                /> */}
 
+                            </div>
+                            <Link to="/accMan/update">
+                                <button className="accountUpdateButton">Update</button>
                             </Link>
+
                         </div>
                     </form>
                 </div>

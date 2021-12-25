@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Routes, Route, Outlet } from "react-router-dom";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { styled, createTheme, ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import MuiDrawer from '@mui/material/Drawer';
@@ -12,9 +12,6 @@ import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import Badge from '@mui/material/Badge';
-// import NotificationsIcon from '@mui/icons-material/Notifications';
-import Container from '@mui/material/Container';
-import Grid from '@mui/material/Grid';
 import MenuIcon from '@mui/icons-material/Menu';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
@@ -192,7 +189,6 @@ function DashboardContent() {
                                 <Route path="/accMan/update" element={<UpdateStatus />} />
                                 <Route path="/addaccount" element={<AddAccount />} />
                                 <Route path="/population" element={<DataPopulations />} />
-                                {/* <Route path="/population/:personID" element={<TestInfo />} /> */}
                                 <Route path="/population/:personID" element={<InfoPopulation />} />
                                 <Route path="/declaration" element={<PopulationDeclaration />} />
                             </Routes>

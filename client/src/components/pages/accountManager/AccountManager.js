@@ -53,9 +53,9 @@ function AccountManager() {
     const columns = [
         { field: "id", headerName: "Account ID", width: 100 },
         { field: "address", headerName: "Tỉnh/Thành phố", width: 200 },
-        { field: "address", headerName: "Quận/Huyện", width: 250 },
-        { field: "address", headerName: "Xã/Phường", width: 250 },
-        { field: "address", headerName: "Thôn/Xóm", width: 250 },
+        { field: "address", headerName: "Quận/Huyện", width: 200 },
+        { field: "address", headerName: "Xã/Phường", width: 200 },
+        { field: "address", headerName: "Thôn/Xóm", width: 200 },
         { field: "status", headerName: "Trạng Thái", width: 150 },
         {
             field: "action",
