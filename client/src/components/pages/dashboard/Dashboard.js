@@ -144,6 +144,7 @@ function DashboardContent() {
                         </IconButton>
 
                         <IconButton onClick={() => logOut()} style={{}} color="inherit">
+                            <span style={{ fontSize: '15px' }}>Đăng xuất</span>
                             <Badge color="secondary">
                                 <ExitToAppIcon />
                             </Badge>

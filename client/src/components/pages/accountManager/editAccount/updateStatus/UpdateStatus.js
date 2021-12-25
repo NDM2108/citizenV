@@ -21,13 +21,41 @@ function UpdateStatus({ subId, setOpen, params }) {
 
     const navigate = useNavigate();
 
+    const [update, setUpdate] = useState({
+        status: '',
+        timeopen: '',
+        timeclosed: '',
+    });
+
+    const handleSubmit = e => {
+        e.preventDefault()
+        async function updateData(update) {
+            const dataResult = await fetch('http://localhost:5000/update_account', {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(update),
+            });
+            return dataResult
+        }
+
+        updateData(update)
+            .then(response => response.text())
+            .then(data => {
+                if (data == 'success') {
+                    navigate('/accMan')
+                }
+            })
+    }
+
 
     return (
         <div className="status-container">
-            <Link to={"/accMan/" }>
+            <Link to={"/accMan/"}>
                 <CloseIcon className="status-close" />
             </Link>
-            <form /* onSubmit={handleSubmit} */>
+            <form onSubmit={handleSubmit} method="post" action='http://localhost:5000/update_account'>
                 <div className="status-info">
                     <input
                         type="radio"
@@ -61,6 +89,7 @@ function UpdateStatus({ subId, setOpen, params }) {
                 <div className="status-event">
                     <p>Ngày bắt đầu</p>
                     <input
+                        name='timeopen'
                         type="date"
                         className="status-date"
                         onChange={(e) => setStart(e.target.valueAsDate)}
@@ -69,16 +98,13 @@ function UpdateStatus({ subId, setOpen, params }) {
                     />
                     <p>Ngày kết thúc</p>
                     <input
+                        name='timeclosed'
                         type="date"
                         className="status-date"
                         onChange={(e) => setDate(e.target.valueAsDate)}
                         onFocus={() => setIsError(false)}
                         disabled={!valueStatus}
                     />
-
-                    {/* {isError && (
-                        <span className="error-message">Sự kiện xảy ra lỗi</span>
-                    )} */}
 
                     <Button type="submit" variant="outlined" className="status-button">
                         Submit
