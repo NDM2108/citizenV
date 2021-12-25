@@ -84,7 +84,8 @@ class Controller {
             'address': req.body.address,
             'level': level,
             'status': "Active",
-            'superior': res.locals.decoded.id
+            'superior': res.locals.decoded.id,
+            'superiorAddress': res.locals.decoded.address
         }
         var connection = mongoose.connection;
         connection.collection('accounts').insertOne(account)
