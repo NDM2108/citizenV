@@ -43,7 +43,7 @@ function UpdateStatus({ subId, setOpen, params }) {
             .then(response => response.text())
             .then(data => {
                 if (data == 'success') {
-                    navigate('/accMan')
+                    navigate("/accMan/" + accountID)
                 }
             })
     }
@@ -119,11 +119,12 @@ function UpdateStatus({ subId, setOpen, params }) {
                         disabled={!update.status}
                     />
 
-                    <Button type="submit" variant="outlined" className="status-button">
+                    {/* <Button type="submit" className="update-button">
                         Submit
-                    </Button>
-
-
+                    </Button> */}
+                    <button type='submit' className='update-button'>
+                        Submit
+                    </button>
                 </div>
             </form>
         </div>
