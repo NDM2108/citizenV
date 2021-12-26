@@ -4,14 +4,15 @@ import './Footer.css'
 export default function Footer(props) {
     return (
         <div className="footer">
-            <div className="khungtrai_footer">
+            <div className="left_side">
                 <div>
-                    Văn phòng Ban Chỉ đạo Tổng điều tra dân số và nhà ở trung ương
+                    <h1 style={{fontSize: "14px"}}>CitizenV - Hệ thống điều tra dân số</h1>  
                 </div>
-                <div>Địa chỉ: 54 Nguyễn Chí Thanh – Đống Đa – Hà Nội</div>
-                <div>Email: TKDSLD@gso.gov.vn.</div>
+
+                <div>Thông tin liên hệ</div>
+                <div>Email: dangnamlss@gmail.com.</div>
             </div>
-            <div className="khungphai_footer">
+            <div className="right_side">
                 <div>Nhóm phát triển: Cường - Mạnh - Nam</div>
                 <div>ĐH Công Nghệ - Đại Học Quốc Gia Hà Nội</div>
             </div>
