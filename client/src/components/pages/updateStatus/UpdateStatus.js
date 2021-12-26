@@ -21,7 +21,8 @@ function UpdateStatus({ subId, setOpen, params }) {
     const [update, setUpdate] = useState({
         status: false,
         timeopen: '',
-        timeclosed: '',
+        timeclose: '',
+        id: accountID
     });
 
     const handleSubmit = e => {
@@ -110,7 +111,7 @@ function UpdateStatus({ subId, setOpen, params }) {
                     />
                     <p>Ngày kết thúc</p>
                     <input
-                        name='timeclosed'
+                        name='timeclose'
                         type="date"
                         className="status-date"
                         onChange={handleChange}

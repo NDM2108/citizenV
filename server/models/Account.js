@@ -25,12 +25,12 @@ const Account = new Schema({
         type: String,
         required: true
     },
-    activeStart: {
-        type: Date,
+    timeopen: {
+        type: String,
         required: true
     },
-    activeEnd: {
-        type: Date,
+    timeclose: {
+        type: String,
         required: true
     }
 })
