@@ -16,7 +16,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import { mainListItems } from './listItems';
+import MainListItems from './listItems';
 import PopulationDeclaration from '../populationDeclaration/PopulationDeclaration';
 import DataProvinces from './DataProvinces';
 import DataPopulations from './DataPopulations';
@@ -163,7 +163,9 @@ function DashboardContent() {
                             </IconButton>
                         </Toolbar>
                         <Divider />
-                        <List>{mainListItems}</List>
+                        <List>
+                            <MainListItems/>
+                        </List>
                     </Drawer>
                     <Box
                         component="main"

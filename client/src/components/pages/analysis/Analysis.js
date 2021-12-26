@@ -3,8 +3,6 @@ import './Analysis.css';
 import { VictoryPie } from "victory-pie"
 import './Chart.css';
 import { Bar } from "react-chartjs-2";
-// import Select from "../public/select_address/select";
-// import axiosInstance from "../public/axios/axios";
 import { VictoryChart } from "victory";
 import Chart from 'chart.js/auto';
 import axios from "axios";
@@ -15,13 +13,7 @@ export default function Analysis(props) {
     const [town, setTown] = useState("all_province");
     const [village, setVillage] = useState("all_town");
 
-    //giới tính
-    // const [male, setMale] = useState('')
-    // const [female, setFemale] = useState('')
-
-    //tuổi trưởng thành
-    // const [teenager, setTeenager] = useState('')
-    // const [older, setOlder] = useState('')
+    
 
     //dân tộc
     const [religion, setReligion] = useState('')
