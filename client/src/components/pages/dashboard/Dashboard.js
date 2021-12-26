@@ -79,6 +79,59 @@ const Drawer = styled(MuiDrawer, {
 const mdTheme = createTheme();
 
 function DashboardContent() {
+<<<<<<< HEAD
+    const addressAccount = localStorage.getItem('address')
+    const levelAccount = localStorage.getItem('level')
+    const navigate = useNavigate();
+    const [open, setOpen] = React.useState(true);
+    const toggleDrawer = () => {
+        setOpen(!open);
+    };
+
+    const logOut = async () => {
+        localStorage.clear()
+        navigate('/login')
+    }
+    return (
+        
+        <ThemeProvider theme={mdTheme}>
+            <div>
+                <Box sx={{ display: 'flex' }}>
+                    <CssBaseline />
+                    <AppBar position="absolute" open={open}>
+                        <Toolbar
+                            sx={{
+                                pr: '24px', // keep right padding when drawer closed
+                            }}
+                        >
+                            <IconButton
+                                edge="start"
+                                color="inherit"
+                                aria-label="open drawer"
+                                onClick={toggleDrawer}
+                                sx={{
+                                    marginRight: '36px',
+                                    ...(open && { display: 'none' }),
+                                }}
+                            >
+                                <MenuIcon />
+                            </IconButton>
+                            <img
+                                // className="accountUpdateImg"
+                                style={{ width: '50px', height: '50px', marginRight: '20px' }}
+                                src="https://www.gso.gov.vn/wp-content/uploads/2021/01/gso_logo.png"
+                                alt=""
+                            />
+                            <Typography
+                                component="h1"
+                                variant="h6"
+                                color="inherit"
+                                noWrap
+                                sx={{ flexGrow: 1 }}
+                            >
+                                TỔNG CỤC DÂN SỐ
+                            </Typography>
+=======
   const addressAccount = localStorage.getItem("address");
   const levelAccount = localStorage.getItem("level");
   const navigate = useNavigate();
@@ -86,6 +139,7 @@ function DashboardContent() {
   const toggleDrawer = () => {
     setOpen(!open);
   };
+>>>>>>> c58fc9e61d82c7c1e4db9f8ebc000591543e294d
 
   const logOut = async () => {
     localStorage.clear();

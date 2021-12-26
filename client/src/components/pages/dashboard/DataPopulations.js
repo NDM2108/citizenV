@@ -60,6 +60,28 @@ const columns = [
       );
     },
   },
+<<<<<<< HEAD
+  // {
+  //   field: ",",
+  //   headerName: "",
+  //   width: 100,
+  //   renderCell: (params) => {
+  //     return (
+  //       <>
+  //         <Link to={"/population/" + params.row.id} >
+  //           <Button
+  //             variant="contained"
+  //           // onClick={() => {}}
+  //           >
+  //             Xóa
+  //           </Button>
+  //         </Link>
+  //       </>
+  //     );
+  //   },
+  // },
+  
+=======
   {
     field: ",",
     headerName: "",
@@ -78,6 +100,7 @@ const columns = [
       );
     },
   },
+>>>>>>> c58fc9e61d82c7c1e4db9f8ebc000591543e294d
 ];
 
 function DataPopulations() {
