@@ -93,111 +93,117 @@ function DashboardContent() {
         navigate('/login')
     }
     return (
+        
         <ThemeProvider theme={mdTheme}>
-            <Box sx={{ display: 'flex' }}>
-                <CssBaseline />
-                <AppBar position="absolute" open={open}>
-                    <Toolbar
-                        sx={{
-                            pr: '24px', // keep right padding when drawer closed
-                        }}
-                    >
-                        <IconButton
-                            edge="start"
-                            color="inherit"
-                            aria-label="open drawer"
-                            onClick={toggleDrawer}
+            <div>
+                <Box sx={{ display: 'flex' }}>
+                    <CssBaseline />
+                    <AppBar position="absolute" open={open}>
+                        <Toolbar
                             sx={{
-                                marginRight: '36px',
-                                ...(open && { display: 'none' }),
+                                pr: '24px', // keep right padding when drawer closed
                             }}
                         >
-                            <MenuIcon />
-                        </IconButton>
-                        <img
-                            // className="accountUpdateImg"
-                            style={{ width: '50px', height: '50px', marginRight: '20px' }}
-                            src="https://www.gso.gov.vn/wp-content/uploads/2021/01/gso_logo.png"
-                            alt=""
-                        />
-                        <Typography
-                            component="h1"
-                            variant="h6"
-                            color="inherit"
-                            noWrap
-                            sx={{ flexGrow: 1 }}
+                            <IconButton
+                                edge="start"
+                                color="inherit"
+                                aria-label="open drawer"
+                                onClick={toggleDrawer}
+                                sx={{
+                                    marginRight: '36px',
+                                    ...(open && { display: 'none' }),
+                                }}
+                            >
+                                <MenuIcon />
+                            </IconButton>
+                            <img
+                                // className="accountUpdateImg"
+                                style={{ width: '50px', height: '50px', marginRight: '20px' }}
+                                src="https://www.gso.gov.vn/wp-content/uploads/2021/01/gso_logo.png"
+                                alt=""
+                            />
+                            <Typography
+                                component="h1"
+                                variant="h6"
+                                color="inherit"
+                                noWrap
+                                sx={{ flexGrow: 1 }}
+                            >
+
+                                TỔNG CỤC THỐNG KÊ
+                            </Typography>
+
+
+                            <IconButton color="inherit">
+                                <span style={{ fontSize: '15px' }}>{levelAccount} : {addressAccount}</span>
+                                <Badge color="secondary">
+                                    <AccountBoxIcon />
+                                </Badge>
+                            </IconButton>
+
+                            <IconButton onClick={() => logOut()} style={{}} color="inherit">
+                                <span style={{ fontSize: '15px' }}>Đăng xuất</span>
+                                <Badge color="secondary">
+                                    <ExitToAppIcon />
+                                </Badge>
+                            </IconButton>
+                        </Toolbar>
+                    </AppBar>
+                    <Drawer variant="permanent" open={open}>
+                        <Toolbar
+                            sx={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'flex-end',
+                                px: [1],
+                            }}
                         >
-
-                            TỔNG CỤC THỐNG KÊ
-                        </Typography>
-
-
-                        <IconButton color="inherit">
-                            <span style={{ fontSize: '15px' }}>{levelAccount} : {addressAccount}</span>
-                            <Badge color="secondary">
-                                <AccountBoxIcon />
-                            </Badge>
-                        </IconButton>
-
-                        <IconButton onClick={() => logOut()} style={{}} color="inherit">
-                            <span style={{ fontSize: '15px' }}>Đăng xuất</span>
-                            <Badge color="secondary">
-                                <ExitToAppIcon />
-                            </Badge>
-                        </IconButton>
-                    </Toolbar>
-                </AppBar>
-                <Drawer variant="permanent" open={open}>
-                    <Toolbar
+                            <IconButton onClick={toggleDrawer}>
+                                <ChevronLeftIcon />
+                            </IconButton>
+                        </Toolbar>
+                        <Divider />
+                        <List>{mainListItems}</List>
+                    </Drawer>
+                    <Box
+                        component="main"
                         sx={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'flex-end',
-                            px: [1],
+                            backgroundColor: (theme) =>
+                                theme.palette.mode === 'light'
+                                    ? theme.palette.grey[100]
+                                    : theme.palette.grey[900],
+                            flexGrow: 1,
+                            height: '90.7vh',
+                            overflow: 'auto',
                         }}
                     >
-                        <IconButton onClick={toggleDrawer}>
-                            <ChevronLeftIcon />
-                        </IconButton>
-                    </Toolbar>
-                    <Divider />
-                    <List>{mainListItems}</List>
-                </Drawer>
-                <Box
-                    component="main"
-                    sx={{
-                        backgroundColor: (theme) =>
-                            theme.palette.mode === 'light'
-                                ? theme.palette.grey[100]
-                                : theme.palette.grey[900],
-                        flexGrow: 1,
-                        height: '100vh',
-                        overflow: 'auto',
-                    }}
-                >
-                    <Toolbar />
-                    <div>
-                        <>
-                            <Routes>
-                                <Route path="/admin" element={<DataProvinces />} />
-                                <Route path="/TimeTable" element={<DataProvinces />} />
-                                <Route path="/chart" element={<Analysis />} />
-                                <Route path="/accMan" element={<AccountManager />} />
-                                <Route path="/addCode" element={<AddCode />} />
-                                <Route path="/accMan/:accountID" element={<EditAccount />} />
-                                <Route path="/accMan/update/:accountID" element={<UpdateStatus />} />
-                                <Route path="/addaccount" element={<AddAccount />} />
-                                <Route path="/population" element={<DataPopulations />} />
-                                <Route path="/population/:personID" element={<InfoPopulation />} />
-                                <Route path="/declaration" element={<PopulationDeclaration />} />
-                            </Routes>
-                            <Outlet />
-                        </>
-                    </div>
+                        <Toolbar />
+                        <div>
+                            <>
+                                <Routes>
+                                    <Route path="/admin" element={<DataProvinces />} />
+                                    <Route path="/TimeTable" element={<DataProvinces />} />
+                                    <Route path="/chart" element={<Analysis />} />
+                                    <Route path="/accMan" element={<AccountManager />} />
+                                    <Route path="/addCode" element={<AddCode />} />
+                                    <Route path="/accMan/:accountID" element={<EditAccount />} />
+                                    <Route path="/accMan/update/:accountID" element={<UpdateStatus />} />
+                                    <Route path="/addaccount" element={<AddAccount />} />
+                                    <Route path="/population" element={<DataPopulations />} />
+                                    <Route path="/population/:personID" element={<InfoPopulation />} />
+                                    <Route path="/declaration" element={<PopulationDeclaration />} />
+                                </Routes>
+                                <Outlet />
+                            </>
+                        </div>
 
+                    </Box>
                 </Box>
-            </Box>
-            <Footer />
+                <Footer/>
+                
+                
+            </div>
+            
         </ThemeProvider>
     );
 }
