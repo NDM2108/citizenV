@@ -28,7 +28,7 @@ import { useNavigate } from "react-router-dom";
 import EditAccount from '../accountManager/editAccount/EditAccount';
 import AddCode from '../addCode/AddCode';
 import UpdateStatus from '../updateStatus/UpdateStatus';
-
+import Footer from './Footer';
 
 const drawerWidth = 240;
 
@@ -92,7 +92,6 @@ function DashboardContent() {
         await localStorage.clear()
         navigate('/login')
     }
-
     return (
         <ThemeProvider theme={mdTheme}>
             <Box sx={{ display: 'flex' }}>
@@ -195,8 +194,10 @@ function DashboardContent() {
                             <Outlet />
                         </>
                     </div>
+
                 </Box>
             </Box>
+            <Footer />
         </ThemeProvider>
     );
 }

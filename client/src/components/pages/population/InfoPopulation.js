@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import axios from 'axios';
 import React from "react";
 import { useParams } from "react-router-dom";
+import Footer from "../dashboard/Footer";
 
 
 function TestInfo() {
@@ -107,6 +108,7 @@ function TestInfo() {
 
                 </tbody>
             </table>
+            
         </div>
 
 

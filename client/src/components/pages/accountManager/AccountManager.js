@@ -118,6 +118,7 @@ function AccountManager() {
                     />
                 </div>
             </div>
+            
         </MDBTable>
     );
 }

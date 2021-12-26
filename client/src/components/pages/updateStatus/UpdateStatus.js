@@ -65,7 +65,7 @@ function UpdateStatus({ subId, setOpen, params }) {
 
     return (
         <div className="status-container">
-            <Link to={"/accMan/"}>
+            <Link to={"/accMan/" + accountID}>
                 <CloseIcon className="status-close" />
             </Link>
             <form onSubmit={handleSubmit}>

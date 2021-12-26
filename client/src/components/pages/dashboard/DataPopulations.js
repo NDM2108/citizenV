@@ -6,6 +6,8 @@ import { Link } from "react-router-dom";
 import { Button } from "@mui/material";
 import { DataGrid } from '@mui/x-data-grid';
 import { CSmartTable } from '@coreui/react-pro'
+import Footer from "../dashboard/Footer";
+
 
 const columns = [
 
@@ -121,6 +123,7 @@ function DataPopulations() {
           hover: true,
         }}
       />
+      
 
     </div>
 
