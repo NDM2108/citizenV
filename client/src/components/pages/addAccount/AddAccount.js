@@ -10,6 +10,7 @@ const AddAccount = () => {
   var selectedAddress
   var selectedId
   var ops = []
+  var disabled = false
 
   useEffect(() => {
     fetch('http://localhost:5000/get_inferiors', {
@@ -21,6 +22,7 @@ const AddAccount = () => {
     })
       .then(response => response.json())
       .then(data => {
+        console.log(data)
         if (localStorage.getItem('level') == 'A1') {
           for (let i = 0; i < data.length; i++) {
             ops.push({value: data[i].province, label: data[i].province, id: data[i].id})
@@ -46,30 +48,49 @@ const AddAccount = () => {
   const handleSelect = selected => {
     selectedAddress = selected.value
     selectedId = selected.id
+    console.log(selectedId);
+    fetch('http://localhost:5000/check_account_exist', {
+      method: 'POST',
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+      body: JSON.stringify({'id': selectedId}),
+    })
+    .then(response => response.text())
+    .then(data => {
+      if (data === 'exist') {
+        alert('Tài khoản đã tồn tại')
+        disabled = true
+      } else {
+        disabled = false
+      }
+    })
   }
 
   const handleSubmit = e => {
-    e.preventDefault()
-    const data = new FormData(e.currentTarget);
-    if (data.get('pass') == data.get('rePass')) {
-      const account = { address: selectedAddress, password: data.get('pass'), id: selectedId}
-      console.log(account);
-      fetch('http://localhost:5000/add_account', {
-        method: "POST",
-        body: JSON.stringify(account),
-        headers: {
-          "Content-type": "application/json; charset=UTF-8",
-          "Authentication": "Bearer " + localStorage.getItem('accessToken')
-        }
-      })
-        .then(response => response.text())
-        .then(data => {
-          if (data == 'success') {
-            navigate('/accMan')
+      e.preventDefault()
+      if (disabled == false) {
+      const data = new FormData(e.currentTarget);
+      if (data.get('pass') == data.get('rePass')) {
+        const account = { address: selectedAddress, password: data.get('pass'), id: selectedId}
+        console.log(account);
+        fetch('http://localhost:5000/add_account', {
+          method: "POST",
+          body: JSON.stringify(account),
+          headers: {
+            "Content-type": "application/json; charset=UTF-8",
+            "Authentication": "Bearer " + localStorage.getItem('accessToken')
           }
-        });
-    } else {
-      alert('Mật khẩu không trùng nhau')
+        })
+          .then(response => response.text())
+          .then(data => {
+            if (data == 'success') {
+              navigate('/accMan')
+            }
+          });
+      } else {
+        alert('Mật khẩu không trùng nhau')
+      }
     }
   }
 
@@ -108,7 +129,7 @@ const AddAccount = () => {
             />
           </div>
           <div className="button-container">
-            <button className="newUserButton" type="submit">
+            <button className="newUserButton" type="submit" disabled={disabled}>
               Xác Nhận
             </button>
           </div>
