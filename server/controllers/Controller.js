@@ -51,9 +51,9 @@ class Controller {
             'job': req.body.job,
         }
         console.log(citizen_info);
-        // var connection = mongoose.connection;
-        // connection.collection('citizen_infos').insertOne(citizen_info)
-        // res.send('success');
+        var connection = mongoose.connection;
+        connection.collection('citizen_infos').insertOne(citizen_info)
+        res.send('success');
     }
 
     provinces(req, res, next) {
@@ -221,7 +221,6 @@ class Controller {
                 timeclose: '',
                 status: accountStatus
             }, {new: true})
-            res.send('success')
         }
 
     }
