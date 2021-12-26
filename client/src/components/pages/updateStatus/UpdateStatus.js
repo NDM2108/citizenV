@@ -43,22 +43,22 @@ function UpdateStatus({ subId, setOpen, params }) {
             .then(response => response.text())
             .then(data => {
                 if (data == 'success') {
-                    navigate('/accMan')
+                    navigate("/accMan/" + accountID)
                 }
             })
     }
 
     const handleChange = e => {
-        setUpdate({...update, [e.target.name]: e.target.value })
+        setUpdate({ ...update, [e.target.name]: e.target.value })
         console.log(e.target.value)
     };
 
     const handleChangeOption = e => {
         if (e.target.value == 'true') {
-            setUpdate({...update, [e.target.name]: true })
+            setUpdate({ ...update, [e.target.name]: true })
             console.log(e.target.value)
         } else {
-            setUpdate({...update, [e.target.name]: false })
+            setUpdate({ ...update, [e.target.name]: false })
             console.log(e.target.value)
         }
     };

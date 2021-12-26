@@ -76,7 +76,6 @@ const EditAccount = () => {
         role = 'Thôn/Xóm';
     }
 
-
     // state for dialog
     const [open, setOpen] = useState(false);
 
@@ -156,14 +155,14 @@ const EditAccount = () => {
                                         <EventAvailableIcon className="accountShowIcon" />
                                         <span className="time">Thời gian bắt đầu khai báo:</span>
                                     </span>
-                                    <span>{"NaN"}</span>
+                                    <span>{account.timeopen}</span>
                                 </div>
                                 <div className="accountShowInfo">
                                     <span className="accountShowInfoTitle">
                                         <EventBusyIcon className="accountShowIcon" />
                                         <span className="time">Thời gian kết thúc khai báo:</span>
                                     </span>
-                                    <span>{"NaN"}</span>
+                                    <span>{account.timeclose}</span>
                                 </div>
                             </div>
                             <div className="accountShowInfo">
