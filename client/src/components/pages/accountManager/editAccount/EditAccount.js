@@ -154,14 +154,14 @@ const EditAccount = () => {
                                 <div className="accountShowInfo">
                                     <span className="accountShowInfoTitle">
                                         <EventAvailableIcon className="accountShowIcon" />
-                                        <span>Thời gian bắt đầu khai báo:</span>
+                                        <span className="time">Thời gian bắt đầu khai báo:</span>
                                     </span>
                                     <span>{"NaN"}</span>
                                 </div>
                                 <div className="accountShowInfo">
                                     <span className="accountShowInfoTitle">
                                         <EventBusyIcon className="accountShowIcon" />
-                                        <span>Thời gian kết thúc khai báo:</span>
+                                        <span className="time">Thời gian kết thúc khai báo:</span>
                                     </span>
                                     <span>{"NaN"}</span>
                                 </div>
