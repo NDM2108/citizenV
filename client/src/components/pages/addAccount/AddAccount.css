@@ -1,94 +1,76 @@
 .newUserButton {
-    background-color: #0f7ddf;
-    border: none;
-    border-radius: 10px;
-    color: #fff;
-    height: 40px;
-    text-align: center;
-    width: 155px;
-    padding: 7px 10px;
-    margin-top: 25px;
-    font-size: 20px;
-    
-  }
+  background-color: #0f7ddf;
+  border: none;
+  border-radius: 10px;
+  color: #fff;
+  height: 40px;
+  text-align: center;
+  width: 155px;
+  padding: 7px 10px;
+  margin-top: 25px;
+  font-size: 20px;
+}
 
 .button-container {
-    text-align: center;
-  }
+  text-align: center;
+}
 
 .newUserButton:hover {
-    cursor: pointer;
-    background: #003cff;
-    transition: 0.5s;
-  }
-  /* ---------------------- */
-  
-  .container-add-account-form {
-    border: solid 1px black;
-    max-width: 750px;
-    background: #ffff;
-    padding: 25px 30px;
-    border-radius: 5px;
-    margin: auto;
-    margin-top: 40px;
-  }
-  
-  .container-add-account-form .title {
-    text-align: center;
-    font-size: 35px;
-    font-weight: 500;
-    position: relative;
-    font-family: Arial, Helvetica, sans-serif;
-  }
-  
-  .container-add-account-form form .info {
-    /* display: flex;
+  cursor: pointer;
+  background: #003cff;
+  transition: 0.5s;
+}
+/* ---------------------- */
+
+.container-add-account-form {
+  border: solid 1px black;
+  max-width: 750px;
+  background: #ffff;
+  padding: 25px 30px;
+  border-radius: 5px;
+  margin: auto;
+  margin-top: 40px;
+}
+
+.container-add-account-form .title {
+  text-align: center;
+  font-size: 35px;
+  font-weight: 500;
+  position: relative;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.container-add-account-form form .info {
+  /* display: flex;
     flex-wrap: wrap;
     justify-content: space-between; */
-    margin: 20px 0 12px 0;
-  }
-  
-  form .info .inputBox {
-    width: 95%;
-    margin-bottom: 15px;
-  }
-  
-  .info .inputBox .details {
-    display: block;
-    font-weight: 500;
-    margin-bottom: 5px;
-    font-family: Arial, Helvetica, sans-serif;
-  }
-  
-  .info .inputBox input {
-    height: 45px;
-    width: 100%;
-    outline: none;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    padding-left: 15px;
-    font-size: 16px;
-    border-bottom-width: 2px;
-  }
-  
-  .info .inputBox input:focus,
-  .info .inputBox input:valid {
-    border-color: #9b59b6;
-  }
-  
+  margin: 20px 0 12px 0;
+}
 
-  
-  
-  
-  
-  
-  
+form .info .inputBox {
+  width: 95%;
+  margin-bottom: 15px;
+}
 
-  
-  
-  
-  
-  
+.info .inputBox .details {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 5px;
+  font-family: Arial, Helvetica, sans-serif;
+}
 
-  
+.info .inputBox input {
+  height: 45px;
+  width: 100%;
+  outline: none;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  padding-left: 15px;
+  font-size: 16px;
+  border-bottom-width: 2px;
+}
 
+.info .inputBox input:focus,
+.info .inputBox input:valid {
+  border-color: #9b59b6;
+}

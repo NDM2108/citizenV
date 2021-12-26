@@ -1,46 +1,44 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-import * as React from 'react';
-import { useEffect, useState } from "react"
-import axios from 'axios';
+import "bootstrap/dist/css/bootstrap.min.css";
+import * as React from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 import { Link } from "react-router-dom";
 import { Button } from "@mui/material";
-import { DataGrid } from '@mui/x-data-grid';
-import { CSmartTable } from '@coreui/react-pro'
+import { DataGrid } from "@mui/x-data-grid";
+import { CSmartTable } from "@coreui/react-pro";
 import Footer from "../dashboard/Footer";
 
-
 const columns = [
-
   // { field: 'id', headerName: 'ID Vùng', width: 90 },
   {
-    field: 'fullname',
-    headerName: 'Họ tên',
+    field: "fullname",
+    headerName: "Họ tên",
     width: 250,
     editable: true,
   },
   {
-    field: 'id',
-    headerName: 'CCCD',
+    field: "id",
+    headerName: "CCCD",
     // type: 'number',
     width: 160,
     editable: true,
   },
   {
-    field: 'dob',
-    headerName: 'Ngày sinh',
-    type: 'date',
+    field: "dob",
+    headerName: "Ngày sinh",
+    type: "date",
     width: 110,
     editable: true,
   },
   {
-    field: 'province',
-    headerName: 'Quê quán',
+    field: "province",
+    headerName: "Quê quán",
     width: 200,
     editable: true,
   },
   {
-    field: 'gender',
-    headerName: 'Giới tính',
+    field: "gender",
+    headerName: "Giới tính",
     width: 150,
     editable: true,
   },
@@ -51,10 +49,10 @@ const columns = [
     renderCell: (params) => {
       return (
         <>
-          <Link to={"/population/" + params.row.id} >
+          <Link to={"/population/" + params.row.id}>
             <Button
               variant="contained"
-            // onClick={() => {}}
+              // onClick={() => {}}
             >
               Xem
             </Button>
@@ -63,6 +61,7 @@ const columns = [
       );
     },
   },
+<<<<<<< HEAD
   // {
   //   field: ",",
   //   headerName: "",
@@ -83,30 +82,57 @@ const columns = [
   //   },
   // },
   
+=======
+  {
+    field: ",",
+    headerName: "",
+    width: 100,
+    renderCell: (params) => {
+      return (
+        <>
+          <Link to={"/population/" + params.row.id}>
+            <Button
+              variant="contained"
+              // onClick={() => {}}
+            >
+              Xóa
+            </Button>
+          </Link>
+        </>
+      );
+    },
+  },
+>>>>>>> c58fc9e61d82c7c1e4db9f8ebc000591543e294d
 ];
 
-
 function DataPopulations() {
-
-  const [population, setPopulation] = useState([])
+  const [population, setPopulation] = useState([]);
   useEffect(() => {
-    fetch('http://localhost:5000/citizen_infos', {
+    fetch("http://localhost:5000/citizen_infos", {
       method: "GET",
       headers: {
         "Content-type": "application/json; charset=UTF-8",
-        "Authentication": "Bearer " + localStorage.getItem('accessToken')
-      }
+        Authentication: "Bearer " + localStorage.getItem("accessToken"),
+      },
     })
-    .then(response => response.json())
-    .then(data => {
-      setPopulation(data)
-    })
-  }, [])
+      .then((response) => response.json())
+      .then((data) => {
+        setPopulation(data);
+      });
+  }, []);
   console.log(population[0]);
 
   return (
-    <div style={{ height: 400, width: '100%' }}>
-      <h1 className="h1" style={{ /* height:20, fontSize: '20px' , */textAlign: 'center', marginTop: '10px' }}>Thông tin dân số</h1>
+    <div style={{ height: 400, width: "100%" }}>
+      <h1
+        className="h1"
+        style={{
+          /* height:20, fontSize: '20px' , */ textAlign: "center",
+          marginTop: "10px",
+        }}
+      >
+        Thông tin dân số
+      </h1>
       <br></br>
       <DataGrid
         rows={population}
@@ -123,13 +149,8 @@ function DataPopulations() {
           hover: true,
         }}
       />
-      
-
     </div>
-
-
   );
-
 }
 
 export default DataPopulations;

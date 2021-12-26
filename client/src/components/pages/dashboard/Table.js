@@ -23,7 +23,6 @@
 // import { useEffect } from 'react';
 // import {axios} from 'axios';
 
-
 // function createData(tinh, sodan, soho, tiendo) {
 //     return {
 //         tinh,
@@ -271,7 +270,6 @@
 //         setRowsPerPage(parseInt(event.target.value, 10));
 //         setPage(0);
 //     };
-
 
 //     const isSelected = (tinh) => selected.indexOf(tinh) !== -1;
 
