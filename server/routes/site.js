@@ -15,7 +15,7 @@ router.get('/citizen_infos', verifyToken, controller.citizen_infos)
 
 router.post('/add_account', verifyToken, controller.add_account)
 
-router.post('/accounts', controller.get_accounts)
+router.post('/accounts', verifyToken, controller.get_accounts)
 
 router.post('/get_districts', controller.get_districts)
 

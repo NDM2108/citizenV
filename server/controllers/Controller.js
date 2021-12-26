@@ -44,6 +44,7 @@ class Controller {
             'province': req.body.province,
             'district': req.body.district,
             'village':req.body.village,
+            'clanid': req.body.clanid,
             'permanentaddress': req.body.permanentaddress,
             'temporaryaddress': req.body.temporaryaddress,
             'religion': req.body.religion,
@@ -221,6 +222,13 @@ class Controller {
                 timeclose: '',
                 status: accountStatus
             }, {new: true})
+            let docs = await Account.updateMany({superior: req.body.id}, {
+                status: 'Inactive',
+                timeopen: '',
+                timeclose: ''
+            })
+            console.log(docs);
+            res.send('success')
         }
 
     }
