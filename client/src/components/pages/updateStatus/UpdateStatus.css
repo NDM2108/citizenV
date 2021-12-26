@@ -1,102 +1,102 @@
 .status-container {
-    margin-right: auto;
-    margin-left: auto;
-    max-width: 700px;
-    border: 1px solid #cccccc;
-    text-align: center;
-    margin-top: 20px ;
-    margin-bottom: 30px;
-    padding: 24px 0;
-    position: relative;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 700px;
+  border: 1px solid #cccccc;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  padding: 24px 0;
+  position: relative;
 }
 
 .status-close {
-    position: absolute;
-    top: 8px;
-    right: 8px;
+  position: absolute;
+  top: 8px;
+  right: 8px;
 }
 
 .status-close:hover {
-    cursor: pointer;
-    color: rgb(71, 67, 67);
+  cursor: pointer;
+  color: rgb(71, 67, 67);
 }
 
 form .status-info .title {
-    font-size: 30px;
-    font-weight: 500;
+  font-size: 30px;
+  font-weight: 500;
 }
-  
+
 form .status-info .option {
-    margin-top: 20px;
-    display: flex;
-    width: 80%;
-    justify-content: space-between;
-    margin-left: auto;
-    margin-right: auto;
+  margin-top: 20px;
+  display: flex;
+  width: 80%;
+  justify-content: space-between;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .status-info .option label {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .status-info .option .dot {
-    height: 18px;
-    width: 18px;
-    background: #d9d9d9;
-    border-radius: 50%;
-    margin-right: 10px;
-    border: 5px solid transparent;
-    transition: all 0.3 ease;
+  height: 18px;
+  width: 18px;
+  background: #d9d9d9;
+  border-radius: 50%;
+  margin-right: 10px;
+  border: 5px solid transparent;
+  transition: all 0.3 ease;
 }
 
 .status-info .option .dot:hover {
-cursor: pointer;
+  cursor: pointer;
 }
 
 #dot1:checked ~ .option .one,
 #dot2:checked ~ .option .two {
-    border-color: #d9d9d9;
-    background: #2691d9;
+  border-color: #d9d9d9;
+  background: #2691d9;
 }
 
 form input[type="radio"] {
-    display: none;
+  display: none;
 }
 
 .status-event {
-    margin-top: 30px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .status-date {
-    width: 80%;
-    height: 40px;
-    margin: 20px 0;
-    font-size: 16px;
+  width: 80%;
+  height: 40px;
+  margin: 20px 0;
+  font-size: 16px;
 }
 
 .error-message {
-    color: red;
-    font-size: 14px;
+  color: red;
+  font-size: 14px;
 }
 
 .update-button {
-    background-color: #0f7ddf;
-    border-radius: 10px;
-    color: white;
-    height: 40px;
-    text-align: center;
-    width: 140px;
-    padding: auto;
-    margin-top: 25px;
-    font-size: 20px;
+  background-color: #0f7ddf;
+  border-radius: 10px;
+  color: white;
+  height: 40px;
+  text-align: center;
+  width: 140px;
+  padding: auto;
+  margin-top: 25px;
+  font-size: 20px;
 }
 
 .update-button:hover {
-    cursor: pointer;
-    background: #003cff;
-    transition: 0.5s;
+  cursor: pointer;
+  background: #003cff;
+  transition: 0.5s;
 }

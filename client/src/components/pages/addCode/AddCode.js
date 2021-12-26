@@ -4,40 +4,40 @@ import { Navigate, useNavigate } from "react-router-dom";
 const AddCode = () => {
   const navigate = useNavigate();
 
-  const handleSubmit = e => {
-    e.preventDefault()
+  const handleSubmit = (e) => {
+    e.preventDefault();
     const data = new FormData(e.currentTarget);
-    const code = { id: data.get('id'), name: data.get('name') }
+    const code = { id: data.get("id"), name: data.get("name") };
     console.log(code);
-    fetch('http://localhost:5000/add_code', {
+    fetch("http://localhost:5000/add_code", {
       method: "POST",
       body: JSON.stringify(code),
       headers: {
         "Content-type": "application/json; charset=UTF-8",
-        "Authentication": "Bearer " + localStorage.getItem('accessToken')
-      }
+        Authentication: "Bearer " + localStorage.getItem("accessToken"),
+      },
     })
-      .then(response => response.text())
-      .then(data => {
-        if (data == 'success') {
-          navigate('/admin')
+      .then((response) => response.text())
+      .then((data) => {
+        if (data == "success") {
+          navigate("/admin");
         }
       });
-  }
+  };
 
-  const levelAccount = localStorage.getItem('level')
+  const levelAccount = localStorage.getItem("level");
   console.log(levelAccount);
 
-  var role = '';
+  var role = "";
 
-  if (levelAccount == 'A1') {
-    role = 'Tỉnh/Thành phố';
-  } else if (levelAccount == 'A2') {
-    role = 'Quận/Huyện';
-  } else if (levelAccount == 'A3') {
-    role = 'Xã/Phường';
-  } else if (levelAccount == 'B1') {
-    role = 'Thôn/Xóm';
+  if (levelAccount == "A1") {
+    role = "Tỉnh/Thành phố";
+  } else if (levelAccount == "A2") {
+    role = "Quận/Huyện";
+  } else if (levelAccount == "A3") {
+    role = "Xã/Phường";
+  } else if (levelAccount == "B1") {
+    role = "Thôn/Xóm";
   }
 
   return (
@@ -72,7 +72,6 @@ const AddCode = () => {
               Xác Nhận
             </button>
           </div>
-
         </div>
       </form>
     </div>

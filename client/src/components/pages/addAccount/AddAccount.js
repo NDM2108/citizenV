@@ -1,98 +1,118 @@
 import "./AddAccount.css";
 import { Navigate, useNavigate } from "react-router-dom";
-import { useState } from "react"
-import { useEffect } from "react"
-import Select from 'react-select'
+import { useState } from "react";
+import { useEffect } from "react";
+import Select from "react-select";
 
 const AddAccount = () => {
   const navigate = useNavigate();
   const [inferiors, setInferiors] = useState([]);
-  var selectedAddress
-  var selectedId
-  var ops = []
-  var disabled = false
+  var selectedAddress;
+  var selectedId;
+  var ops = [];
+  var disabled = false;
 
   useEffect(() => {
-    fetch('http://localhost:5000/get_inferiors', {
+    fetch("http://localhost:5000/get_inferiors", {
       method: "GET",
       headers: {
         "Content-type": "application/json; charset=UTF-8",
-        "Authentication": "Bearer " + localStorage.getItem('accessToken')
-      }
+        Authentication: "Bearer " + localStorage.getItem("accessToken"),
+      },
     })
-      .then(response => response.json())
-      .then(data => {
-        console.log(data)
-        if (localStorage.getItem('level') == 'A1') {
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        if (localStorage.getItem("level") == "A1") {
           for (let i = 0; i < data.length; i++) {
-            ops.push({value: data[i].province, label: data[i].province, id: data[i].id})
+            ops.push({
+              value: data[i].province,
+              label: data[i].province,
+              id: data[i].id,
+            });
           }
           console.log(ops);
-        } else if (localStorage.getItem('level') == 'A2') {
+        } else if (localStorage.getItem("level") == "A2") {
           for (let i = 0; i < data.length; i++) {
-            ops.push({value: data[i].district, label: data[i].district, id: data[i].id})
+            ops.push({
+              value: data[i].district,
+              label: data[i].district,
+              id: data[i].id,
+            });
           }
-        } else if (localStorage.getItem('level') == 'A3') {
+        } else if (localStorage.getItem("level") == "A3") {
           for (let i = 0; i < data.length; i++) {
-            ops.push({value: data[i].village, label: data[i].village, id: data[i].id})
+            ops.push({
+              value: data[i].village,
+              label: data[i].village,
+              id: data[i].id,
+            });
           }
-        } else if (localStorage.getItem('level') == 'B1') {
+        } else if (localStorage.getItem("level") == "B1") {
           for (let i = 0; i < data.length; i++) {
-            ops.push({value: data[i].clan, label: data[i].clan, id: data[i].id})
+            ops.push({
+              value: data[i].clan,
+              label: data[i].clan,
+              id: data[i].id,
+            });
           }
         }
-        setInferiors(ops)
+        setInferiors(ops);
       });
-  }, [])
+  }, []);
 
-  const handleSelect = selected => {
-    selectedAddress = selected.value
-    selectedId = selected.id
+  const handleSelect = (selected) => {
+    selectedAddress = selected.value;
+    selectedId = selected.id;
     console.log(selectedId);
-    fetch('http://localhost:5000/check_account_exist', {
-      method: 'POST',
+    fetch("http://localhost:5000/check_account_exist", {
+      method: "POST",
       headers: {
         "Content-type": "application/json; charset=UTF-8",
       },
-      body: JSON.stringify({'id': selectedId}),
+      body: JSON.stringify({ id: selectedId }),
     })
-    .then(response => response.text())
-    .then(data => {
-      if (data === 'exist') {
-        alert('Tài khoản đã tồn tại')
-        disabled = true
-      } else {
-        disabled = false
-      }
-    })
-  }
+      .then((response) => response.text())
+      .then((data) => {
+        if (data === "exist") {
+          alert("Tài khoản đã tồn tại");
+          disabled = true;
+        } else {
+          disabled = false;
+        }
+      });
+  };
 
-  const handleSubmit = e => {
-      e.preventDefault()
-      if (disabled == false) {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (disabled == false) {
       const data = new FormData(e.currentTarget);
-      if (data.get('pass') == data.get('rePass')) {
-        const account = { address: selectedAddress, password: data.get('pass'), id: selectedId}
+      if (data.get("pass") == data.get("rePass")) {
+        const account = {
+          address: selectedAddress,
+          password: data.get("pass"),
+          id: selectedId,
+        };
         console.log(account);
-        fetch('http://localhost:5000/add_account', {
+        fetch("http://localhost:5000/add_account", {
           method: "POST",
           body: JSON.stringify(account),
           headers: {
             "Content-type": "application/json; charset=UTF-8",
-            "Authentication": "Bearer " + localStorage.getItem('accessToken')
-          }
+            Authentication: "Bearer " + localStorage.getItem("accessToken"),
+          },
         })
-          .then(response => response.text())
-          .then(data => {
-            if (data == 'success') {
-              navigate('/accMan')
+          .then((response) => response.text())
+          .then((data) => {
+            if (data == "success") {
+              navigate("/accMan");
             }
           });
       } else {
-        alert('Mật khẩu không trùng nhau')
+        alert("Mật khẩu không trùng nhau");
       }
     }
-  }
+  };
 
   return (
     <div className="container-add-account-form">
@@ -103,8 +123,9 @@ const AddAccount = () => {
             <span className="details">Tên tài khoản </span>
             <Select
               placeholder="Tên tài khoản"
-              options={inferiors} 
-              onChange={handleSelect}/>
+              options={inferiors}
+              onChange={handleSelect}
+            />
           </div>
 
           <div className="inputBox">
@@ -133,7 +154,6 @@ const AddAccount = () => {
               Xác Nhận
             </button>
           </div>
-
         </div>
       </form>
     </div>
