@@ -18,7 +18,7 @@ class Controller {
                     const accessToken = jwt.sign({"id": account.id, "level": account.level, "address": account.address}, process.env.ACCESS_TOKEN_SECRET, {
                         expiresIn:'1h'
                     })
-                    res.json({'accessToken':accessToken, 'id': account.id, 'level':account.level, 'address': account.address})
+                    res.json({'accessToken':accessToken, 'id': account.id, 'level':account.level, 'address': account.address, 'status': account.status})
                 } else {
                     res.sendStatus(401)
                 }
