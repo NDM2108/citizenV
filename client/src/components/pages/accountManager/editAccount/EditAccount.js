@@ -33,7 +33,8 @@ const EditAccount = () => {
             method: "POST",
             body: JSON.stringify({ 'id': localStorage.getItem('id') }),
             headers: {
-                "Content-type": "application/json; charset=UTF-8"
+                "Content-type": "application/json; charset=UTF-8",
+                "Authentication": "Bearer " + localStorage.getItem('accessToken')
             }
         })
             .then(response => {
