@@ -21,6 +21,8 @@ router.post('/get_districts', controller.get_districts)
 
 router.post('/get_villages', controller.get_villages)
 
+router.post('/get_clans', controller.get_clans)
+
 router.post('/add_code', verifyToken, controller.add_code)
 
 router.get('/get_inferiors', verifyToken, controller.get_inferiors)

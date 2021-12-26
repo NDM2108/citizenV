@@ -30,6 +30,10 @@ const Citizen_info = new Schema({
         type: String,
         required: true
     },
+    clanid: {
+        type: String,
+        required: true
+    },
     province: {
         type: String,
         required: true
@@ -39,6 +43,10 @@ const Citizen_info = new Schema({
         required: true
     },
     village: {
+        type: String,
+        required: true
+    },
+    clan: {
         type: String,
         required: true
     },

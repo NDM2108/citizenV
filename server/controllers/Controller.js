@@ -37,12 +37,13 @@ class Controller {
             'fullname': req.body.fullname,
             'dob': req.body.dob,
             'gender': req.body.gender,
-            'provinceid': province.id,
-            'districtid': district.id,
-            'villageid': village.id,
-            'province': province.province,
-            'district': district.district,
-            'village':village.village,
+            'provinceid': req.body.provinceid,
+            'districtid': req.body.districtid,
+            'villageid': req.body.villageid,
+            'clanid': req.body.clanid,
+            'province': req.body.province,
+            'district': req.body.district,
+            'village':req.body.village,
             'permanentaddress': req.body.permanentaddress,
             'temporaryaddress': req.body.temporaryaddress,
             'religion': req.body.religion,
@@ -50,9 +51,9 @@ class Controller {
             'job': req.body.job,
         }
         console.log(citizen_info);
-        var connection = mongoose.connection;
-        connection.collection('citizen_infos').insertOne(citizen_info)
-        res.send('success');
+        // var connection = mongoose.connection;
+        // connection.collection('citizen_infos').insertOne(citizen_info)
+        // res.send('success');
     }
 
     provinces(req, res, next) {
@@ -125,6 +126,12 @@ class Controller {
     get_villages(req, res, next) {
         Village.find({'district': req.body.district}, function(err, villages) {
             res.json(villages)
+        })
+    }
+
+    get_clans(req, res, next) {
+        Clan.find({'village': req.body.village}, function(err, clans) {
+            res.json(clans)
         })
     }
 

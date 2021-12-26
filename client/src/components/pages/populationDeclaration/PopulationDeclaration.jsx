@@ -12,13 +12,19 @@ function PopulationDeclaration() {
   const [provinceOptions, setProvince] = useState([]);
   const [districtOptions, setDistrict] = useState([]);
   const [villageOptions, setVillage] = useState([]);
+  const [clanOptions, setClan] = useState([]);
 
   const [citizen, setInput] = useState({
     id: '',
     gender: '',
+    provinceid: '',
+    districtid: '',
+    villageid: '',
+    clanid: '',
     province: '',
     district: '',
     village: '',
+    clan: '',
     regilion: '',
     job: '',
     dob: '',
@@ -34,7 +40,7 @@ function PopulationDeclaration() {
             let json = response.data
             let ops = []
             for (let i = 0; i < json.length; i++) {
-              ops.push({value: json[i].province, label: json[i].province})
+              ops.push({value: json[i].id, label: json[i].province})
             }
             setProvince(ops)
             console.log(ops);
@@ -42,10 +48,11 @@ function PopulationDeclaration() {
   }, [])
 
   const getDistricts = selected => {
-    setInput({...citizen, province: selected.value })
+    setInput({...citizen, province: selected.label, provinceid: selected.value })
+    console.log(citizen);
     fetch('http://localhost:5000/get_districts',{
       method: "POST",
-      body: JSON.stringify({province: selected.value}),
+      body: JSON.stringify({province: selected.label}),
       headers: {
           "Content-type": "application/json; charset=UTF-8"
       }
@@ -54,7 +61,7 @@ function PopulationDeclaration() {
     .then(data => {
       let ops = []
       for (let i = 0; i < data.length; i++) {
-        ops.push({value: data[i].district, label: data[i].district})
+        ops.push({value: data[i].id, label: data[i].district})
       }
       setDistrict(ops)
       console.log(ops)
@@ -62,10 +69,10 @@ function PopulationDeclaration() {
   }
 
   const getVillages = selected => {
-    setInput({...citizen, district: selected.value })
+    setInput({...citizen, district: selected.label , districtid: selected.value})
     fetch('http://localhost:5000/get_villages',{
       method: "POST",
-      body: JSON.stringify({district: selected.value}),
+      body: JSON.stringify({district: selected.label}),
       headers: {
           "Content-type": "application/json; charset=UTF-8"
       }
@@ -74,15 +81,35 @@ function PopulationDeclaration() {
     .then(data => {
       let ops = []
       for (let i = 0; i < data.length; i++) {
-        ops.push({value: data[i].village, label: data[i].village})
+        ops.push({value: data[i].id, label: data[i].village})
       }
       setVillage(ops)
       console.log(ops)
     })
   }
+  
+  const getClans = selected => {
+    setInput({...citizen, village: selected.label, villageid: selected.value})
+    fetch('http://localhost:5000/get_clans',{
+      method: "POST",
+      body: JSON.stringify({village: selected.label}),
+      headers: {
+          "Content-type": "application/json; charset=UTF-8"
+      }
+    })
+    .then(response => response.json())
+    .then(data => {
+      let ops = []
+      for (let i = 0; i < data.length; i++) {
+        ops.push({value: data[i].id, label: data[i].clan})
+      }
+      setClan(ops)
+      console.log(ops)
+    })
+  }
 
-  const selectVillage = selected => {
-    setInput({...citizen, village: selected.value })
+  const selectClan = selected => {
+    setInput({...citizen, clan: selected.label, clanid: selected.value})
   }
 
   const handleChange = e => {
@@ -160,7 +187,11 @@ function PopulationDeclaration() {
             <Select 
             placeholder="Xã / Phường" 
             options={villageOptions} 
-            onChange={selectVillage}/>
+            onChange={getClans}/>
+            <Select 
+            placeholder="Thôn" 
+            options={clanOptions} 
+            onChange={selectClan}/>
           </div>
 
           <div className="inputBox">
