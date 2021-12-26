@@ -129,7 +129,6 @@ function DashboardContent() {
                                 noWrap
                                 sx={{ flexGrow: 1 }}
                             >
-
                                 TỔNG CỤC THỐNG KÊ
                             </Typography>
 
@@ -175,7 +174,7 @@ function DashboardContent() {
                                     ? theme.palette.grey[100]
                                     : theme.palette.grey[900],
                             flexGrow: 1,
-                            height: '90.7vh',
+                            height: '90.85vh',
                             overflow: 'auto',
                         }}
                     >

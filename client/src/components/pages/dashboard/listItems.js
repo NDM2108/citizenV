@@ -20,6 +20,17 @@ export default function MainListItems() {
   const navigate = useNavigate();
   const levelAccount = localStorage.getItem('level')
   console.log(levelAccount);
+  const statusAccount = localStorage.getItem('status')
+  console.log(statusAccount);
+
+  const handleClickDeclaration = e => {
+      e.preventDefault();
+      if(statusAccount == 'Inactive'){
+        alert('Bạn chưa được cấp quyền khai báo')
+      }else{
+        navigate('/declaration')
+      }
+  }
   
   const handleClickAccMan = e =>{
     e.preventDefault()
@@ -107,7 +118,7 @@ export default function MainListItems() {
       </Link>
 
       <Link to='/declaration' style={{ textDecoration: 'none', color: 'black' }} >
-        <ListItem button>
+        <ListItem button onClick={handleClickDeclaration}>
           <ListItemIcon>
             <AssignmentIcon />
           </ListItemIcon>

@@ -151,6 +151,7 @@ function PopulationDeclaration() {
               type="text"
               required
               onChange={handleChange}
+              placeholder="*Bắt buộc"
             />
           </div>
 
@@ -189,7 +190,7 @@ function PopulationDeclaration() {
             options={villageOptions} 
             onChange={getClans}/>
             <Select 
-            placeholder="Thôn" 
+            placeholder="Thôn / Xóm" 
             options={clanOptions} 
             onChange={selectClan}/>
           </div>
