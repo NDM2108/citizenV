@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import './UpdateStatus.css';
+import './UpdateStatus.css'
 import CloseIcon from "@mui/icons-material/Close";
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
@@ -21,7 +21,8 @@ function UpdateStatus({ subId, setOpen, params }) {
     const [update, setUpdate] = useState({
         status: false,
         timeopen: '',
-        timeclosed: '',
+        timeclose: '',
+        id: accountID
     });
 
     const handleSubmit = e => {
@@ -65,7 +66,7 @@ function UpdateStatus({ subId, setOpen, params }) {
 
     return (
         <div className="status-container">
-            <Link to={"/accMan/"}>
+            <Link to={"/accMan/" + accountID}>
                 <CloseIcon className="status-close" />
             </Link>
             <form onSubmit={handleSubmit}>
@@ -110,7 +111,7 @@ function UpdateStatus({ subId, setOpen, params }) {
                     />
                     <p>Ngày kết thúc</p>
                     <input
-                        name='timeclosed'
+                        name='timeclose'
                         type="date"
                         className="status-date"
                         onChange={handleChange}

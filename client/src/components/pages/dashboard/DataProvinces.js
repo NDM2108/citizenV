@@ -82,14 +82,14 @@ function DataProvinces() {
         if (localStorage.getItem('level') === 'A1') s = 'province'
         if (localStorage.getItem('level') === 'A2') s = 'district'
         if (localStorage.getItem('level') === 'A3') s = 'village'
-        if (localStorage.getItem('level') === 'A3') s = 'clan'
+        if (localStorage.getItem('level') === 'B1') s = 'clan'
         let progress = []
         for (let i = 0; i < data.length; i++) {
           progress.push(
             { id: data[i].id, name: data[i][s], progress: data[i].progress }
           )
         }
-        console.log(progress);
+        console.log(data);
         setProvince(progress)
       })
   }, [])

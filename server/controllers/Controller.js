@@ -98,9 +98,11 @@ class Controller {
             'id': req.body.id,
             'address': req.body.address,
             'level': level,
-            'status': "Active",
+            'status': "Inactive",
             'superior': res.locals.decoded.id,
-            'superiorAddress': res.locals.decoded.address
+            'superiorAddress': res.locals.decoded.address,
+            'timeopen': '',
+            'timeclose': ''
         }
         var connection = mongoose.connection;
         connection.collection('accounts').insertOne(account)
@@ -197,8 +199,15 @@ class Controller {
         })
     }
 
-    update_account(req, res, next) {
+    async update_account(req, res, next) {
+        var accountStatus = req.body.status ? 'Active' : 'Inactive'
         console.log(req.body);
+        let doc = await Account.findOneAndUpdate({id: req.body.id}, {
+            timeopen: req.body.timeopen,
+            timeclose: req.body.timeclose,
+            status: accountStatus
+        }, {new: true})
+        console.log(doc);
     }
 }
 

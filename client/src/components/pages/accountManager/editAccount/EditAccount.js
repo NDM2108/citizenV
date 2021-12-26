@@ -184,7 +184,7 @@ const EditAccount = () => {
                                 /> */}
 
                             </div>
-                            <Link to="/accMan/update">
+                            <Link to={"/accMan/update/" + accountID}>
                                 <button className="accountUpdateButton">Update</button>
                             </Link>
 
