@@ -10,13 +10,6 @@ function TestInfo() {
   const [listUsers, setListUsers] = useState([]);
 
   useEffect(() => {
-    // axios.get('http://localhost:5000/citizen_infos')
-    //     .then(response => {
-    //         const list = response.data
-    //         setListUsers(list)
-    //         console.log(list);
-
-    //     })
     fetch("http://localhost:5000/citizen_infos", {
       method: "GET",
       headers: {
@@ -29,19 +22,6 @@ function TestInfo() {
         setListUsers(data);
       });
   }, []);
-
-  // useEffect(async () => {
-  //     async function axiosAPI() {
-  //         let response = await axios.get('http://localhost:5000/citizen_infos')
-  //             .then(response => {
-  //                 const listUsers = response.data
-  //                 setListUsers(listUsers)
-  //             })
-  //     }
-  //     axiosAPI();
-  // }, [])
-
-  // console.log(listUsers);
 
   var persons = listUsers;
   var person = {};

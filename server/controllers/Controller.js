@@ -44,7 +44,7 @@ class Controller {
             'province': req.body.province,
             'district': req.body.district,
             'village':req.body.village,
-            'clanid': req.body.clanid,
+            'clan': req.body.clan,
             'permanentaddress': req.body.permanentaddress,
             'temporaryaddress': req.body.temporaryaddress,
             'religion': req.body.religion,
@@ -70,6 +70,7 @@ class Controller {
     }
 
     citizen_infos(req, res, next) {
+        console.log(res.locals.decoded.address);
         if (res.locals.decoded.level == 'A1') {
             Citizen_info.find({}, function(err, infos) {
                 res.send(infos)

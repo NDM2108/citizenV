@@ -52,7 +52,6 @@ const columns = [
           <Link to={"/population/" + params.row.id}>
             <Button
               variant="contained"
-              // onClick={() => {}}
             >
               Xem
             </Button>
@@ -71,7 +70,6 @@ const columns = [
           <Link to={"/population/" + params.row.id}>
             <Button
               variant="contained"
-              // onClick={() => {}}
             >
               Xóa
             </Button>
@@ -94,6 +92,7 @@ function DataPopulations() {
     })
       .then((response) => response.json())
       .then((data) => {
+        console.log(data)
         setPopulation(data);
       });
   }, []);
