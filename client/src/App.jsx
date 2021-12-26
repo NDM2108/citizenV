@@ -8,7 +8,7 @@ import PopulationDeclaration from "./components/pages/populationDeclaration/Popu
 import { Navigate } from 'react-router-dom';
 import Test from "./Test";
 // import EditAccount from "./components/pages/accountManager/editAccount/EditAccount";
-import UpdateStatus from "./components/pages/accountManager/editAccount/updateStatus/UpdateStatus"
+// import UpdateStatus from "./components/pages/accountManager/editAccount/updateStatus/UpdateStatus"
 
 
 class App extends Component {

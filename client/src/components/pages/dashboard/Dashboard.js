@@ -27,7 +27,7 @@ import InfoPopulation from '../population/InfoPopulation';
 import { useNavigate } from "react-router-dom";
 import EditAccount from '../accountManager/editAccount/EditAccount';
 import AddCode from '../addCode/AddCode';
-import UpdateStatus from '../accountManager/editAccount/updateStatus/UpdateStatus';
+import UpdateStatus from '../updateStatus/UpdateStatus';
 
 
 const drawerWidth = 240;
@@ -186,7 +186,7 @@ function DashboardContent() {
                                 <Route path="/accMan" element={<AccountManager />} />
                                 <Route path="/addCode" element={<AddCode />} />
                                 <Route path="/accMan/:accountID" element={<EditAccount />} />
-                                <Route path="/accMan/update" element={<UpdateStatus />} />
+                                <Route path="/accMan/update/:accountID" element={<UpdateStatus />} />
                                 <Route path="/addaccount" element={<AddAccount />} />
                                 <Route path="/population" element={<DataPopulations />} />
                                 <Route path="/population/:personID" element={<InfoPopulation />} />

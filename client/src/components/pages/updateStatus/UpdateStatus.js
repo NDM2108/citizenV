@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import './UpdateStatus.css';
+import './UpdateStatus.css'
 import CloseIcon from "@mui/icons-material/Close";
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
