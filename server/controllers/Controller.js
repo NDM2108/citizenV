@@ -187,6 +187,16 @@ class Controller {
         }
     }
 
+    check_account_exist(req, res, next) {
+        Account.find({'id': req.body.id}, function(err, accounts) {
+            if (accounts.length != 0) {
+                res.send('exist')
+            } else {
+                res.send('not_exist')
+            }
+        })
+    }
+
     update_account(req, res, next) {
         console.log(req.body);
     }
