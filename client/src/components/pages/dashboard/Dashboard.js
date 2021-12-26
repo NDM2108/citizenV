@@ -129,7 +129,7 @@ function DashboardContent() {
                                 noWrap
                                 sx={{ flexGrow: 1 }}
                             >
-                                TỔNG CỤC THỐNG KÊ
+                                TỔNG CỤC DÂN SỐ
                             </Typography>
 
 

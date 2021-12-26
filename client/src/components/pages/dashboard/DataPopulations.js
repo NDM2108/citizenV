@@ -63,25 +63,25 @@ const columns = [
       );
     },
   },
-  {
-    field: ",",
-    headerName: "",
-    width: 100,
-    renderCell: (params) => {
-      return (
-        <>
-          <Link to={"/population/" + params.row.id} >
-            <Button
-              variant="contained"
-            // onClick={() => {}}
-            >
-              Xóa
-            </Button>
-          </Link>
-        </>
-      );
-    },
-  },
+  // {
+  //   field: ",",
+  //   headerName: "",
+  //   width: 100,
+  //   renderCell: (params) => {
+  //     return (
+  //       <>
+  //         <Link to={"/population/" + params.row.id} >
+  //           <Button
+  //             variant="contained"
+  //           // onClick={() => {}}
+  //           >
+  //             Xóa
+  //           </Button>
+  //         </Link>
+  //       </>
+  //     );
+  //   },
+  // },
   
 ];
 
