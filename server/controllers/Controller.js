@@ -86,6 +86,10 @@ class Controller {
             Citizen_info.find({'village': res.locals.decoded.address}, function(err, infos) {
                 res.send(infos)
             })
+        } else if (res.locals.decoded.level == 'B2') {
+            Citizen_info.find({'clan': res.locals.decoded.address}, function(err, infos) {
+                res.send(infos)
+            })
         }
     }
 
