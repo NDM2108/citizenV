@@ -201,13 +201,22 @@ class Controller {
 
     async update_account(req, res, next) {
         var accountStatus = req.body.status ? 'Active' : 'Inactive'
-        console.log(req.body);
-        let doc = await Account.findOneAndUpdate({id: req.body.id}, {
-            timeopen: req.body.timeopen,
-            timeclose: req.body.timeclose,
-            status: accountStatus
-        }, {new: true})
-        console.log(doc);
+        if (accountStatus == 'Active') {
+            let doc = await Account.findOneAndUpdate({id: req.body.id}, {
+                timeopen: req.body.timeopen,
+                timeclose: req.body.timeclose,
+                status: accountStatus
+            }, {new: true})
+            res.send('success')
+        } else {
+            let doc = await Account.findOneAndUpdate({id: req.body.id}, {
+                timeopen: '',
+                timeclose: '',
+                status: accountStatus
+            }, {new: true})
+            res.send('success')
+        }
+
     }
 }
 

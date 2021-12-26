@@ -89,7 +89,7 @@ function DashboardContent() {
     };
 
     const logOut = async () => {
-        await localStorage.clear()
+        localStorage.clear()
         navigate('/login')
     }
     return (
